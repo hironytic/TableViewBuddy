@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5048F5D119911E6000E746DD /* SampleTableViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 5048F5D019911E6000E746DD /* SampleTableViewController1.m */; };
+		5048F5D419911EC500E746DD /* TBButtonRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5048F5D319911EC500E746DD /* TBButtonRow.m */; };
+		5048F5D71991205300E746DD /* TBButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5048F5D61991205300E746DD /* TBButtonTableViewCell.m */; };
 		50E92DAE198E2D5600D6C224 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E92DAD198E2D5600D6C224 /* Foundation.framework */; };
 		50E92DB0198E2D5600D6C224 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E92DAF198E2D5600D6C224 /* CoreGraphics.framework */; };
 		50E92DB2198E2D5600D6C224 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E92DB1198E2D5600D6C224 /* UIKit.framework */; };
@@ -19,6 +22,10 @@
 		50E92DC9198E2D5600D6C224 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E92DB1198E2D5600D6C224 /* UIKit.framework */; };
 		50E92DD1198E2D5600D6C224 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50E92DCF198E2D5600D6C224 /* InfoPlist.strings */; };
 		50E92DD3198E2D5600D6C224 /* TableViewBuddyExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E92DD2198E2D5600D6C224 /* TableViewBuddyExampleTests.m */; };
+		50E92DDF198E2FDF00D6C224 /* TBTableData.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E92DDE198E2FDF00D6C224 /* TBTableData.m */; };
+		50E92DE8198E328000D6C224 /* TBTableDataContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E92DE7198E328000D6C224 /* TBTableDataContext.m */; };
+		50E92DF8198E61B300D6C224 /* TBTableDataRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E92DF5198E61B300D6C224 /* TBTableDataRow.m */; };
+		50E92DF9198E61B300D6C224 /* TBTableDataSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E92DF7198E61B300D6C224 /* TBTableDataSection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5048F5CF19911E6000E746DD /* SampleTableViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTableViewController1.h; sourceTree = "<group>"; };
+		5048F5D019911E6000E746DD /* SampleTableViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTableViewController1.m; sourceTree = "<group>"; };
+		5048F5D219911EC500E746DD /* TBButtonRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBButtonRow.h; sourceTree = "<group>"; };
+		5048F5D319911EC500E746DD /* TBButtonRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBButtonRow.m; sourceTree = "<group>"; };
+		5048F5D51991205300E746DD /* TBButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBButtonTableViewCell.h; sourceTree = "<group>"; };
+		5048F5D61991205300E746DD /* TBButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBButtonTableViewCell.m; sourceTree = "<group>"; };
+		5048F5D8199120CE00E746DD /* TBSystemVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBSystemVersion.h; sourceTree = "<group>"; };
 		50E92DAA198E2D5600D6C224 /* TableViewBuddyExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewBuddyExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50E92DAD198E2D5600D6C224 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		50E92DAF198E2D5600D6C224 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,6 +62,20 @@
 		50E92DCE198E2D5600D6C224 /* TableViewBuddyExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TableViewBuddyExampleTests-Info.plist"; sourceTree = "<group>"; };
 		50E92DD0198E2D5600D6C224 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		50E92DD2198E2D5600D6C224 /* TableViewBuddyExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewBuddyExampleTests.m; sourceTree = "<group>"; };
+		50E92DDD198E2FDF00D6C224 /* TBTableData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTableData.h; sourceTree = "<group>"; };
+		50E92DDE198E2FDF00D6C224 /* TBTableData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTableData.m; sourceTree = "<group>"; };
+		50E92DE6198E328000D6C224 /* TBTableDataContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTableDataContext.h; sourceTree = "<group>"; };
+		50E92DE7198E328000D6C224 /* TBTableDataContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTableDataContext.m; sourceTree = "<group>"; };
+		50E92DF4198E61B300D6C224 /* TBTableDataRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTableDataRow.h; sourceTree = "<group>"; };
+		50E92DF5198E61B300D6C224 /* TBTableDataRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTableDataRow.m; sourceTree = "<group>"; };
+		50E92DF6198E61B300D6C224 /* TBTableDataSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTableDataSection.h; sourceTree = "<group>"; };
+		50E92DF7198E61B300D6C224 /* TBTableDataSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTableDataSection.m; sourceTree = "<group>"; };
+		50E92DFB198E636000D6C224 /* TBTableData_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTableData_Internal.h; sourceTree = "<group>"; };
+		50E92DFE198E63FE00D6C224 /* TBTableDataSection_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTableDataSection_Internal.h; sourceTree = "<group>"; };
+		50E92E01198E652900D6C224 /* TBTableDataRow_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTableDataRow_Internal.h; sourceTree = "<group>"; };
+		50E92E04198E65C100D6C224 /* TBUpdateStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBUpdateStatus.h; sourceTree = "<group>"; };
+		50E92E05198E75A600D6C224 /* TBTableDataContext_Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBTableDataContext_Internal.h; sourceTree = "<group>"; };
+		50E92E06198E7CA900D6C224 /* TableViewBuddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewBuddy.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +138,8 @@
 			children = (
 				50E92DBC198E2D5600D6C224 /* AppDelegate.h */,
 				50E92DBD198E2D5600D6C224 /* AppDelegate.m */,
+				5048F5CF19911E6000E746DD /* SampleTableViewController1.h */,
+				5048F5D019911E6000E746DD /* SampleTableViewController1.m */,
 				50E92DBF198E2D5600D6C224 /* Images.xcassets */,
 				50E92DB4198E2D5600D6C224 /* Supporting Files */,
 			);
@@ -148,9 +178,36 @@
 		50E92DDC198E2E4B00D6C224 /* TableViewBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				50E92DFA198E625600D6C224 /* internal */,
+				50E92E06198E7CA900D6C224 /* TableViewBuddy.h */,
+				5048F5D219911EC500E746DD /* TBButtonRow.h */,
+				5048F5D319911EC500E746DD /* TBButtonRow.m */,
+				5048F5D51991205300E746DD /* TBButtonTableViewCell.h */,
+				5048F5D61991205300E746DD /* TBButtonTableViewCell.m */,
+				5048F5D8199120CE00E746DD /* TBSystemVersion.h */,
+				50E92DDD198E2FDF00D6C224 /* TBTableData.h */,
+				50E92DDE198E2FDF00D6C224 /* TBTableData.m */,
+				50E92DE6198E328000D6C224 /* TBTableDataContext.h */,
+				50E92DE7198E328000D6C224 /* TBTableDataContext.m */,
+				50E92DF4198E61B300D6C224 /* TBTableDataRow.h */,
+				50E92DF5198E61B300D6C224 /* TBTableDataRow.m */,
+				50E92DF6198E61B300D6C224 /* TBTableDataSection.h */,
+				50E92DF7198E61B300D6C224 /* TBTableDataSection.m */,
 			);
 			name = TableViewBuddy;
 			path = ../TableViewBuddy;
+			sourceTree = "<group>";
+		};
+		50E92DFA198E625600D6C224 /* internal */ = {
+			isa = PBXGroup;
+			children = (
+				50E92DFB198E636000D6C224 /* TBTableData_Internal.h */,
+				50E92E05198E75A600D6C224 /* TBTableDataContext_Internal.h */,
+				50E92E01198E652900D6C224 /* TBTableDataRow_Internal.h */,
+				50E92DFE198E63FE00D6C224 /* TBTableDataSection_Internal.h */,
+				50E92E04198E65C100D6C224 /* TBUpdateStatus.h */,
+			);
+			path = internal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,8 +305,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5048F5D119911E6000E746DD /* SampleTableViewController1.m in Sources */,
+				50E92DE8198E328000D6C224 /* TBTableDataContext.m in Sources */,
+				5048F5D419911EC500E746DD /* TBButtonRow.m in Sources */,
+				50E92DF8198E61B300D6C224 /* TBTableDataRow.m in Sources */,
 				50E92DBE198E2D5600D6C224 /* AppDelegate.m in Sources */,
 				50E92DBA198E2D5600D6C224 /* main.m in Sources */,
+				50E92DF9198E61B300D6C224 /* TBTableDataSection.m in Sources */,
+				50E92DDF198E2FDF00D6C224 /* TBTableData.m in Sources */,
+				5048F5D71991205300E746DD /* TBButtonTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
