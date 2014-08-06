@@ -1,5 +1,5 @@
 //
-// TableViewBuddy.h
+// TBLabelRow.h
 // TableViewBuddy
 //
 // Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
@@ -23,12 +23,11 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "TBTableData.h"
-#import "TBTableDataContext.h"
 #import "TBTableDataRow.h"
-#import "TBTableDataSection.h"
 
-#import "TBButtonRow.h"
-#import "TBButtonTableViewCell.h"
+@interface TBLabelRow : TBTableDataRow
 
-#import "TBLabelRow.h"
+@property(nonatomic, copy) NSString *title;
+@property(nonatomic, copy) NSString *detailText;
+
+@end

@@ -1,5 +1,5 @@
 //
-// TableViewBuddy.h
+// TBLabelRow.m
 // TableViewBuddy
 //
 // Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
@@ -23,12 +23,22 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "TBTableData.h"
-#import "TBTableDataContext.h"
-#import "TBTableDataRow.h"
-#import "TBTableDataSection.h"
-
-#import "TBButtonRow.h"
-#import "TBButtonTableViewCell.h"
-
 #import "TBLabelRow.h"
+
+@implementation TBLabelRow
+
+@synthesize title = _title;
+@synthesize detailText = _detailText;
+
+- (UITableViewCell *)createTableViewCell {
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:[self reuseIdentifier]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+}
+
+- (void)configureTableViewCell:(UITableViewCell *)cell {
+    cell.textLabel.text = (self.title != nil) ? self.title : @"";
+    cell.detailTextLabel.text = (self.detailText != nil) ? self.detailText : @"";
+}
+
+@end

@@ -34,14 +34,14 @@
 }
 
 - (void)configureTableViewCell:(UITableViewCell *)cell {
-    cell.textLabel.text = self.title;
+    cell.textLabel.text = (self.title != nil) ? self.title : @"";
 }
 
 - (void)rowDidTapInTableView:(UITableView *)tableView AtIndexPath:(NSIndexPath *)indexPath {
+    [super rowDidTapInTableView:tableView AtIndexPath:indexPath];
     if (self.tapHandler != nil) {
         self.tapHandler();
     }
-    [super rowDidTapInTableView:tableView AtIndexPath:indexPath];
 }
 
 @end

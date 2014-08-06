@@ -66,10 +66,9 @@
         section_1 = prevSection = [context.tableData withContext:context insertSectionAfter:prevSection generator:[TBTableDataSection generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
             TBTableDataRow *prevRow = nil;
             
-            row_1_1 = prevRow = [context.section withContext:context insertRowAfter:prevRow generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
-                TBButtonRow *row = (TBButtonRow *)context.row;
+            row_1_1 = prevRow = [context.section withContext:context insertRowAfter:prevRow generator:[TBLabelRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
+                TBLabelRow *row = (TBLabelRow *)context.row;
                 row.title = @"X";
-                row.tapHandler = nil;
             }]];
             
             prevRow = [context.section withContext:context insertRowAfter:prevRow generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
@@ -115,14 +114,15 @@
                 };
             }]];
             
-            prevRow = [context.section withContext:context insertRowAfter:prevRow generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
-                TBButtonRow *row = (TBButtonRow *)context.row;
+            prevRow = [context.section withContext:context insertRowAfter:prevRow generator:[TBLabelRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
+                TBLabelRow *row = (TBLabelRow *)context.row;
                 row.title = @"...";
             }]];
             
-            row_2_2 = prevRow = [context.section withContext:context insertRowAfter:prevRow generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
-                TBButtonRow *row = (TBButtonRow *)context.row;
+            row_2_2 = prevRow = [context.section withContext:context insertRowAfter:prevRow generator:[TBLabelRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
+                TBLabelRow *row = (TBLabelRow *)context.row;
                 row.title = @"...2";
+                row.detailText = @"detail";
             }]];
         }]];
     }];
