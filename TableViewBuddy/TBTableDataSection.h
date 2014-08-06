@@ -40,6 +40,8 @@
 
 - (instancetype)initWithContext:(TBTableDataInitializationContext *)context configurator:(void (^)(TBTableDataInitializationContext *context))configurator;
 
+- (NSInteger)sectionIndex;
+
 - (TBTableDataRow *)withContext:(TBTableDataContext *)context
                  insertRowAfter:(TBTableDataRow *)previousRow
                       generator:(TBTableDataRow *(^)(TBTableDataInitializationContext *context))generator;

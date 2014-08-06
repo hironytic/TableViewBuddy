@@ -114,15 +114,19 @@
                 };
             }]];
             
-            prevRow = [context.section withContext:context insertRowAfter:prevRow generator:[TBLabelRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
-                TBLabelRow *row = (TBLabelRow *)context.row;
+            prevRow = [context.section withContext:context insertRowAfter:prevRow generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
+                TBButtonRow *row = (TBButtonRow *)context.row;
                 row.title = @"...";
+                row.tapHandler = ^{
+                    ++counter2;
+                    ((TBLabelRow *)row_2_2).title = [NSString stringWithFormat:@"Count %d", counter2];
+                };
             }]];
             
             row_2_2 = prevRow = [context.section withContext:context insertRowAfter:prevRow generator:[TBLabelRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
                 TBLabelRow *row = (TBLabelRow *)context.row;
-                row.title = @"...2";
-                row.detailText = @"detail";
+                row.title = [NSString stringWithFormat:@"Count %d", counter2];
+                row.detailText = @"long long long long text is here.";
             }]];
         }]];
     }];

@@ -39,6 +39,8 @@
 
 - (instancetype)initWithContext:(TBTableDataInitializationContext *)context configurator:(void (^)(TBTableDataInitializationContext *context))configurator;
 
+- (NSIndexPath *)rowIndexPath;
+
 - (void)withContext:(TBTableDataContext *)context setHidden:(BOOL)hidden;
 - (void)reloadWithContext:(TBTableDataContext *)context;
 - (void)deleteWithContext:(TBTableDataContext *)context;

@@ -62,6 +62,24 @@
     return self;
 }
 
+- (NSInteger)sectionIndex {
+    if (self.hidden) {
+        return NSNotFound;
+    }
+    
+    NSInteger sectionIndex = 0;
+    for (TBTableDataSection *section in self.tableData.sections) {
+        if (!section.hidden) {
+            if (section == self) {
+                return sectionIndex;
+            }
+            
+            ++sectionIndex;
+        }
+    }
+    return NSNotFound;
+}
+
 - (TBTableDataRow *)withContext:(TBTableDataContext *)context
                  insertRowAfter:(TBTableDataRow *)previousRow
                       generator:(TBTableDataRow *(^)(TBTableDataInitializationContext *context))generator {

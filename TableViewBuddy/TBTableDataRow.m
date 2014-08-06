@@ -55,6 +55,29 @@
     return self;
 }
 
+- (NSIndexPath *)rowIndexPath {
+    if (self.hidden) {
+        return nil;
+    }
+    
+    NSInteger sectionIndex = self.section.sectionIndex;
+    if (sectionIndex == NSNotFound) {
+        return nil;
+    }
+    
+    NSInteger rowIndex = 0;
+    for (TBTableDataRow *row in self.section.rows) {
+        if (!row.hidden) {
+            if (row == self) {
+                return [NSIndexPath indexPathForRow:rowIndex inSection:sectionIndex];
+            }
+            
+            ++rowIndex;
+        }
+    }
+    return nil;
+}
+
 - (NSString *)reuseIdentifier {
     return NSStringFromClass([self class]);
 }

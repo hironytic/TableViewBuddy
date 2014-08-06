@@ -25,8 +25,35 @@
 
 #import "TBButtonRow.h"
 #import "TBButtonTableViewCell.h"
+#import "TBTableData.h"
+#import "TBTableDataSection.h"
 
-@implementation TBButtonRow
+@implementation TBButtonRow {
+@private
+    NSString *_title;
+}
+
+@synthesize tapHandler = _tapHandler;
+
+- (NSString *)title {
+    return _title;
+}
+
+- (void)setTitle:(NSString *)title {
+    _title = [title copy];
+    
+    NSIndexPath *indexPath = [self rowIndexPath];
+    if (indexPath != nil) {
+        NSArray *visibleCellsIndexPaths = [self.section.tableData.tableView indexPathsForVisibleRows];
+        if ([visibleCellsIndexPaths containsObject:indexPath]) {
+            UITableViewCell *cell = [self.section.tableData.tableView cellForRowAtIndexPath:indexPath];
+            if (cell != nil) {
+                cell.textLabel.text = (self.title != nil) ? self.title : @"";
+                [cell layoutSubviews];
+            }
+        }
+    }
+}
 
 - (UITableViewCell *)createTableViewCell {
     TBButtonTableViewCell *cell = [[TBButtonTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[self reuseIdentifier]];
@@ -35,6 +62,7 @@
 
 - (void)configureTableViewCell:(UITableViewCell *)cell {
     cell.textLabel.text = (self.title != nil) ? self.title : @"";
+    [cell layoutSubviews];
 }
 
 - (void)rowDidTapInTableView:(UITableView *)tableView AtIndexPath:(NSIndexPath *)indexPath {

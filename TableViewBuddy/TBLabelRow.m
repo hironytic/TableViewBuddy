@@ -24,11 +24,54 @@
 //
 
 #import "TBLabelRow.h"
+#import "TBTableData.h"
+#import "TBTableDataSection.h"
 
-@implementation TBLabelRow
+@implementation TBLabelRow {
+@private
+    NSString *_title;
+    NSString *_detailText;
+}
 
-@synthesize title = _title;
-@synthesize detailText = _detailText;
+- (NSString *)title {
+    return _title;
+}
+
+- (void)setTitle:(NSString *)title {
+    _title = [title copy];
+    
+    NSIndexPath *indexPath = [self rowIndexPath];
+    if (indexPath != nil) {
+        NSArray *visibleCellsIndexPaths = [self.section.tableData.tableView indexPathsForVisibleRows];
+        if ([visibleCellsIndexPaths containsObject:indexPath]) {
+            UITableViewCell *cell = [self.section.tableData.tableView cellForRowAtIndexPath:indexPath];
+            if (cell != nil) {
+                cell.textLabel.text = (self.title != nil) ? self.title : @"";
+                [cell layoutSubviews];
+            }
+        }
+    }
+}
+
+- (NSString *)detailText {
+    return _detailText;
+}
+
+- (void)setDetailText:(NSString *)detailText {
+    _detailText = [detailText copy];
+    
+    NSIndexPath *indexPath = [self rowIndexPath];
+    if (indexPath != nil) {
+        NSArray *visibleCellsIndexPaths = [self.section.tableData.tableView indexPathsForVisibleRows];
+        if ([visibleCellsIndexPaths containsObject:indexPath]) {
+            UITableViewCell *cell = [self.section.tableData.tableView cellForRowAtIndexPath:indexPath];
+            if (cell != nil) {
+                cell.detailTextLabel.text = (self.detailText != nil) ? self.detailText : @"";
+                [cell layoutSubviews];
+            }
+        }
+    }
+}
 
 - (UITableViewCell *)createTableViewCell {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:[self reuseIdentifier]];
@@ -39,6 +82,7 @@
 - (void)configureTableViewCell:(UITableViewCell *)cell {
     cell.textLabel.text = (self.title != nil) ? self.title : @"";
     cell.detailTextLabel.text = (self.detailText != nil) ? self.detailText : @"";
+    [cell layoutSubviews];
 }
 
 @end
