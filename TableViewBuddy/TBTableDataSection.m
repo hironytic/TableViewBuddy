@@ -44,12 +44,8 @@
 
 + (TBTableDataSection *(^)(TBTableDataInitializationContext *context))generatorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator {
     return ^TBTableDataSection *(TBTableDataInitializationContext *context) {
-        return [self sectionWithContext:context configurator:configurator];
+        return [[[self class] alloc] initWithContext:context configurator:configurator];
     };
-}
-
-+ (instancetype)sectionWithContext:(TBTableDataInitializationContext *)context configurator:(void (^)(TBTableDataInitializationContext *context))configurator {
-    return [[[self class] alloc] initWithContext:context configurator:configurator];
 }
 
 - (instancetype)initWithContext:(TBTableDataInitializationContext *)context configurator:(void (^)(TBTableDataInitializationContext *context))configurator {

@@ -37,7 +37,6 @@
 @property(nonatomic, strong, readonly) NSArray *rows;
 
 + (TBTableDataSection *(^)(TBTableDataInitializationContext *context))generatorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator;
-+ (instancetype)sectionWithContext:(TBTableDataInitializationContext *)context configurator:(void (^)(TBTableDataInitializationContext *context))configurator;
 
 - (instancetype)initWithContext:(TBTableDataInitializationContext *)context configurator:(void (^)(TBTableDataInitializationContext *context))configurator;
 
