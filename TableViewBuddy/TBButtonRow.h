@@ -27,6 +27,7 @@
 
 @interface TBButtonRow : TBTableDataRow
 
+@property(nonatomic, assign) BOOL enabled;
 @property(nonatomic, copy) NSString *title;
 @property(nonatomic, copy) void (^tapHandler)();
 

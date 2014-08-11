@@ -27,4 +27,6 @@
 
 @interface TBButtonTableViewCell : UITableViewCell
 
+- (void)setGrayout:(BOOL)grayout;
+
 @end

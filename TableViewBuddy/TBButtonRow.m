@@ -30,10 +30,38 @@
 
 @implementation TBButtonRow {
 @private
+    BOOL _enabled;
     NSString *_title;
 }
 
 @synthesize tapHandler = _tapHandler;
+
+- (instancetype)initWithContext:(TBTableDataInitializationContext *)context {
+    self = [super initWithContext:context];
+    if (self != nil) {
+        _enabled = YES;
+    }
+    return self;
+}
+
+- (BOOL)enabled {
+    return _enabled;
+}
+
+- (void)setEnabled:(BOOL)enabled {
+    _enabled = enabled;
+    
+    NSIndexPath *indexPath = [self rowIndexPath];
+    if (indexPath != nil) {
+        NSArray *visibleCellsIndexPaths = [self.section.tableData.tableView indexPathsForVisibleRows];
+        if ([visibleCellsIndexPaths containsObject:indexPath]) {
+            UITableViewCell *cell = [self.section.tableData.tableView cellForRowAtIndexPath:indexPath];
+            if (cell != nil) {
+                [(TBButtonTableViewCell *)cell setGrayout:!enabled];
+            }
+        }
+    }
+}
 
 - (NSString *)title {
     return _title;
@@ -61,14 +89,17 @@
 }
 
 - (void)configureTableViewCell:(UITableViewCell *)cell {
+    [(TBButtonTableViewCell *)cell setGrayout:!self.enabled];
     cell.textLabel.text = (self.title != nil) ? self.title : @"";
     [cell layoutSubviews];
 }
 
 - (void)rowDidTapInTableView:(UITableView *)tableView AtIndexPath:(NSIndexPath *)indexPath {
     [super rowDidTapInTableView:tableView AtIndexPath:indexPath];
-    if (self.tapHandler != nil) {
-        self.tapHandler();
+    if (self.enabled) {
+        if (self.tapHandler != nil) {
+            self.tapHandler();
+        }
     }
 }
 
