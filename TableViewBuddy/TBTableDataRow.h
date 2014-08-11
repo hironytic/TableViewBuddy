@@ -37,7 +37,7 @@
 
 + (TBTableDataRow *(^)(TBTableDataInitializationContext *context))generatorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator;
 
-- (instancetype)initWithContext:(TBTableDataInitializationContext *)context configurator:(void (^)(TBTableDataInitializationContext *context))configurator;
+- (instancetype)initWithContext:(TBTableDataInitializationContext *)context;
 
 - (NSIndexPath *)rowIndexPath;
 

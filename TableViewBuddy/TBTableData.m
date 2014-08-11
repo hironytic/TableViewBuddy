@@ -39,21 +39,23 @@
 @synthesize mutableSections = _mutableSections;
 
 + (instancetype)tableDataWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator {
-    return [[[self class] alloc] initWithConfigurator:configurator];
+    TBTableData *tableData = [[self alloc] init];
+    if (tableData != nil) {
+        TBTableDataInitializationContext *context = [[TBTableDataInitializationContext alloc] init];
+        context.tableData = tableData;
+        configurator(context);
+    }
+    
+    return tableData;
 }
 
-- (instancetype)initWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator {
+- (instancetype)init {
     self = [super init];
     if (self != nil) {
         _mutableSections = [[NSMutableArray alloc] init];
-        
-        TBTableDataInitializationContext *context = [[TBTableDataInitializationContext alloc] init];
-        context.tableData = self;
-        configurator(context);
     }
     return self;
 }
-
 
 - (TBTableDataSection *)visibleSectionAtSectionIndex:(NSInteger)sectionIndex {
     for (TBTableDataSection *section in self.sections) {

@@ -38,19 +38,21 @@
 
 + (TBTableDataRow *(^)(TBTableDataInitializationContext *context))generatorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator {
     return ^TBTableDataRow *(TBTableDataInitializationContext *context) {
-        return [[[self class] alloc] initWithContext:context configurator:configurator];
+        TBTableDataRow *row = [[self alloc] initWithContext:context];
+        if (row != nil) {
+            TBTableDataRow *originalRow = context.row;
+            context.row = row;
+            configurator(context);
+            context.row = originalRow;
+        }
+        return row;
     };
 }
 
-- (instancetype)initWithContext:(TBTableDataInitializationContext *)context configurator:(void (^)(TBTableDataInitializationContext *context))configurator {
+- (instancetype)initWithContext:(TBTableDataInitializationContext *)context {
     self = [super init];
     if (self != nil) {
         _section = context.section;
-        
-        TBTableDataRow *originalRow = context.row;
-        context.row = self;
-        configurator(context);
-        context.row = originalRow;
     }
     return self;
 }

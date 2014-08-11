@@ -44,20 +44,22 @@
 
 + (TBTableDataSection *(^)(TBTableDataInitializationContext *context))generatorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator {
     return ^TBTableDataSection *(TBTableDataInitializationContext *context) {
-        return [[[self class] alloc] initWithContext:context configurator:configurator];
+        TBTableDataSection *section = [[self alloc] initWithContext:context];
+        if (section != nil) {
+            TBTableDataSection *originalSection = context.section;
+            context.section = section;
+            configurator(context);
+            context.section = originalSection;
+        }
+        return section;
     };
 }
 
-- (instancetype)initWithContext:(TBTableDataInitializationContext *)context configurator:(void (^)(TBTableDataInitializationContext *context))configurator {
+- (instancetype)initWithContext:(TBTableDataInitializationContext *)context {
     self = [super init];
     if (nil != self) {
         _mutableRows = [[NSMutableArray alloc] init];
         _tableData = context.tableData;
-        
-        TBTableDataSection *originalSection = context.section;
-        context.section = self;
-        configurator(context);
-        context.section = originalSection;
     }
     return self;
 }

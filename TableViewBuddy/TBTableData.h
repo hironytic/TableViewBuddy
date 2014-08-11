@@ -37,8 +37,6 @@
 
 + (instancetype)tableDataWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator;
 
-- (instancetype)initWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator;
-
 - (void)updateAnimated:(BOOL)animated updater:(void (^)(TBTableDataUpdateContext *context))updater;
 
 - (TBTableDataSection *)withContext:(TBTableDataContext *)context
