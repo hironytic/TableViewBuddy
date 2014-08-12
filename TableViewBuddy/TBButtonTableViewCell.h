@@ -23,10 +23,8 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import "TBTableViewCell.h"
 
-@interface TBButtonTableViewCell : UITableViewCell
-
-- (void)setGrayout:(BOOL)grayout;
+@interface TBButtonTableViewCell : TBTableViewCell
 
 @end

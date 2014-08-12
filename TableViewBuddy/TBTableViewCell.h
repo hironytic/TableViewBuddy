@@ -1,5 +1,5 @@
 //
-// TBButtonRow.h
+// TBTableViewCell.h
 // TableViewBuddy
 //
 // Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
@@ -23,11 +23,10 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "TBTableDataRow.h"
+#import <UIKit/UIKit.h>
 
-@interface TBButtonRow : TBTableDataRow
+@interface TBTableViewCell : UITableViewCell
 
-@property(nonatomic, copy) NSString *title;
-@property(nonatomic, copy) void (^tapHandler)();
+- (void)setAvailable:(BOOL)available;
 
 @end

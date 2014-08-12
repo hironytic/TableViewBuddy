@@ -1,5 +1,5 @@
 //
-// TBButtonRow.h
+// TBTableViewCell.m
 // TableViewBuddy
 //
 // Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
@@ -23,11 +23,17 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "TBTableDataRow.h"
+#import "TBTableViewCell.h"
+#import "TBSystemVersion.h"
 
-@interface TBButtonRow : TBTableDataRow
+@implementation TBTableViewCell
 
-@property(nonatomic, copy) NSString *title;
-@property(nonatomic, copy) void (^tapHandler)();
+- (void)setAvailable:(BOOL)available {
+    if (TBSystemVersionAtLeast(@"7.0")) {
+        self.selectionStyle = (available) ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
+    } else {
+        self.selectionStyle = (available) ? UITableViewCellSelectionStyleBlue : UITableViewCellSelectionStyleNone;
+    }
+}
 
 @end

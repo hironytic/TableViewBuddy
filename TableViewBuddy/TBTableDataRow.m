@@ -25,10 +25,14 @@
 
 #import "TBTableDataRow.h"
 #import "TBTableDataRow_Internal.h"
+#import "TBTableData.h"
 #import "TBTableDataContext_Internal.h"
 #import "TBTableDataSection_Internal.h"
+#import "TBTableViewCell.h"
 
-@implementation TBTableDataRow
+@implementation TBTableDataRow {
+    
+}
 
 @synthesize section = _section;
 @synthesize hidden = _hidden;
@@ -52,6 +56,7 @@
 - (instancetype)initWithContext:(TBTableDataInitializationContext *)context {
     self = [super init];
     if (self != nil) {
+        _enabled = YES;
         _section = context.section;
     }
     return self;
@@ -91,6 +96,10 @@
 
 - (void)configureTableViewCell:(UITableViewCell *)cell {
     // to be overridden
+
+    if ([cell isKindOfClass:[TBTableViewCell class]]) {
+        [(TBTableViewCell *)cell setAvailable:self.enabled];
+    }
 }
 
 - (void)rowDidTapInTableView:(UITableView *)tableView AtIndexPath:(NSIndexPath *)indexPath {
@@ -148,6 +157,21 @@
             case TBUpdateStatusDeleted:
                 self.updateStatus = TBUpdateStatusDeleted;
                 break;
+        }
+    }
+}
+
+- (void)setEnabled:(BOOL)enabled {
+    _enabled = enabled;
+    
+    NSIndexPath *indexPath = [self rowIndexPath];
+    if (indexPath != nil) {
+        NSArray *visibleCellsIndexPaths = [self.section.tableData.tableView indexPathsForVisibleRows];
+        if ([visibleCellsIndexPaths containsObject:indexPath]) {
+            UITableViewCell *cell = [self.section.tableData.tableView cellForRowAtIndexPath:indexPath];
+            if (cell != nil && [cell isKindOfClass:[TBTableViewCell class]]) {
+                [(TBTableViewCell *)cell setAvailable:enabled];
+            }
         }
     }
 }

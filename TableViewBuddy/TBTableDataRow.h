@@ -34,6 +34,7 @@
 @property(nonatomic, weak, readonly) TBTableDataSection *section;
 @property(nonatomic, copy, readonly) NSString *reuseIdentifier;
 @property(nonatomic, assign, readonly) BOOL hidden;
+@property(nonatomic, assign) BOOL enabled;
 
 + (TBTableDataRow *(^)(TBTableDataInitializationContext *context))generatorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator;
 

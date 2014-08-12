@@ -47,13 +47,9 @@
     }
 }
 
-- (void)setGrayout:(BOOL)grayout {
-    self.textLabel.enabled = !grayout;
-    if (TBSystemVersionAtLeast(@"7.0")) {
-        self.selectionStyle = (grayout) ? UITableViewCellSelectionStyleNone : UITableViewCellSelectionStyleDefault;
-    } else {
-        self.selectionStyle = (grayout) ? UITableViewCellSelectionStyleNone : UITableViewCellSelectionStyleBlue;
-    }
+- (void)setAvailable:(BOOL)available {
+    [super setAvailable:available];
+    self.textLabel.enabled = available;
 }
 
 @end

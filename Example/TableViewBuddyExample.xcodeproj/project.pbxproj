@@ -10,6 +10,7 @@
 		5048F5D119911E6000E746DD /* SampleTableViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 5048F5D019911E6000E746DD /* SampleTableViewController1.m */; };
 		5048F5D419911EC500E746DD /* TBButtonRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5048F5D319911EC500E746DD /* TBButtonRow.m */; };
 		5048F5D71991205300E746DD /* TBButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5048F5D61991205300E746DD /* TBButtonTableViewCell.m */; };
+		5068B9091999EA1E007C7B69 /* TBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5068B9081999EA1E007C7B69 /* TBTableViewCell.m */; };
 		50E09F6419925F3200911E02 /* TBLabelRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E09F6319925F3200911E02 /* TBLabelRow.m */; };
 		50E92DAE198E2D5600D6C224 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E92DAD198E2D5600D6C224 /* Foundation.framework */; };
 		50E92DB0198E2D5600D6C224 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E92DAF198E2D5600D6C224 /* CoreGraphics.framework */; };
@@ -47,6 +48,8 @@
 		5048F5D51991205300E746DD /* TBButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBButtonTableViewCell.h; sourceTree = "<group>"; };
 		5048F5D61991205300E746DD /* TBButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBButtonTableViewCell.m; sourceTree = "<group>"; };
 		5048F5D8199120CE00E746DD /* TBSystemVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBSystemVersion.h; sourceTree = "<group>"; };
+		5068B9071999EA1E007C7B69 /* TBTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTableViewCell.h; sourceTree = "<group>"; };
+		5068B9081999EA1E007C7B69 /* TBTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTableViewCell.m; sourceTree = "<group>"; };
 		50E09F6219925F3200911E02 /* TBLabelRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBLabelRow.h; sourceTree = "<group>"; };
 		50E09F6319925F3200911E02 /* TBLabelRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBLabelRow.m; sourceTree = "<group>"; };
 		50E92DAA198E2D5600D6C224 /* TableViewBuddyExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewBuddyExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +201,8 @@
 				50E92DF5198E61B300D6C224 /* TBTableDataRow.m */,
 				50E92DF6198E61B300D6C224 /* TBTableDataSection.h */,
 				50E92DF7198E61B300D6C224 /* TBTableDataSection.m */,
+				5068B9071999EA1E007C7B69 /* TBTableViewCell.h */,
+				5068B9081999EA1E007C7B69 /* TBTableViewCell.m */,
 			);
 			name = TableViewBuddy;
 			path = ../TableViewBuddy;
@@ -317,6 +322,7 @@
 				50E92DBE198E2D5600D6C224 /* AppDelegate.m in Sources */,
 				50E92DBA198E2D5600D6C224 /* main.m in Sources */,
 				50E92DF9198E61B300D6C224 /* TBTableDataSection.m in Sources */,
+				5068B9091999EA1E007C7B69 /* TBTableViewCell.m in Sources */,
 				50E09F6419925F3200911E02 /* TBLabelRow.m in Sources */,
 				50E92DDF198E2FDF00D6C224 /* TBTableData.m in Sources */,
 				5048F5D71991205300E746DD /* TBButtonTableViewCell.m in Sources */,

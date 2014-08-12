@@ -551,6 +551,14 @@
 
 #pragma mark UITableViewDelegate
 
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    TBTableDataRow *row = [self visibleRowAtIndexPath:indexPath];
+    if (row == nil || !row.enabled) {
+        return nil;
+    }
+    return indexPath;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TBTableDataRow *row = [self visibleRowAtIndexPath:indexPath];
     if (row != nil) {
