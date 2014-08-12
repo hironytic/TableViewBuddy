@@ -33,22 +33,10 @@
 
 @implementation TBTableDataInitializationContext
 
-@synthesize tableData = _tableData;
-@synthesize section = _section;
-@synthesize row = _row;
-
 @end
 
 
 @implementation TBTableDataUpdateContext
-
-@synthesize insertionAnimation = _insertionAnimation;
-@synthesize deletionAnimation = _deletionAnimation;
-@synthesize reloadingAnimation = _reloadingAnimation;
-
-@synthesize insertedSections = _insertedSections;
-@synthesize reloadedSections = _reloadedSections;
-@synthesize reloadedRows = _reloadedRows;
 
 - (id)init {
     self = [super init];

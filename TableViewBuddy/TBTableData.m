@@ -31,12 +31,9 @@
 
 @implementation TBTableData
 
-@synthesize tableView = _tableView;
 - (NSArray *)sections {
     return self.mutableSections;
 }
-
-@synthesize mutableSections = _mutableSections;
 
 + (instancetype)tableDataWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator {
     TBTableData *tableData = [[self alloc] init];

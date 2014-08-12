@@ -30,15 +30,7 @@
 #import "TBTableDataSection_Internal.h"
 #import "TBTableViewCell.h"
 
-@implementation TBTableDataRow {
-    
-}
-
-@synthesize section = _section;
-@synthesize hidden = _hidden;
-
-@synthesize updateStatus = _updateStatus;
-@synthesize insertedRows = _insertedRows;
+@implementation TBTableDataRow
 
 + (TBTableDataRow *(^)(TBTableDataInitializationContext *context))generatorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator {
     return ^TBTableDataRow *(TBTableDataInitializationContext *context) {

@@ -28,16 +28,7 @@
 #import "TBTableData.h"
 #import "TBTableDataSection.h"
 
-@implementation TBButtonRow {
-@private
-    NSString *_title;
-}
-
-@synthesize tapHandler = _tapHandler;
-
-- (NSString *)title {
-    return _title;
-}
+@implementation TBButtonRow
 
 - (void)setTitle:(NSString *)title {
     _title = [title copy];

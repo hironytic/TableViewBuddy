@@ -31,16 +31,9 @@
 
 @implementation TBTableDataSection
 
-@synthesize tableData = _tableData;
-@synthesize hidden = _hidden;
 - (NSArray *)rows {
     return self.mutableRows;
 }
-
-@synthesize mutableRows = _mutableRows;
-@synthesize updateStatus = _updateStatus;
-@synthesize insertedRows = _insertedRows;
-@synthesize insertedSections = _insertedSections;
 
 + (TBTableDataSection *(^)(TBTableDataInitializationContext *context))generatorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator {
     return ^TBTableDataSection *(TBTableDataInitializationContext *context) {
