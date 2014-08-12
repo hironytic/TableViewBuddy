@@ -24,6 +24,7 @@
 //
 
 #import "TBLabelRow.h"
+#import "TBLabelTableViewCell.h"
 #import "TBTableData.h"
 #import "TBTableDataSection.h"
 
@@ -62,12 +63,12 @@
 }
 
 - (UITableViewCell *)createTableViewCell {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:[self reuseIdentifier]];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    TBLabelTableViewCell *cell = [[TBLabelTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:[self reuseIdentifier]];
     return cell;
 }
 
 - (void)configureTableViewCell:(UITableViewCell *)cell {
+    [super configureTableViewCell:cell];
     cell.textLabel.text = (self.title != nil) ? self.title : @"";
     cell.detailTextLabel.text = (self.detailText != nil) ? self.detailText : @"";
     [cell layoutSubviews];
