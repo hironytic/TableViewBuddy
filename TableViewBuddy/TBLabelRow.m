@@ -27,15 +27,7 @@
 #import "TBTableData.h"
 #import "TBTableDataSection.h"
 
-@implementation TBLabelRow {
-@private
-    NSString *_title;
-    NSString *_detailText;
-}
-
-- (NSString *)title {
-    return _title;
-}
+@implementation TBLabelRow
 
 - (void)setTitle:(NSString *)title {
     _title = [title copy];
@@ -51,10 +43,6 @@
             }
         }
     }
-}
-
-- (NSString *)detailText {
-    return _detailText;
 }
 
 - (void)setDetailText:(NSString *)detailText {

@@ -28,6 +28,8 @@
 #import "TBTableDataRow.h"
 #import "TBTableDataSection.h"
 
+#import "TBTableViewCell.h"
+
 #import "TBButtonRow.h"
 #import "TBButtonTableViewCell.h"
 
