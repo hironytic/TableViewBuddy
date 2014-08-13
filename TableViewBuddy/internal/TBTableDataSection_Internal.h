@@ -30,6 +30,8 @@
 @interface TBTableDataSection ()
 
 @property(nonatomic, assign) BOOL hidden;
+@property(nonatomic, copy) NSString *headerTitle;
+@property(nonatomic, copy) NSString *footerTitle;
 @property(nonatomic, strong) NSMutableArray *mutableRows;
 @property(nonatomic, assign) TBUpdateStatus updateStatus;
 @property(nonatomic, strong) NSMutableArray *insertedRows;

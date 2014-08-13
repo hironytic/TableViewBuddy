@@ -518,6 +518,22 @@
     return count;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)sectionIndex {
+    TBTableDataSection *section = [self visibleSectionAtSectionIndex:sectionIndex];
+    if (section != nil) {
+        return section.headerTitle;
+    }
+    return nil;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)sectionIndex {
+    TBTableDataSection *section = [self visibleSectionAtSectionIndex:sectionIndex];
+    if (section != nil) {
+        return section.footerTitle;
+    }
+    return nil;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex {
     TBTableDataSection *section = [self visibleSectionAtSectionIndex:sectionIndex];
     if (section != nil) {

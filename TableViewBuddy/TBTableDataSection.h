@@ -34,6 +34,8 @@
 
 @property(nonatomic, weak, readonly) TBTableData *tableData;
 @property(nonatomic, assign, readonly) BOOL hidden;
+@property(nonatomic, copy, readonly) NSString *headerTitle;
+@property(nonatomic, copy, readonly) NSString *footerTitle;
 @property(nonatomic, strong, readonly) NSArray *rows;
 
 + (TBTableDataSection *(^)(TBTableDataInitializationContext *context))generatorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator;
@@ -46,6 +48,8 @@
                  insertRowAfter:(TBTableDataRow *)previousRow
                       generator:(TBTableDataRow *(^)(TBTableDataInitializationContext *context))generator;
 - (void)withContext:(TBTableDataContext *)context setHidden:(BOOL)hidden;
+- (void)withContext:(TBTableDataContext *)context setHeaderTitle:(NSString *)headerTitle;
+- (void)withContext:(TBTableDataContext *)context setFooterTitle:(NSString *)footerTitle;
 - (void)reloadWithContext:(TBTableDataContext *)context;
 - (void)deleteWithContext:(TBTableDataContext *)context;
 

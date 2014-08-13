@@ -139,6 +139,25 @@
     }
 }
 
+- (void)withContext:(TBTableDataContext *)context setHeaderTitle:(NSString *)headerTitle {
+    if ([context isKindOfClass:[TBTableDataInitializationContext class]] || [context isKindOfClass:[TBTableDataUpdateContext class]]) {
+        _headerTitle = headerTitle;
+    }
+    if ([context isKindOfClass:[TBTableDataUpdateContext class]]) {
+        [self reloadWithContext:context];
+    }
+}
+
+- (void)withContext:(TBTableDataContext *)context setFooterTitle:(NSString *)footerTitle {
+    if ([context isKindOfClass:[TBTableDataInitializationContext class]] || [context isKindOfClass:[TBTableDataUpdateContext class]]) {
+        _footerTitle = footerTitle;
+    }
+    if ([context isKindOfClass:[TBTableDataUpdateContext class]]) {
+        [self reloadWithContext:context];
+    }
+}
+
+
 - (void)reloadWithContext:(TBTableDataContext *)context {
     if ([context isKindOfClass:[TBTableDataUpdateContext class]]) {
         TBTableDataUpdateContext *updateContext = (TBTableDataUpdateContext *)context;
