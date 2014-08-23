@@ -470,9 +470,9 @@
     }
 }
 
-- (TBTableDataSection *)withContext:(TBTableDataContext *)context
-                 insertSectionAfter:(TBTableDataSection *)previousSection
-                          generator:(TBTableDataSection *(^)(TBTableDataInitializationContext *context))generator {
+- (TBTableDataSection *)insertSectionAfter:(TBTableDataSection *)previousSection
+                               withContext:(TBTableDataContext *)context
+                                 generator:(TBTableDataSection *(^)(TBTableDataInitializationContext *context))generator {
     TBTableDataInitializationContext *initializationContext = [[TBTableDataInitializationContext alloc] init];
     initializationContext.tableData = self;
     TBTableDataSection *section = generator(initializationContext);

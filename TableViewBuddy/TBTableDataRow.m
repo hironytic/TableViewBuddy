@@ -99,7 +99,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-- (void)withContext:(TBTableDataContext *)context setHidden:(BOOL)hidden {
+- (void)setHidden:(BOOL)hidden withContext:(TBTableDataContext *)context {
     if ([context isKindOfClass:[TBTableDataInitializationContext class]]) {
         self.hidden = hidden;
     } else if ([context isKindOfClass:[TBTableDataUpdateContext class]]) {

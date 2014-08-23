@@ -75,8 +75,8 @@
     return NSNotFound;
 }
 
-- (TBTableDataRow *)withContext:(TBTableDataContext *)context
-                 insertRowAfter:(TBTableDataRow *)previousRow
+- (TBTableDataRow *)insertRowAfter:(TBTableDataRow *)previousRow
+                       withContext:(TBTableDataContext *)context
                       generator:(TBTableDataRow *(^)(TBTableDataInitializationContext *context))generator {
     TBTableDataInitializationContext *initializationContext = [[TBTableDataInitializationContext alloc] init];
     initializationContext.tableData = self.tableData;
@@ -111,7 +111,7 @@
     return row;
 }
 
-- (void)withContext:(TBTableDataContext *)context setHidden:(BOOL)hidden {
+- (void)setHidden:(BOOL)hidden withContext:(TBTableDataContext *)context {
     if ([context isKindOfClass:[TBTableDataInitializationContext class]]) {
         self.hidden = hidden;
     } else if ([context isKindOfClass:[TBTableDataUpdateContext class]]) {
@@ -139,7 +139,7 @@
     }
 }
 
-- (void)withContext:(TBTableDataContext *)context setHeaderTitle:(NSString *)headerTitle {
+- (void)setHeaderTitle:(NSString *)headerTitle withContext:(TBTableDataContext *)context {
     if ([context isKindOfClass:[TBTableDataInitializationContext class]] || [context isKindOfClass:[TBTableDataUpdateContext class]]) {
         _headerTitle = headerTitle;
     }
@@ -148,7 +148,7 @@
     }
 }
 
-- (void)withContext:(TBTableDataContext *)context setFooterTitle:(NSString *)footerTitle {
+- (void)setFooterTitle:(NSString *)footerTitle withContext:(TBTableDataContext *)context {
     if ([context isKindOfClass:[TBTableDataInitializationContext class]] || [context isKindOfClass:[TBTableDataUpdateContext class]]) {
         _footerTitle = footerTitle;
     }

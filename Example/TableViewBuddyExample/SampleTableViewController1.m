@@ -55,6 +55,7 @@
     __block TBTableDataSection *section_1;
     __block TBTableDataSection *section_2;
     __block TBTableDataRow *row_1_1;
+    __block TBTableDataRow *row_1_3;
     __block TBTableDataRow *row_2_2;
     
     __block TBTableDataRow *row_New = nil;
@@ -63,35 +64,50 @@
     TBTableData *tableData = [TBTableData tableDataWithConfigurator:^(TBTableDataInitializationContext *context) {
         TBTableDataSection *prevSection = nil;
         
-        section_1 = prevSection = [context.tableData withContext:context insertSectionAfter:prevSection generator:[TBTableDataSection generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
+        section_1 = prevSection = [context.tableData insertSectionAfter:prevSection withContext:context generator:[TBTableDataSection generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
             TBTableDataRow *prevRow = nil;
             
-            row_1_1 = prevRow = [context.section withContext:context insertRowAfter:prevRow generator:[TBLabelRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
+            row_1_1 = prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBLabelRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
                 TBLabelRow *row = (TBLabelRow *)context.row;
                 row.title = @"X";
             }]];
             
-            prevRow = [context.section withContext:context insertRowAfter:prevRow generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
+            prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
                 TBButtonRow *row = (TBButtonRow *)context.row;
                 row.title = @"Y";
                 row.tapHandler = ^{
                     [weakSelf.tableData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {
-                        [section_2 withContext:context setHidden:!section_2.hidden];
+                        if (section_1.headerTitle == nil) {
+                            [section_1 setHeaderTitle:@"Header1" withContext:context];
+                            [section_1 setFooterTitle:@"Footer is a footer" withContext:context];
+                        } else {
+                            [section_1 setHeaderTitle:nil withContext:context];
+                            [section_1 setFooterTitle:nil withContext:context];
+                        }
                     }];
+                    
+//                    row_1_1.enabled = !row_1_1.enabled;
+                    
+//                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"aa" message:@"bb" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//                    [alertView show];
+//                    [weakSelf.tableData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {
+//                        [section_2 withContext:context setHidden:!section_2.hidden];
+//                    }];
                 };
             }]];
             
-            prevRow = [context.section withContext:context insertRowAfter:prevRow generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
+            row_1_3 = prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
                 TBButtonRow *row = (TBButtonRow *)context.row;
+                row.enabled = NO;
                 row.title = @"Z";
                 row.tapHandler = ^{
                     [weakSelf.tableData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {
                         for (NSInteger ix = 0; ix < 3; ++ix) {
                             NSInteger myCounter = counter;
                             ++counter;
-                            row_New = [section_1 withContext:context
-                                              insertRowAfter:(row_New == nil) ? row_1_1  : row_New
-                                                   generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
+                            row_New = [section_1 insertRowAfter:(row_New == nil) ? row_1_1  : row_New
+                                                    withContext:context
+                                                      generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
                                 TBButtonRow *row = (TBButtonRow *)context.row;
                                 row.title = [NSString stringWithFormat:@"hoge %d", myCounter];
                             }]];
@@ -101,20 +117,23 @@
             }]];
         }]];
         
-        section_2 = prevSection = [context.tableData withContext:context insertSectionAfter:prevSection generator:[TBTableDataSection generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
+        section_2 = prevSection = [context.tableData insertSectionAfter:prevSection withContext:context generator:[TBTableDataSection generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
+            TBTableDataSection *section = context.section;
+            [section setFooterTitle:@"Section 2" withContext:context];
+            
             TBTableDataRow *prevRow = nil;
             
-            prevRow = [context.section withContext:context insertRowAfter:prevRow generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
+            prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
                 TBButtonRow *row = (TBButtonRow *)context.row;
                 row.title = @"Tap Here";
                 row.tapHandler = ^{
                     [weakSelf.tableData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {
-                        [row_1_1 withContext:context setHidden:!row_1_1.hidden];
+                        [row_1_1 setHidden:!row_1_1.hidden withContext:context];
                     }];
                 };
             }]];
             
-            prevRow = [context.section withContext:context insertRowAfter:prevRow generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
+            prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
                 TBButtonRow *row = (TBButtonRow *)context.row;
                 row.title = @"...";
                 row.tapHandler = ^{
@@ -123,7 +142,7 @@
                 };
             }]];
             
-            row_2_2 = prevRow = [context.section withContext:context insertRowAfter:prevRow generator:[TBLabelRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
+            row_2_2 = prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBLabelRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
                 TBLabelRow *row = (TBLabelRow *)context.row;
                 row.title = [NSString stringWithFormat:@"Count %d", counter2];
                 row.detailText = @"long long long long text is here.";

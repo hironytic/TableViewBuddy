@@ -44,12 +44,12 @@
 
 - (NSInteger)sectionIndex;
 
-- (TBTableDataRow *)withContext:(TBTableDataContext *)context
-                 insertRowAfter:(TBTableDataRow *)previousRow
+- (TBTableDataRow *)insertRowAfter:(TBTableDataRow *)previousRow
+                       withContext:(TBTableDataContext *)context
                       generator:(TBTableDataRow *(^)(TBTableDataInitializationContext *context))generator;
-- (void)withContext:(TBTableDataContext *)context setHidden:(BOOL)hidden;
-- (void)withContext:(TBTableDataContext *)context setHeaderTitle:(NSString *)headerTitle;
-- (void)withContext:(TBTableDataContext *)context setFooterTitle:(NSString *)footerTitle;
+- (void)setHidden:(BOOL)hidden withContext:(TBTableDataContext *)context;
+- (void)setHeaderTitle:(NSString *)headerTitle withContext:(TBTableDataContext *)context;
+- (void)setFooterTitle:(NSString *)footerTitle withContext:(TBTableDataContext *)context;
 - (void)reloadWithContext:(TBTableDataContext *)context;
 - (void)deleteWithContext:(TBTableDataContext *)context;
 

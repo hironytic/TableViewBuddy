@@ -42,7 +42,7 @@
 
 - (NSIndexPath *)rowIndexPath;
 
-- (void)withContext:(TBTableDataContext *)context setHidden:(BOOL)hidden;
+- (void)setHidden:(BOOL)hidden withContext:(TBTableDataContext *)context;
 - (void)reloadWithContext:(TBTableDataContext *)context;
 - (void)deleteWithContext:(TBTableDataContext *)context;
 

@@ -39,8 +39,8 @@
 
 - (void)updateAnimated:(BOOL)animated updater:(void (^)(TBTableDataUpdateContext *context))updater;
 
-- (TBTableDataSection *)withContext:(TBTableDataContext *)context
-                 insertSectionAfter:(TBTableDataSection *)previousSection
-                          generator:(TBTableDataSection *(^)(TBTableDataInitializationContext *context))generator;
+- (TBTableDataSection *)insertSectionAfter:(TBTableDataSection *)previousSection
+                               withContext:(TBTableDataContext *)context
+                                 generator:(TBTableDataSection *(^)(TBTableDataInitializationContext *context))generator;
 
 @end
