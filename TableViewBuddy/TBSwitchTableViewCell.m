@@ -18,6 +18,8 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self != nil) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         UISwitch *theSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
         [theSwitch addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
         self.accessoryView = theSwitch;
@@ -27,7 +29,6 @@
 }
 
 - (void)setAvailable:(BOOL)available {
-    [super setAvailable:available];
     self.textLabel.enabled = available;
     self.theSwitch.enabled = available;
 }
