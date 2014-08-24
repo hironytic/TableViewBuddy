@@ -23,8 +23,8 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "TBTableViewCell.h"
+#import "TBUntappableCell.h"
 
-@interface TBLabelTableViewCell : TBTableViewCell
+@interface TBLabelTableViewCell : TBUntappableCell
 
 @end

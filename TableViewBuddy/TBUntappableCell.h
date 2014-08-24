@@ -1,5 +1,5 @@
 //
-// TBSwitchTableViewCell.m
+// TBUntappableCell.h
 // TableViewBuddy
 //
 // Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
@@ -23,45 +23,8 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "TBSwitchTableViewCell.h"
+#import "TBTableViewCell.h"
 
-@interface TBSwitchTableViewCell ()
-@property(nonatomic, weak) UISwitch *toggleSwitch;
-@end
-
-@implementation TBSwitchTableViewCell
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self != nil) {
-        UISwitch *toggleSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-        [toggleSwitch addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
-        self.accessoryView = toggleSwitch;
-        _toggleSwitch = toggleSwitch;
-    }
-    return self;
-}
-
-- (void)setAvailable:(BOOL)available {
-    [super setAvailable:available];
-    
-    self.textLabel.enabled = available;
-    self.toggleSwitch.enabled = available;
-}
-
-- (BOOL)switchValue {
-    return self.toggleSwitch.on;
-}
-
-- (void)setSwitchValue:(BOOL)switchValue {
-    self.toggleSwitch.on = switchValue;
-}
-
-- (void)valueChanged:(id)sender {
-    if (self.switchValueChanged != nil) {
-        self.switchValueChanged(self.toggleSwitch.on);
-    }
-}
+@interface TBUntappableCell : TBTableViewCell
 
 @end

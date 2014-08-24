@@ -27,16 +27,9 @@
 
 @implementation TBLabelTableViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
-    if (self != nil) {
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    return self;
-}
-
 - (void)setAvailable:(BOOL)available {
+    [super setAvailable:available];
+    
     self.textLabel.enabled = available;
     self.detailTextLabel.enabled = available;
 }

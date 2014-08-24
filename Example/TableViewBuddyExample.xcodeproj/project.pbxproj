@@ -15,6 +15,7 @@
 		5068B9091999EA1E007C7B69 /* TBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5068B9081999EA1E007C7B69 /* TBTableViewCell.m */; };
 		5068B90C1999F0CB007C7B69 /* TBLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5068B90B1999F0CB007C7B69 /* TBLabelTableViewCell.m */; };
 		50E09F6419925F3200911E02 /* TBLabelRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E09F6319925F3200911E02 /* TBLabelRow.m */; };
+		50E50F1019A99D2C007D4F56 /* TBUntappableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E50F0F19A99D2C007D4F56 /* TBUntappableCell.m */; };
 		50E92DAE198E2D5600D6C224 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E92DAD198E2D5600D6C224 /* Foundation.framework */; };
 		50E92DB0198E2D5600D6C224 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E92DAF198E2D5600D6C224 /* CoreGraphics.framework */; };
 		50E92DB2198E2D5600D6C224 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E92DB1198E2D5600D6C224 /* UIKit.framework */; };
@@ -61,6 +62,8 @@
 		5068B90B1999F0CB007C7B69 /* TBLabelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBLabelTableViewCell.m; sourceTree = "<group>"; };
 		50E09F6219925F3200911E02 /* TBLabelRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBLabelRow.h; sourceTree = "<group>"; };
 		50E09F6319925F3200911E02 /* TBLabelRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBLabelRow.m; sourceTree = "<group>"; };
+		50E50F0E19A99D2C007D4F56 /* TBUntappableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBUntappableCell.h; sourceTree = "<group>"; };
+		50E50F0F19A99D2C007D4F56 /* TBUntappableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBUntappableCell.m; sourceTree = "<group>"; };
 		50E92DAA198E2D5600D6C224 /* TableViewBuddyExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewBuddyExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50E92DAD198E2D5600D6C224 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		50E92DAF198E2D5600D6C224 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -218,6 +221,8 @@
 				50E92DF7198E61B300D6C224 /* TBTableDataSection.m */,
 				5068B9071999EA1E007C7B69 /* TBTableViewCell.h */,
 				5068B9081999EA1E007C7B69 /* TBTableViewCell.m */,
+				50E50F0E19A99D2C007D4F56 /* TBUntappableCell.h */,
+				50E50F0F19A99D2C007D4F56 /* TBUntappableCell.m */,
 			);
 			name = TableViewBuddy;
 			path = ../TableViewBuddy;
@@ -333,6 +338,7 @@
 				5048F5D119911E6000E746DD /* SampleTableViewController1.m in Sources */,
 				50E92DE8198E328000D6C224 /* TBTableDataContext.m in Sources */,
 				5068B90C1999F0CB007C7B69 /* TBLabelTableViewCell.m in Sources */,
+				50E50F1019A99D2C007D4F56 /* TBUntappableCell.m in Sources */,
 				5048F5D419911EC500E746DD /* TBButtonRow.m in Sources */,
 				50E92DF8198E61B300D6C224 /* TBTableDataRow.m in Sources */,
 				50E92DBE198E2D5600D6C224 /* AppDelegate.m in Sources */,
