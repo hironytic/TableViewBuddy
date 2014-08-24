@@ -98,7 +98,7 @@
             
             row_1_3 = prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
                 TBButtonRow *row = (TBButtonRow *)context.row;
-                row.enabled = NO;
+                row.enabled = YES;
                 row.title = @"Z";
                 row.tapHandler = ^{
                     [weakSelf.tableData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {
@@ -146,6 +146,12 @@
                 TBLabelRow *row = (TBLabelRow *)context.row;
                 row.title = [NSString stringWithFormat:@"Count %d", counter2];
                 row.detailText = @"long long long long text is here.";
+            }]];
+            
+            prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBSwitchRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
+                TBSwitchRow *row = (TBSwitchRow *)context.row;
+                row.title = @"On/Off";
+                row.value = YES;
             }]];
         }]];
     }];

@@ -1,5 +1,5 @@
 //
-// TableViewBuddy.h
+// TBSwitchRow.h
 // TableViewBuddy
 //
 // Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
@@ -23,17 +23,12 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "TBTableData.h"
-#import "TBTableDataContext.h"
 #import "TBTableDataRow.h"
-#import "TBTableDataSection.h"
 
-#import "TBTableViewCell.h"
+@interface TBSwitchRow : TBTableDataRow
 
-#import "TBButtonRow.h"
-#import "TBButtonTableViewCell.h"
+@property(nonatomic, copy) NSString *title;
+@property(nonatomic, assign) BOOL value;
+@property(nonatomic, copy) void (^valueChangeHandler)(BOOL value);
 
-#import "TBLabelRow.h"
-
-#import "TBSwitchRow.h"
-#import "TBSwitchTableViewCell.h"
+@end
