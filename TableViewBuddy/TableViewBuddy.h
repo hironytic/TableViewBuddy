@@ -34,6 +34,7 @@
 #import "TBButtonTableViewCell.h"
 
 #import "TBLabelRow.h"
+#import "TBLabelTableViewCell.h"
 
 #import "TBSwitchRow.h"
 #import "TBSwitchTableViewCell.h"

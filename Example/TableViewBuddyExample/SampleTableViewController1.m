@@ -109,7 +109,7 @@
                                                     withContext:context
                                                       generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
                                 TBButtonRow *row = (TBButtonRow *)context.row;
-                                row.title = [NSString stringWithFormat:@"hoge %d", myCounter];
+                                row.title = [NSString stringWithFormat:@"hoge %ld", (long)myCounter];
                             }]];
                         }
                     }];
@@ -138,13 +138,13 @@
                 row.title = @"...";
                 row.tapHandler = ^{
                     ++counter2;
-                    ((TBLabelRow *)row_2_2).title = [NSString stringWithFormat:@"Count %d", counter2];
+                    ((TBLabelRow *)row_2_2).title = [NSString stringWithFormat:@"Count %ld", (long)counter2];
                 };
             }]];
             
             row_2_2 = prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBLabelRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
                 TBLabelRow *row = (TBLabelRow *)context.row;
-                row.title = [NSString stringWithFormat:@"Count %d", counter2];
+                row.title = [NSString stringWithFormat:@"Count %ld", (long)counter2];
                 row.detailText = @"long long long long text is here.";
             }]];
             
@@ -152,6 +152,9 @@
                 TBSwitchRow *row = (TBSwitchRow *)context.row;
                 row.title = @"On/Off";
                 row.value = YES;
+                row.valueChangeHandler = ^(BOOL value) {
+                    NSLog(@"switch value changed to %@", (value) ? @"ON" : @"OFF");
+                };
             }]];
         }]];
     }];
