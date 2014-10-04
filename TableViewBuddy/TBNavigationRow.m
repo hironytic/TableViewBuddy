@@ -46,16 +46,32 @@
     }
 }
 
+- (void)setDetailText:(NSString *)detailText {
+    _detailText = [detailText copy];
+    
+    NSIndexPath *indexPath = [self rowIndexPath];
+    if (indexPath != nil) {
+        NSArray *visibleCellsIndexPaths = [self.section.tableData.tableView indexPathsForVisibleRows];
+        if ([visibleCellsIndexPaths containsObject:indexPath]) {
+            UITableViewCell *cell = [self.section.tableData.tableView cellForRowAtIndexPath:indexPath];
+            if (cell != nil) {
+                cell.detailTextLabel.text = (self.detailText != nil) ? self.detailText : @"";
+                [cell layoutSubviews];
+            }
+        }
+    }
+}
+
 - (UITableViewCell *)createTableViewCell {
-    TBTableViewCell *cell = [[TBTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[self reuseIdentifier]];
+    TBTableViewCell *cell = [[TBTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:[self reuseIdentifier]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
 - (void)configureTableViewCell:(UITableViewCell *)cell {
     [super configureTableViewCell:cell];
-    
     cell.textLabel.text = (self.title != nil) ? self.title : @"";
+    cell.detailTextLabel.text = (self.detailText != nil) ? self.detailText : @"";
     [cell layoutSubviews];
 }
 

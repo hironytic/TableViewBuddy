@@ -28,6 +28,7 @@
 @interface TBNavigationRow : TBTableDataRow
 
 @property(nonatomic, copy) NSString *title;
+@property(nonatomic, copy) NSString *detailText;
 @property(nonatomic, copy) void (^tapHandler)();
 
 @end

@@ -121,6 +121,7 @@
                 TBNavigationRow *row = (TBNavigationRow *)context.row;
                 row.enabled = YES;
                 row.title = @"Show Detail";
+                row.detailText = @"Normal";
                 row.tapHandler = ^{
                     SampleTableViewController2 *nextViewController = [[SampleTableViewController2 alloc] initWithStyle:UITableViewStylePlain];
                     [self.navigationController pushViewController:nextViewController animated:YES];
