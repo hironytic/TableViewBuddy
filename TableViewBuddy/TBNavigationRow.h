@@ -1,5 +1,5 @@
 //
-// TableViewBuddy.h
+// TBNavigationRow.h
 // TableViewBuddy
 //
 // Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
@@ -23,20 +23,11 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "TBTableData.h"
-#import "TBTableDataContext.h"
 #import "TBTableDataRow.h"
-#import "TBTableDataSection.h"
 
-#import "TBTableViewCell.h"
+@interface TBNavigationRow : TBTableDataRow
 
-#import "TBButtonRow.h"
-#import "TBButtonTableViewCell.h"
+@property(nonatomic, copy) NSString *title;
+@property(nonatomic, copy) void (^tapHandler)();
 
-#import "TBLabelRow.h"
-#import "TBLabelTableViewCell.h"
-
-#import "TBNavigationRow.h"
-
-#import "TBSwitchRow.h"
-#import "TBSwitchTableViewCell.h"
+@end

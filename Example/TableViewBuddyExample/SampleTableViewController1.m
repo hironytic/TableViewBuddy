@@ -25,6 +25,7 @@
 
 #import "SampleTableViewController1.h"
 #import "TableViewBuddy.h"
+#import "SampleTableViewController2.h"
 
 @interface SampleTableViewController1 ()
 
@@ -113,6 +114,16 @@
                             }]];
                         }
                     }];
+                };
+            }]];
+            
+            prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBNavigationRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
+                TBNavigationRow *row = (TBNavigationRow *)context.row;
+                row.enabled = YES;
+                row.title = @"Show Detail";
+                row.tapHandler = ^{
+                    SampleTableViewController2 *nextViewController = [[SampleTableViewController2 alloc] initWithStyle:UITableViewStylePlain];
+                    [self.navigationController pushViewController:nextViewController animated:YES];
                 };
             }]];
         }]];
