@@ -62,19 +62,18 @@
     __block TBTableDataRow *row_New = nil;
     
     SampleTableViewController1 * __weak weakSelf = self;
-    TBTableData *tableData = [TBTableData tableDataWithConfigurator:^(TBTableDataInitializationContext *context) {
-        TBTableDataSection *prevSection = nil;
-        
-        section_1 = prevSection = [context.tableData insertSectionAfter:prevSection withContext:context generator:[TBTableDataSection generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
-            TBTableDataRow *prevRow = nil;
+    TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] init];
+    TBTableData *tableData = [helper buildTableData:^{
+        // Section 1
+        [helper buildGenericSection:^(TBTableDataSection *section) {
+            section_1 = section;
             
-            row_1_1 = prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBLabelRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
-                TBLabelRow *row = (TBLabelRow *)context.row;
+            [helper buildLabelRow:^(TBLabelRow *row) {
+                row_1_1 = row;
                 row.title = @"X";
-            }]];
+            }];
             
-            prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
-                TBButtonRow *row = (TBButtonRow *)context.row;
+            [helper buildButtonRow:^(TBButtonRow *row) {
                 row.title = @"Y";
                 row.tapHandler = ^{
                     [weakSelf.tableData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {
@@ -95,11 +94,9 @@
 //                        [section_2 withContext:context setHidden:!section_2.hidden];
 //                    }];
                 };
-            }]];
+            }];
             
-            row_1_3 = prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
-                TBButtonRow *row = (TBButtonRow *)context.row;
-                row.enabled = YES;
+            [helper buildButtonRow:^(TBButtonRow *row) {
                 row.title = @"Z";
                 row.tapHandler = ^{
                     [weakSelf.tableData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {
@@ -108,67 +105,62 @@
                             ++counter;
                             row_New = [section_1 insertRowAfter:(row_New == nil) ? row_1_1  : row_New
                                                     withContext:context
-                                                      generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
+                                                      generator:[TBButtonRow rowGeneratorWithConfigurator:^(TBTableDataInitializationContext *context) {
                                 TBButtonRow *row = (TBButtonRow *)context.row;
                                 row.title = [NSString stringWithFormat:@"hoge %ld", (long)myCounter];
                             }]];
                         }
                     }];
                 };
-            }]];
+            }];
             
-            prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBNavigationRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
-                TBNavigationRow *row = (TBNavigationRow *)context.row;
-                row.enabled = YES;
+            [helper buildNavigationRow:^(TBNavigationRow *row) {
+                row_1_3 = row;
                 row.title = @"Show Detail";
                 row.detailText = @"Normal";
                 row.tapHandler = ^{
                     SampleTableViewController2 *nextViewController = [[SampleTableViewController2 alloc] initWithStyle:UITableViewStylePlain];
                     [self.navigationController pushViewController:nextViewController animated:YES];
                 };
-            }]];
-        }]];
+            }];
+        }];
         
-        section_2 = prevSection = [context.tableData insertSectionAfter:prevSection withContext:context generator:[TBTableDataSection generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
-            TBTableDataSection *section = context.section;
-            [section setFooterTitle:@"Section 2" withContext:context];
+        // Section 2
+        [helper buildGenericSection:^(TBTableDataSection *section) {
+            section_2 = section;
+            [section setFooterTitle:@"Section 2" withContext:helper.context];
             
-            TBTableDataRow *prevRow = nil;
-            
-            prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
-                TBButtonRow *row = (TBButtonRow *)context.row;
+            [helper buildButtonRow:^(TBButtonRow *row) {
                 row.title = @"Tap Here";
                 row.tapHandler = ^{
                     [weakSelf.tableData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {
                         [row_1_1 setHidden:!row_1_1.hidden withContext:context];
                     }];
                 };
-            }]];
-            
-            prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBButtonRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
-                TBButtonRow *row = (TBButtonRow *)context.row;
+            }];
+           
+            [helper buildButtonRow:^(TBButtonRow *row) {
                 row.title = @"...";
                 row.tapHandler = ^{
                     ++counter2;
                     ((TBLabelRow *)row_2_2).title = [NSString stringWithFormat:@"Count %ld", (long)counter2];
                 };
-            }]];
+            }];
             
-            row_2_2 = prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBLabelRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
-                TBLabelRow *row = (TBLabelRow *)context.row;
+            [helper buildLabelRow:^(TBLabelRow *row) {
+                row_2_2 = row;
                 row.title = [NSString stringWithFormat:@"Count %ld", (long)counter2];
                 row.detailText = @"long long long long text is here.";
-            }]];
+            }];
             
-            prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBSwitchRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
-                TBSwitchRow *row = (TBSwitchRow *)context.row;
+            [helper buildSwitchRow:^(TBSwitchRow *row) {
                 row.title = @"On/Off";
                 row.value = YES;
                 row.valueChangeHandler = ^(BOOL value) {
                     NSLog(@"switch value changed to %@", (value) ? @"ON" : @"OFF");
                 };
-            }]];
-        }]];
+            }];
+        }];
     }];
     tableData.tableView = self.tableView;
     

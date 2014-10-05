@@ -35,17 +35,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    TBTableData *tableData = [TBTableData tableDataWithConfigurator:^(TBTableDataInitializationContext *context) {
-        TBTableDataSection *prevSection = nil;
-        
-        prevSection = [context.tableData insertSectionAfter:prevSection withContext:context generator:[TBTableDataSection generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
-            TBTableDataRow *prevRow = nil;
-            
-            prevRow = [context.section insertRowAfter:prevRow withContext:context generator:[TBLabelRow generatorWithConfigurator:^(TBTableDataInitializationContext *context) {
-                TBLabelRow *row = (TBLabelRow *)context.row;
+    TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] init];
+    TBTableData *tableData = [helper buildTableData:^{
+        [helper buildGenericSection:^(TBTableDataSection *section) {
+            [helper buildLabelRow:^(TBLabelRow *row) {
                 row.title = @"Detail";
-            }]];
-        }]];
+            }];
+        }];
     }];
     tableData.tableView = self.tableView;
     

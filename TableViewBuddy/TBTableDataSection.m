@@ -35,7 +35,7 @@
     return self.mutableRows;
 }
 
-+ (TBTableDataSection *(^)(TBTableDataInitializationContext *context))generatorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator {
++ (TBTableDataSection *(^)(TBTableDataInitializationContext *context))sectionGeneratorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator {
     return ^TBTableDataSection *(TBTableDataInitializationContext *context) {
         TBTableDataSection *section = [[self alloc] initWithContext:context];
         if (section != nil) {

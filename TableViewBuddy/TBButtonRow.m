@@ -68,3 +68,12 @@
 }
 
 @end
+
+
+@implementation TBTableDataBuildHelper (TBButtonRow)
+- (void)buildButtonRow:(void (^)(TBButtonRow *row))configurator {
+    [self buildRowWithRowClass:[TBButtonRow class] configurator:^(TBTableDataRow *row) {
+        configurator((TBButtonRow *)row);
+    }];
+}
+@end

@@ -24,6 +24,7 @@
 //
 
 #import "TBTableDataRow.h"
+#import "TBTableDataBuildHelper.h"
 
 @interface TBNavigationRow : TBTableDataRow
 
@@ -31,4 +32,9 @@
 @property(nonatomic, copy) NSString *detailText;
 @property(nonatomic, copy) void (^tapHandler)();
 
+@end
+
+
+@interface TBTableDataBuildHelper (TBNavigationRow)
+- (void)buildNavigationRow:(void (^)(TBNavigationRow *row))configurator;
 @end

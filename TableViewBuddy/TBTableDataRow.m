@@ -32,7 +32,7 @@
 
 @implementation TBTableDataRow
 
-+ (TBTableDataRow *(^)(TBTableDataInitializationContext *context))generatorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator {
++ (TBTableDataRow *(^)(TBTableDataInitializationContext *context))rowGeneratorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator {
     return ^TBTableDataRow *(TBTableDataInitializationContext *context) {
         TBTableDataRow *row = [[self alloc] initWithContext:context];
         if (row != nil) {

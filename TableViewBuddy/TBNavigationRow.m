@@ -85,3 +85,12 @@
 }
 
 @end
+
+
+@implementation TBTableDataBuildHelper (TBNavigationRow)
+- (void)buildNavigationRow:(void (^)(TBNavigationRow *row))configurator {
+    [self buildRowWithRowClass:[TBNavigationRow class] configurator:^(TBTableDataRow *row) {
+        configurator((TBNavigationRow *)row);
+    }];
+}
+@end

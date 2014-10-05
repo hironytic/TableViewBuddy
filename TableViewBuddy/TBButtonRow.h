@@ -24,10 +24,16 @@
 //
 
 #import "TBTableDataRow.h"
+#import "TBTableDataBuildHelper.h"
 
 @interface TBButtonRow : TBTableDataRow
 
 @property(nonatomic, copy) NSString *title;
 @property(nonatomic, copy) void (^tapHandler)();
 
+@end
+
+
+@interface TBTableDataBuildHelper (TBButtonRow)
+- (void)buildButtonRow:(void (^)(TBButtonRow *row))configurator;
 @end

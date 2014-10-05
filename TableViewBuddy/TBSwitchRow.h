@@ -24,6 +24,7 @@
 //
 
 #import "TBTableDataRow.h"
+#import "TBTableDataBuildHelper.h"
 
 @interface TBSwitchRow : TBTableDataRow
 
@@ -31,4 +32,9 @@
 @property(nonatomic, assign) BOOL value;
 @property(nonatomic, copy) void (^valueChangeHandler)(BOOL value);
 
+@end
+
+
+@interface TBTableDataBuildHelper (TBSwitchRow)
+- (void)buildSwitchRow:(void (^)(TBSwitchRow *row))configurator;
 @end

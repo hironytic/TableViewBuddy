@@ -24,10 +24,16 @@
 //
 
 #import "TBTableDataRow.h"
+#import "TBTableDataBuildHelper.h"
 
 @interface TBLabelRow : TBTableDataRow
 
 @property(nonatomic, copy) NSString *title;
 @property(nonatomic, copy) NSString *detailText;
 
+@end
+
+
+@interface TBTableDataBuildHelper (TBLabelRow)
+- (void)buildLabelRow:(void (^)(TBLabelRow *row))configurator;
 @end

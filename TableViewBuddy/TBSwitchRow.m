@@ -70,3 +70,12 @@
 }
 
 @end
+
+
+@implementation TBTableDataBuildHelper (TBSwitchRow)
+- (void)buildSwitchRow:(void (^)(TBSwitchRow *row))configurator {
+    [self buildRowWithRowClass:[TBSwitchRow class] configurator:^(TBTableDataRow *row) {
+        configurator((TBSwitchRow *)row);
+    }];
+}
+@end

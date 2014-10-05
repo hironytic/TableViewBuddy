@@ -36,7 +36,7 @@
 @property(nonatomic, assign, readonly) BOOL hidden;
 @property(nonatomic, assign) BOOL enabled;
 
-+ (TBTableDataRow *(^)(TBTableDataInitializationContext *context))generatorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator;
++ (TBTableDataRow *(^)(TBTableDataInitializationContext *context))rowGeneratorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator;
 
 - (instancetype)initWithContext:(TBTableDataInitializationContext *)context;
 

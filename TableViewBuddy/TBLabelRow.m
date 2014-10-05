@@ -75,3 +75,12 @@
 }
 
 @end
+
+
+@implementation TBTableDataBuildHelper (TBLabelRow)
+- (void)buildLabelRow:(void (^)(TBLabelRow *row))configurator {
+    [self buildRowWithRowClass:[TBLabelRow class] configurator:^(TBTableDataRow *row) {
+        configurator((TBLabelRow *)row);
+    }];
+}
+@end

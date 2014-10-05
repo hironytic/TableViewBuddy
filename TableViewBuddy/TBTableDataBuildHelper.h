@@ -1,5 +1,5 @@
 //
-// TBTableDataSection.h
+// TBTableDataBuildHelper.h
 // TableViewBuddy
 //
 // Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
@@ -26,31 +26,18 @@
 #import <Foundation/Foundation.h>
 
 @class TBTableData;
-@class TBTableDataContext;
 @class TBTableDataInitializationContext;
 @class TBTableDataRow;
+@class TBTableDataSection;
 
-@interface TBTableDataSection : NSObject
+@interface TBTableDataBuildHelper : NSObject
 
-@property(nonatomic, weak, readonly) TBTableData *tableData;
-@property(nonatomic, assign, readonly) BOOL hidden;
-@property(nonatomic, copy, readonly) NSString *headerTitle;
-@property(nonatomic, copy, readonly) NSString *footerTitle;
-@property(nonatomic, strong, readonly) NSArray *rows;
+@property(nonatomic, weak, readonly) TBTableDataInitializationContext *context;
 
-+ (TBTableDataSection *(^)(TBTableDataInitializationContext *context))sectionGeneratorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator;
+- (TBTableData *)buildTableData:(void (^)())configurator;
+- (void)buildSectionWithSectionClass:(Class)sectionClass configurator:(void (^)(TBTableDataSection *section))configurator;
+- (void)buildRowWithRowClass:(Class)rowClass configurator:(void (^)(TBTableDataRow *row))configurator;
 
-- (instancetype)initWithContext:(TBTableDataInitializationContext *)context;
-
-- (NSInteger)sectionIndex;
-
-- (TBTableDataRow *)insertRowAfter:(TBTableDataRow *)previousRow
-                       withContext:(TBTableDataContext *)context
-                      generator:(TBTableDataRow *(^)(TBTableDataInitializationContext *context))generator;
-- (void)setHidden:(BOOL)hidden withContext:(TBTableDataContext *)context;
-- (void)setHeaderTitle:(NSString *)headerTitle withContext:(TBTableDataContext *)context;
-- (void)setFooterTitle:(NSString *)footerTitle withContext:(TBTableDataContext *)context;
-- (void)reloadWithContext:(TBTableDataContext *)context;
-- (void)deleteWithContext:(TBTableDataContext *)context;
+- (void)buildGenericSection:(void (^)(TBTableDataSection *section))configurator;
 
 @end
