@@ -48,6 +48,7 @@
 
 - (void)buildSectionWithSectionClass:(Class)sectionClass configurator:(void (^)(TBTableDataSection *section))configurator {
     TBTableDataInitializationContext *orgContext = self.context;
+    self.previousRow = nil;
     self.previousSection = [self.context.tableData insertSectionAfter:self.previousSection withContext:self.context generator:[sectionClass sectionGeneratorWithConfigurator:^(TBTableDataInitializationContext *context) {
         self.context = context;
         configurator(context.section);
