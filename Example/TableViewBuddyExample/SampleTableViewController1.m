@@ -58,6 +58,7 @@
     __block TBTableDataRow *row_1_1;
     __block TBTableDataRow *row_1_3;
     __block TBTableDataRow *row_2_2;
+    __block TBTableDataRow *row_2_4;
     
     __block TBTableDataRow *row_New = nil;
     
@@ -144,6 +145,8 @@
                 row.tapHandler = ^{
                     ++counter2;
                     ((TBLabelRow *)row_2_2).title = [NSString stringWithFormat:@"Count %ld", (long)counter2];
+                    
+                    ((TBSwitchRow *)row_2_4).value = !((TBSwitchRow *)row_2_4).value;
                 };
             }];
             
@@ -154,6 +157,7 @@
             }];
             
             [helper buildSwitchRow:^(TBSwitchRow *row) {
+                row_2_4 = row;
                 row.title = @"On/Off";
                 row.value = YES;
                 row.valueChangeHandler = ^(BOOL value) {

@@ -46,6 +46,22 @@
     }
 }
 
+- (void)setValue:(BOOL)value {
+    _value = value;
+    
+    NSIndexPath *indexPath = [self rowIndexPath];
+    if (indexPath != nil) {
+        NSArray *visibleCellsIndexPaths = [self.section.tableData.tableView indexPathsForVisibleRows];
+        if ([visibleCellsIndexPaths containsObject:indexPath]) {
+            TBSwitchTableViewCell *cell = (TBSwitchTableViewCell *)[self.section.tableData.tableView cellForRowAtIndexPath:indexPath];
+            if (cell != nil) {
+                [cell setSwitchValue:value animated:YES];
+                [cell layoutSubviews];
+            }
+        }
+    }
+}
+
 - (UITableViewCell *)createTableViewCell {
     TBSwitchTableViewCell *cell = [[TBSwitchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[self reuseIdentifier]];
     return cell;

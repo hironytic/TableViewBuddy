@@ -58,6 +58,10 @@
     self.toggleSwitch.on = switchValue;
 }
 
+- (void)setSwitchValue:(BOOL)switchValue animated:(BOOL)animated {
+    [self.toggleSwitch setOn:switchValue animated:animated];
+}
+
 - (void)valueChanged:(id)sender {
     if (self.switchValueChanged != nil) {
         self.switchValueChanged(self.toggleSwitch.on);

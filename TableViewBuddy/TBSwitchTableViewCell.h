@@ -30,4 +30,6 @@
 @property(nonatomic, assign) BOOL switchValue;
 @property(nonatomic, copy) void (^switchValueChanged)(BOOL value);
 
+- (void)setSwitchValue:(BOOL)switchValue animated:(BOOL)animated;
+
 @end
