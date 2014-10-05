@@ -1,5 +1,5 @@
 //
-// TableViewBuddy.h
+// TBCheckRow_Internal.h
 // TableViewBuddy
 //
 // Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
@@ -23,28 +23,11 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "TBTableDataBuildHelper.h"
-
-#import "TBTableData.h"
-#import "TBTableDataSection.h"
-#import "TBTableDataRow.h"
-#import "TBTableDataContext.h"
-
-#import "TBTableViewCell.h"
-
-#import "TBSingleChoiceSection.h"
-
-#import "TBButtonRow.h"
-#import "TBButtonTableViewCell.h"
-
+#import <Foundation/Foundation.h>
 #import "TBCheckRow.h"
 
-#import "TBChoiceRow.h"
+@interface TBCheckRow ()
 
-#import "TBLabelRow.h"
-#import "TBLabelTableViewCell.h"
+- (BOOL)canChangeValueTo:(BOOL)value;
 
-#import "TBNavigationRow.h"
-
-#import "TBSwitchRow.h"
-#import "TBSwitchTableViewCell.h"
+@end

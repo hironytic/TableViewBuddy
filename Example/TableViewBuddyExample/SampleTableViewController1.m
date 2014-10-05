@@ -176,6 +176,18 @@
                 };
             }];
         }];
+        
+        // Section 3 --- choice section
+        [helper buildSingleChoiceSection:^(TBSingleChoiceSection *section) {
+            TBSingleChoiceSection * __weak weakSection = section;
+            [section setHeaderTitle:@"Your Choice" withContext:helper.context];
+            [section setOptions:@[@"First", @"Second", @"Third", @"Fourth"]
+                  selectedIndex:2
+                    withContext:helper.context];
+            section.selectionChangeHandler = ^(NSInteger index) {
+                NSLog(@"%@ is selected", weakSection.options[index]);
+            };
+        }];
     }];
     tableData.tableView = self.tableView;
     

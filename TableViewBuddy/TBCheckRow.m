@@ -24,6 +24,7 @@
 //
 
 #import "TBCheckRow.h"
+#import "TBCheckRow_Internal.h"
 #import "TBTableData.h"
 #import "TBTableDataSection.h"
 #import "TBTableViewCell.h"
@@ -78,12 +79,16 @@
 
 - (void)rowDidTapInTableView:(UITableView *)tableView AtIndexPath:(NSIndexPath *)indexPath {
     [super rowDidTapInTableView:tableView AtIndexPath:indexPath];
-    if (self.enabled) {
+    if ([self canChangeValueTo:!self.value]) {
         self.value = !self.value;
         if (self.valueChangeHandler != nil) {
             self.valueChangeHandler(self.value);
         }
     }
+}
+
+- (BOOL)canChangeValueTo:(BOOL)value {
+    return self.enabled;
 }
 @end
 

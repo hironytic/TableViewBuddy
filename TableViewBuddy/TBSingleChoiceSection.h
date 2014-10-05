@@ -1,5 +1,5 @@
 //
-// TableViewBuddy.h
+// TBSingleChoiceSection.h
 // TableViewBuddy
 //
 // Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
@@ -23,28 +23,20 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#import "TBTableDataSection.h"
 #import "TBTableDataBuildHelper.h"
 
-#import "TBTableData.h"
-#import "TBTableDataSection.h"
-#import "TBTableDataRow.h"
-#import "TBTableDataContext.h"
+@interface TBSingleChoiceSection : TBTableDataSection
 
-#import "TBTableViewCell.h"
+- (void)setOptions:(NSArray *)options selectedIndex:(NSInteger)selectedIndex withContext:(TBTableDataContext *)context;
 
-#import "TBSingleChoiceSection.h"
+@property(nonatomic, copy, readonly) NSArray *options;
+@property(nonatomic, assign) NSInteger selectedIndex;
+@property(nonatomic, copy) void (^selectionChangeHandler)(NSInteger selectedIndex);
 
-#import "TBButtonRow.h"
-#import "TBButtonTableViewCell.h"
+@end
 
-#import "TBCheckRow.h"
 
-#import "TBChoiceRow.h"
-
-#import "TBLabelRow.h"
-#import "TBLabelTableViewCell.h"
-
-#import "TBNavigationRow.h"
-
-#import "TBSwitchRow.h"
-#import "TBSwitchTableViewCell.h"
+@interface TBTableDataBuildHelper (TBSingleChoiceSection)
+- (void)buildSingleChoiceSection:(void (^)(TBSingleChoiceSection *section))configurator;
+@end

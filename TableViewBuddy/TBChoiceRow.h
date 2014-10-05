@@ -1,5 +1,5 @@
 //
-// TableViewBuddy.h
+// TBChoiceRow.h
 // TableViewBuddy
 //
 // Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
@@ -23,28 +23,14 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#import "TBCheckRow.h"
 #import "TBTableDataBuildHelper.h"
 
-#import "TBTableData.h"
-#import "TBTableDataSection.h"
-#import "TBTableDataRow.h"
-#import "TBTableDataContext.h"
+@interface TBChoiceRow : TBCheckRow
 
-#import "TBTableViewCell.h"
+@end
 
-#import "TBSingleChoiceSection.h"
 
-#import "TBButtonRow.h"
-#import "TBButtonTableViewCell.h"
-
-#import "TBCheckRow.h"
-
-#import "TBChoiceRow.h"
-
-#import "TBLabelRow.h"
-#import "TBLabelTableViewCell.h"
-
-#import "TBNavigationRow.h"
-
-#import "TBSwitchRow.h"
-#import "TBSwitchTableViewCell.h"
+@interface TBTableDataBuildHelper (TBChoiceRow)
+- (void)buildChoiceRow:(void (^)(TBChoiceRow *row))configurator;
+@end
