@@ -57,8 +57,9 @@
     __block TBTableDataSection *section_2;
     __block TBTableDataRow *row_1_1;
     __block TBTableDataRow *row_1_3;
-    __block TBTableDataRow *row_2_2;
-    __block TBTableDataRow *row_2_4;
+    __block TBLabelRow *row_2_2;
+    __block TBSwitchRow *row_2_4;
+    __block TBCheckRow *row_2_5;
     
     __block TBTableDataRow *row_New = nil;
     
@@ -144,9 +145,10 @@
                 row.title = @"...";
                 row.tapHandler = ^{
                     ++counter2;
-                    ((TBLabelRow *)row_2_2).title = [NSString stringWithFormat:@"Count %ld", (long)counter2];
+                    row_2_2.title = [NSString stringWithFormat:@"Count %ld", (long)counter2];
                     
-                    ((TBSwitchRow *)row_2_4).value = !((TBSwitchRow *)row_2_4).value;
+                    row_2_4.value = !row_2_4.value;
+                    row_2_5.value = !row_2_5.value;
                 };
             }];
             
@@ -162,6 +164,15 @@
                 row.value = YES;
                 row.valueChangeHandler = ^(BOOL value) {
                     NSLog(@"switch value changed to %@", (value) ? @"ON" : @"OFF");
+                };
+            }];
+            
+            [helper buildCheckRow:^(TBCheckRow *row) {
+                row_2_5 = row;
+                row.title = @"Check it";
+                row.value = NO;
+                row.valueChangeHandler = ^(BOOL value) {
+                    NSLog(@"check value changed to %@", (value) ? @"ON" : @"OFF");
                 };
             }];
         }];
