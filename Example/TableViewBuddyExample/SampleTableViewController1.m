@@ -122,7 +122,7 @@
                 row.detailText = @"Normal";
                 row.tapHandler = ^{
                     SampleTableViewController2 *nextViewController = [[SampleTableViewController2 alloc] initWithStyle:UITableViewStylePlain];
-                    [self.navigationController pushViewController:nextViewController animated:YES];
+                    [weakSelf.navigationController pushViewController:nextViewController animated:YES];
                 };
             }];
         }];
