@@ -188,6 +188,22 @@
                 NSLog(@"%@ is selected", weakSection.options[index]);
             };
         }];
+        
+        // Section 4
+        [helper buildGenericSection:^(TBTableDataSection *section) {
+            [helper buildSingleChoiceNavigationRow:^(TBSingleChoiceNavigationRow *row) {
+                TBSingleChoiceNavigationRow * __weak weakRow = row;
+                row.title = @"Burger";
+                row.navigationController = weakSelf.navigationController;
+                row.choiceViewControllerTitle = @"Select Burger";
+                row.choiseSectionHeaderTitle = @"Menu";
+                row.choiseSectionFooterTitle = @"Please select your favorite burger.";
+                [row setOptions:@[@"None", @"Cheese Burger", @"Omlet Burger", @"Chili Burger", @"Special Burger"] selectedIndex:0 withContext:helper.context];
+                row.selectionChangeHandler = ^(NSInteger index) {
+                    NSLog(@"%@ is selected", weakRow.options[index]);
+                };
+            }];
+        }];
     }];
     tableData.tableView = self.tableView;
     

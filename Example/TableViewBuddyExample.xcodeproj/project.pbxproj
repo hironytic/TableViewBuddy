@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		500590FB19E4B35C00E7DD3F /* TBSingleChoiceNavigationRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 500590FA19E4B35C00E7DD3F /* TBSingleChoiceNavigationRow.m */; };
 		5007E2A019A8D7EC002DFDC9 /* TBSwitchRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5007E29F19A8D7EC002DFDC9 /* TBSwitchRow.m */; };
 		5007E2A319A8D92D002DFDC9 /* TBSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5007E2A219A8D92D002DFDC9 /* TBSwitchTableViewCell.m */; };
 		5048F5D119911E6000E746DD /* SampleTableViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 5048F5D019911E6000E746DD /* SampleTableViewController1.m */; };
@@ -51,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		500590F919E4B35C00E7DD3F /* TBSingleChoiceNavigationRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSingleChoiceNavigationRow.h; sourceTree = "<group>"; };
+		500590FA19E4B35C00E7DD3F /* TBSingleChoiceNavigationRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSingleChoiceNavigationRow.m; sourceTree = "<group>"; };
 		5007E29E19A8D7EC002DFDC9 /* TBSwitchRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSwitchRow.h; sourceTree = "<group>"; };
 		5007E29F19A8D7EC002DFDC9 /* TBSwitchRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSwitchRow.m; sourceTree = "<group>"; };
 		5007E2A119A8D92D002DFDC9 /* TBSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSwitchTableViewCell.h; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 				5068B90B1999F0CB007C7B69 /* TBLabelTableViewCell.m */,
 				50C5520B19DFEE4200F546AA /* TBNavigationRow.h */,
 				50C5520C19DFEE4200F546AA /* TBNavigationRow.m */,
+				500590F919E4B35C00E7DD3F /* TBSingleChoiceNavigationRow.h */,
+				500590FA19E4B35C00E7DD3F /* TBSingleChoiceNavigationRow.m */,
 				504E5F6219E18BA7002868E2 /* TBSingleChoiceSection.h */,
 				504E5F6319E18BA7002868E2 /* TBSingleChoiceSection.m */,
 				5007E29E19A8D7EC002DFDC9 /* TBSwitchRow.h */,
@@ -380,6 +385,7 @@
 				50C5521019DFF0AB00F546AA /* SampleTableViewController2.m in Sources */,
 				5007E2A319A8D92D002DFDC9 /* TBSwitchTableViewCell.m in Sources */,
 				50E92DF9198E61B300D6C224 /* TBTableDataSection.m in Sources */,
+				500590FB19E4B35C00E7DD3F /* TBSingleChoiceNavigationRow.m in Sources */,
 				50C5520D19DFEE4200F546AA /* TBNavigationRow.m in Sources */,
 				5007E2A019A8D7EC002DFDC9 /* TBSwitchRow.m in Sources */,
 				5068B9091999EA1E007C7B69 /* TBTableViewCell.m in Sources */,

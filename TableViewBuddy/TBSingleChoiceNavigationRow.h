@@ -1,5 +1,5 @@
 //
-// TableViewBuddy.h
+// TBSingleChoiceNavigationRow.h
 // TableViewBuddy
 //
 // Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
@@ -23,30 +23,26 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "TBTableDataBuildHelper.h"
-
-#import "TBTableData.h"
-#import "TBTableDataSection.h"
-#import "TBTableDataRow.h"
-#import "TBTableDataContext.h"
-
-#import "TBTableViewCell.h"
-
-#import "TBSingleChoiceSection.h"
-
-#import "TBButtonRow.h"
-#import "TBButtonTableViewCell.h"
-
-#import "TBCheckRow.h"
-
-#import "TBChoiceRow.h"
-
-#import "TBLabelRow.h"
-#import "TBLabelTableViewCell.h"
-
 #import "TBNavigationRow.h"
 
-#import "TBSingleChoiceNavigationRow.h"
+@class TBTableDataContext;
 
-#import "TBSwitchRow.h"
-#import "TBSwitchTableViewCell.h"
+@interface TBSingleChoiceNavigationRow : TBNavigationRow
+
+- (void)setOptions:(NSArray *)options selectedIndex:(NSInteger)selectedIndex withContext:(TBTableDataContext *)context;
+
+@property(nonatomic, weak) UINavigationController *navigationController;
+@property(nonatomic, copy) NSString *choiceViewControllerTitle;
+@property(nonatomic, copy) NSString *choiseSectionHeaderTitle;
+@property(nonatomic, copy) NSString *choiseSectionFooterTitle;
+
+@property(nonatomic, copy, readonly) NSArray *options;
+@property(nonatomic, assign) NSInteger selectedIndex;
+@property(nonatomic, copy) void (^selectionChangeHandler)(NSInteger selectedIndex);
+
+@end
+
+
+@interface TBTableDataBuildHelper (TBSingleChoiceNavigationRow)
+- (void)buildSingleChoiceNavigationRow:(void (^)(TBSingleChoiceNavigationRow *row))configurator;
+@end
