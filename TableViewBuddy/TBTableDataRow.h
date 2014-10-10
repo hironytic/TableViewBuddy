@@ -41,6 +41,7 @@
 - (instancetype)initWithContext:(TBTableDataInitializationContext *)context;
 
 - (NSIndexPath *)rowIndexPath;
+- (UITableViewCell *)findVisibleCell;
 
 - (void)setHidden:(BOOL)hidden withContext:(TBTableDataContext *)context;
 - (void)reloadWithContext:(TBTableDataContext *)context;

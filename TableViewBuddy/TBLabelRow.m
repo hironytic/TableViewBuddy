@@ -33,32 +33,20 @@
 - (void)setTitle:(NSString *)title {
     _title = [title copy];
     
-    NSIndexPath *indexPath = [self rowIndexPath];
-    if (indexPath != nil) {
-        NSArray *visibleCellsIndexPaths = [self.section.tableData.tableView indexPathsForVisibleRows];
-        if ([visibleCellsIndexPaths containsObject:indexPath]) {
-            UITableViewCell *cell = [self.section.tableData.tableView cellForRowAtIndexPath:indexPath];
-            if (cell != nil) {
-                cell.textLabel.text = (self.title != nil) ? self.title : @"";
-                [cell layoutSubviews];
-            }
-        }
+    UITableViewCell *cell = [self findVisibleCell];
+    if (cell != nil) {
+        cell.textLabel.text = (self.title != nil) ? self.title : @"";
+        [cell layoutSubviews];
     }
 }
 
 - (void)setDetailText:(NSString *)detailText {
     _detailText = [detailText copy];
     
-    NSIndexPath *indexPath = [self rowIndexPath];
-    if (indexPath != nil) {
-        NSArray *visibleCellsIndexPaths = [self.section.tableData.tableView indexPathsForVisibleRows];
-        if ([visibleCellsIndexPaths containsObject:indexPath]) {
-            UITableViewCell *cell = [self.section.tableData.tableView cellForRowAtIndexPath:indexPath];
-            if (cell != nil) {
-                cell.detailTextLabel.text = (self.detailText != nil) ? self.detailText : @"";
-                [cell layoutSubviews];
-            }
-        }
+    UITableViewCell *cell = [self findVisibleCell];
+    if (cell != nil) {
+        cell.detailTextLabel.text = (self.detailText != nil) ? self.detailText : @"";
+        [cell layoutSubviews];
     }
 }
 

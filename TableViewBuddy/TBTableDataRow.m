@@ -77,6 +77,18 @@
     return nil;
 }
 
+- (UITableViewCell *)findVisibleCell {
+    NSIndexPath *indexPath = [self rowIndexPath];
+    if (indexPath != nil) {
+        NSArray *visibleCellsIndexPaths = [self.section.tableData.tableView indexPathsForVisibleRows];
+        if ([visibleCellsIndexPaths containsObject:indexPath]) {
+            UITableViewCell *cell = [self.section.tableData.tableView cellForRowAtIndexPath:indexPath];
+            return cell;
+        }
+    }
+    return nil;
+}
+
 - (NSString *)reuseIdentifier {
     return NSStringFromClass([self class]);
 }
@@ -155,16 +167,10 @@
 
 - (void)setEnabled:(BOOL)enabled {
     _enabled = enabled;
-    
-    NSIndexPath *indexPath = [self rowIndexPath];
-    if (indexPath != nil) {
-        NSArray *visibleCellsIndexPaths = [self.section.tableData.tableView indexPathsForVisibleRows];
-        if ([visibleCellsIndexPaths containsObject:indexPath]) {
-            UITableViewCell *cell = [self.section.tableData.tableView cellForRowAtIndexPath:indexPath];
-            if (cell != nil && [cell isKindOfClass:[TBTableViewCell class]]) {
-                [(TBTableViewCell *)cell setAvailable:enabled];
-            }
-        }
+
+    UITableViewCell *cell = [self findVisibleCell];
+    if (cell != nil && [cell isKindOfClass:[TBTableViewCell class]]) {
+        [(TBTableViewCell *)cell setAvailable:enabled];
     }
 }
 

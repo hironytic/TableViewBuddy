@@ -33,16 +33,10 @@
 - (void)setTitle:(NSString *)title {
     _title = [title copy];
     
-    NSIndexPath *indexPath = [self rowIndexPath];
-    if (indexPath != nil) {
-        NSArray *visibleCellsIndexPaths = [self.section.tableData.tableView indexPathsForVisibleRows];
-        if ([visibleCellsIndexPaths containsObject:indexPath]) {
-            UITableViewCell *cell = [self.section.tableData.tableView cellForRowAtIndexPath:indexPath];
-            if (cell != nil) {
-                cell.textLabel.text = (self.title != nil) ? self.title : @"";
-                [cell layoutSubviews];
-            }
-        }
+    UITableViewCell *cell = [self findVisibleCell];
+    if (cell != nil) {
+        cell.textLabel.text = (self.title != nil) ? self.title : @"";
+        [cell layoutSubviews];
     }
 }
 
