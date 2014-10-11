@@ -18,6 +18,7 @@
 		504E5F6719E191B9002868E2 /* TBChoiceRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 504E5F6619E191B9002868E2 /* TBChoiceRow.m */; };
 		5068B9091999EA1E007C7B69 /* TBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5068B9081999EA1E007C7B69 /* TBTableViewCell.m */; };
 		5068B90C1999F0CB007C7B69 /* TBLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5068B90B1999F0CB007C7B69 /* TBLabelTableViewCell.m */; };
+		5082701C19E8AD3F001E1CDA /* TBActionRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5082701B19E8AD3F001E1CDA /* TBActionRow.m */; };
 		50C5520D19DFEE4200F546AA /* TBNavigationRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5520C19DFEE4200F546AA /* TBNavigationRow.m */; };
 		50C5521019DFF0AB00F546AA /* SampleTableViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5520F19DFF0AB00F546AA /* SampleTableViewController2.m */; };
 		50C5521319E0CEA500F546AA /* TBTableDataBuildHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5521219E0CEA500F546AA /* TBTableDataBuildHelper.m */; };
@@ -76,6 +77,8 @@
 		5068B9081999EA1E007C7B69 /* TBTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTableViewCell.m; sourceTree = "<group>"; };
 		5068B90A1999F0CB007C7B69 /* TBLabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBLabelTableViewCell.h; sourceTree = "<group>"; };
 		5068B90B1999F0CB007C7B69 /* TBLabelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBLabelTableViewCell.m; sourceTree = "<group>"; };
+		5082701A19E8AD3F001E1CDA /* TBActionRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBActionRow.h; sourceTree = "<group>"; };
+		5082701B19E8AD3F001E1CDA /* TBActionRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBActionRow.m; sourceTree = "<group>"; };
 		50C5520B19DFEE4200F546AA /* TBNavigationRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBNavigationRow.h; sourceTree = "<group>"; };
 		50C5520C19DFEE4200F546AA /* TBNavigationRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBNavigationRow.m; sourceTree = "<group>"; };
 		50C5520E19DFF0AB00F546AA /* SampleTableViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTableViewController2.h; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 			children = (
 				50E92DFA198E625600D6C224 /* internal */,
 				50E92E06198E7CA900D6C224 /* TableViewBuddy.h */,
+				5082701A19E8AD3F001E1CDA /* TBActionRow.h */,
+				5082701B19E8AD3F001E1CDA /* TBActionRow.m */,
 				5048F5D219911EC500E746DD /* TBButtonRow.h */,
 				5048F5D319911EC500E746DD /* TBButtonRow.m */,
 				5048F5D51991205300E746DD /* TBButtonTableViewCell.h */,
@@ -389,6 +394,7 @@
 				50C5520D19DFEE4200F546AA /* TBNavigationRow.m in Sources */,
 				5007E2A019A8D7EC002DFDC9 /* TBSwitchRow.m in Sources */,
 				5068B9091999EA1E007C7B69 /* TBTableViewCell.m in Sources */,
+				5082701C19E8AD3F001E1CDA /* TBActionRow.m in Sources */,
 				504E5F6719E191B9002868E2 /* TBChoiceRow.m in Sources */,
 				504E5F6119E160AB002868E2 /* TBCheckRow.m in Sources */,
 				50E09F6419925F3200911E02 /* TBLabelRow.m in Sources */,

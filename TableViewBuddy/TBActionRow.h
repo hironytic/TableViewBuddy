@@ -1,5 +1,5 @@
 //
-// TBButtonRow.h
+// TBActionRow.h
 // TableViewBuddy
 //
 // Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
@@ -23,14 +23,17 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "TBActionRow.h"
+#import "TBTableDataRow.h"
 #import "TBTableDataBuildHelper.h"
 
-@interface TBButtonRow : TBActionRow
+@interface TBActionRow : TBTableDataRow
+
+@property(nonatomic, copy) NSString *title;
+@property(nonatomic, copy) void (^tapHandler)();
 
 @end
 
 
-@interface TBTableDataBuildHelper (TBButtonRow)
-- (void)buildButtonRow:(void (^)(TBButtonRow *row))configurator;
+@interface TBTableDataBuildHelper (TBActionRow)
+- (void)buildActionRow:(void (^)(TBActionRow *row))configurator;
 @end

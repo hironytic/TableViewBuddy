@@ -75,7 +75,7 @@
                 row.title = @"X";
             }];
             
-            [helper buildButtonRow:^(TBButtonRow *row) {
+            [helper buildActionRow:^(TBActionRow *row) {
                 row.title = @"Y";
                 row.tapHandler = ^{
                     [weakSelf.tableData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {

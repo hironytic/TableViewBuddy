@@ -1,5 +1,5 @@
 //
-// TBButtonRow.m
+// TBActionRow.m
 // TableViewBuddy
 //
 // Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
@@ -23,25 +23,52 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "TBButtonRow.h"
-#import "TBButtonTableViewCell.h"
+#import "TBActionRow.h"
 #import "TBTableData.h"
 #import "TBTableDataSection.h"
+#import "TBTableViewCell.h"
 
-@implementation TBButtonRow
+@implementation TBActionRow
+
+- (void)setTitle:(NSString *)title {
+    _title = [title copy];
+    
+    UITableViewCell *cell = [self findVisibleCell];
+    if (cell != nil) {
+        cell.textLabel.text = (self.title != nil) ? self.title : @"";
+        [cell layoutSubviews];
+    }
+}
 
 - (UITableViewCell *)createTableViewCell {
-    TBButtonTableViewCell *cell = [[TBButtonTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[self reuseIdentifier]];
+    TBTableViewCell *cell = [[TBTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[self reuseIdentifier]];
     return cell;
+}
+
+- (void)configureTableViewCell:(UITableViewCell *)cell {
+    [super configureTableViewCell:cell];
+    
+    cell.textLabel.text = (self.title != nil) ? self.title : @"";
+    [cell layoutSubviews];
+}
+
+- (void)rowDidTapInTableView:(UITableView *)tableView AtIndexPath:(NSIndexPath *)indexPath {
+    [super rowDidTapInTableView:tableView AtIndexPath:indexPath];
+    if (self.enabled) {
+        if (self.tapHandler != nil) {
+            self.tapHandler();
+        }
+    }
 }
 
 @end
 
 
-@implementation TBTableDataBuildHelper (TBButtonRow)
-- (void)buildButtonRow:(void (^)(TBButtonRow *row))configurator {
-    [self buildRowWithRowClass:[TBButtonRow class] configurator:^(TBTableDataRow *row) {
-        configurator((TBButtonRow *)row);
+@implementation TBTableDataBuildHelper (TBActionRow)
+- (void)buildActionRow:(void (^)(TBActionRow *row))configurator {
+    [self buildRowWithRowClass:[TBActionRow class] configurator:^(TBTableDataRow *row) {
+        configurator((TBActionRow *)row);
     }];
 }
+
 @end
