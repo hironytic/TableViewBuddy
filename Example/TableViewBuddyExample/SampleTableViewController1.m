@@ -76,6 +76,7 @@
             }];
             
             [helper buildActionRow:^(TBActionRow *row) {
+                row.image = [UIImage imageNamed:@"SampleIcon.png"];
                 row.title = @"Y";
                 row.tapHandler = ^{
                     [weakSelf.tableData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {

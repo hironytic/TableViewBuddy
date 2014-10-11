@@ -30,6 +30,16 @@
 
 @implementation TBActionRow
 
+- (void)setImage:(UIImage *)image {
+    _image = image;
+    
+    UITableViewCell *cell = [self findVisibleCell];
+    if (cell != nil) {
+        cell.imageView.image = image;
+        [cell layoutSubviews];
+    }
+}
+
 - (void)setTitle:(NSString *)title {
     _title = [title copy];
     
@@ -49,6 +59,7 @@
     [super configureTableViewCell:cell];
     
     cell.textLabel.text = (self.title != nil) ? self.title : @"";
+    cell.imageView.image = self.image;
     [cell layoutSubviews];
 }
 

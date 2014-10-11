@@ -28,6 +28,7 @@
 
 @interface TBActionRow : TBTableDataRow
 
+@property(nonatomic, strong) UIImage *image;
 @property(nonatomic, copy) NSString *title;
 @property(nonatomic, copy) void (^tapHandler)();
 
