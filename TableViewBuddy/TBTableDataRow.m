@@ -78,12 +78,14 @@
 }
 
 - (UITableViewCell *)findVisibleCell {
-    NSIndexPath *indexPath = [self rowIndexPath];
-    if (indexPath != nil) {
-        NSArray *visibleCellsIndexPaths = [self.section.tableData.tableView indexPathsForVisibleRows];
-        if ([visibleCellsIndexPaths containsObject:indexPath]) {
-            UITableViewCell *cell = [self.section.tableData.tableView cellForRowAtIndexPath:indexPath];
-            return cell;
+    if (self.section.tableData.tableView != nil) {
+        NSIndexPath *indexPath = [self rowIndexPath];
+        if (indexPath != nil) {
+            NSArray *visibleCellsIndexPaths = [self.section.tableData.tableView indexPathsForVisibleRows];
+            if ([visibleCellsIndexPaths containsObject:indexPath]) {
+                UITableViewCell *cell = [self.section.tableData.tableView cellForRowAtIndexPath:indexPath];
+                return cell;
+            }
         }
     }
     return nil;
