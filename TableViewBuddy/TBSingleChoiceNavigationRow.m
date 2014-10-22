@@ -28,14 +28,10 @@
 #import "TBTableData.h"
 #import "TBTableDataBuildHelper.h"
 #import "TBTableDataContext.h"
+#import "TBTableViewController.h"
 
 @interface TBSingleChoiceNavigationRow ()
 @property(nonatomic, copy) NSArray *options;
-@end
-
-@interface TBSingleChoiceViewController : UITableViewController
-@property(nonatomic, weak) TBSingleChoiceNavigationRow *singleChoiceNavigationRow;
-@property(nonatomic, strong) TBTableData *tableData;
 @end
 
 @implementation TBSingleChoiceNavigationRow
@@ -80,9 +76,24 @@
 - (void)showChoiceViewController {
     NSAssert(self.navigationController != nil, @"please set your navigation controller.");
 
-    TBSingleChoiceViewController *choiseViewController = [[TBSingleChoiceViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    TBSingleChoiceNavigationRow * __weak weakSelf = self;
+    TBTableViewController *choiseViewController = [[TBTableViewController alloc] initWithStyle:UITableViewStyleGrouped configureBlock:^(TBTableViewController *vc, TBTableDataBuildHelper *helper) {
+        [helper buildSingleChoiceSection:^(TBSingleChoiceSection *section) {
+            [section setHeaderTitle:weakSelf.choiseSectionHeaderTitle withContext:helper.context];
+            [section setFooterTitle:weakSelf.choiseSectionFooterTitle withContext:helper.context];
+            
+            [section setOptions:weakSelf.options
+                  selectedIndex:weakSelf.selectedIndex
+                    withContext:helper.context];
+            section.selectionChangeHandler = ^(NSInteger selectedIndex) {
+                weakSelf.selectedIndex = selectedIndex;
+                if (weakSelf.selectionChangeHandler != nil) {
+                    weakSelf.selectionChangeHandler(selectedIndex);
+                }
+            };
+        }];
+    }];
     choiseViewController.title = self.choiceViewControllerTitle;
-    choiseViewController.singleChoiceNavigationRow = self;
     [self.navigationController pushViewController:choiseViewController animated:YES];
 }
 
@@ -95,36 +106,4 @@
         configurator((TBSingleChoiceNavigationRow *)row);
     }];
 }
-@end
-
-
-@implementation TBSingleChoiceViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    TBSingleChoiceViewController * __weak weakSelf = self;
-    TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] init];
-    TBTableData *tableData = [helper buildTableData:^{
-        [helper buildSingleChoiceSection:^(TBSingleChoiceSection *section) {
-            [section setHeaderTitle:weakSelf.singleChoiceNavigationRow.choiseSectionHeaderTitle withContext:helper.context];
-            [section setFooterTitle:weakSelf.singleChoiceNavigationRow.choiseSectionFooterTitle withContext:helper.context];
-            
-            [section setOptions:self.singleChoiceNavigationRow.options
-                  selectedIndex:self.singleChoiceNavigationRow.selectedIndex
-                    withContext:helper.context];
-            section.selectionChangeHandler = ^(NSInteger selectedIndex) {
-                weakSelf.singleChoiceNavigationRow.selectedIndex = selectedIndex;
-                if (weakSelf.singleChoiceNavigationRow.selectionChangeHandler != nil) {
-                    weakSelf.singleChoiceNavigationRow.selectionChangeHandler(selectedIndex);
-                }
-            };
-        }];
-    }];
-    tableData.tableView = self.tableView;
-    self.tableData = tableData;
-    self.tableView.dataSource = tableData;
-    self.tableView.delegate = tableData;
-}
-
 @end
