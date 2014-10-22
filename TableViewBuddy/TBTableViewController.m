@@ -33,10 +33,6 @@
 
 @implementation TBTableViewController
 
-- (instancetype)initWithStyle:(UITableViewStyle)style {
-    return [self initWithStyle:style configureBlock:nil];
-}
-
 - (instancetype)initWithStyle:(UITableViewStyle)style configureBlock:(void (^)(TBTableViewController *vc, TBTableDataBuildHelper *helper))block {
     self = [super initWithStyle:style];
     if (self != nil) {
@@ -55,8 +51,7 @@
             self.configureBlock(weakSelf, helper);
         }];
     } else {
-        NSLog(@"Warning: TableData object was not built.");
-        return nil;
+        return [[TBTableData alloc] init];
     }
 }
 

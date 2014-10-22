@@ -32,7 +32,6 @@
 
 @property(nonatomic, strong) TBTableData *tableData;
 
-- (instancetype)initWithStyle:(UITableViewStyle)style;
 - (instancetype)initWithStyle:(UITableViewStyle)style configureBlock:(void (^)(TBTableViewController *vc, TBTableDataBuildHelper *helper))block;
 
 - (TBTableData *)buildTableData;
