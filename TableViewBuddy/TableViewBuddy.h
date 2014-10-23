@@ -24,6 +24,7 @@
 //
 
 #import "TBTableDataBuildHelper.h"
+#import "TBTableViewController.h"
 
 #import "TBTableData.h"
 #import "TBTableDataSection.h"
