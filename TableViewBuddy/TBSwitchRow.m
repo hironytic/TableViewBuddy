@@ -65,8 +65,8 @@
     TBSwitchRow * __weak weakSelf = self;
     switchCell.switchValueChanged = ^(BOOL value){
         weakSelf.value = value;
-        if (self.valueChangeHandler != nil) {
-            self.valueChangeHandler(value);
+        if (weakSelf.valueChangeHandler != nil) {
+            weakSelf.valueChangeHandler(value);
         }
     };
     
