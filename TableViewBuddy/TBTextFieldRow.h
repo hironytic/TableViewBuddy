@@ -1,5 +1,5 @@
 //
-// TableViewBuddy.h
+// TBTextFieldRow.h
 // TableViewBuddy
 //
 // Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
@@ -23,34 +23,23 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "TBTableDataBuildHelper.h"
-#import "TBTableViewController.h"
-
-#import "TBTableData.h"
-#import "TBTableDataSection.h"
 #import "TBTableDataRow.h"
-#import "TBTableDataContext.h"
+#import "TBTableDataBuildHelper.h"
 
-#import "TBTableViewCell.h"
+@interface TBTextFieldRow : TBTableDataRow
 
-#import "TBSingleChoiceSection.h"
+@property(nonatomic, copy) NSString *title;
+@property(nonatomic, copy) NSString *text;
+@property(nonatomic, copy) NSString *placeholder;
+@property(nonatomic, assign) CGFloat textFieldWidth;
 
-#import "TBButtonRow.h"
-#import "TBButtonTableViewCell.h"
+@property(nonatomic, copy) void (^textChangeHandler)(NSString *text);
+@property(nonatomic, copy) void (^textFieldConfigulator)(UITextField *textField);
+@property(nonatomic, copy) BOOL (^textFieldShouldReturnHandler)(UITextField *textField);
 
-#import "TBCheckRow.h"
+@end
 
-#import "TBChoiceRow.h"
 
-#import "TBLabelRow.h"
-#import "TBLabelTableViewCell.h"
-
-#import "TBNavigationRow.h"
-
-#import "TBSingleChoiceNavigationRow.h"
-
-#import "TBSwitchRow.h"
-#import "TBSwitchTableViewCell.h"
-
-#import "TBTextFieldRow.h"
-#import "TBTextFieldTableViewCell.h"
+@interface TBTableDataBuildHelper (TBTextFieldRow)
+- (void)buildTextFieldRow:(void (^)(TBTextFieldRow *row))configurator;
+@end

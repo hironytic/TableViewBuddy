@@ -60,6 +60,7 @@
     __block TBLabelRow *row_2_2;
     __block TBSwitchRow *row_2_4;
     __block TBCheckRow *row_2_5;
+    __block TBTextFieldRow *row_2_6;
     
     __block TBTableDataRow *row_New = nil;
     
@@ -174,6 +175,23 @@
                 row.value = NO;
                 row.valueChangeHandler = ^(BOOL value) {
                     NSLog(@"check value changed to %@", (value) ? @"ON" : @"OFF");
+                };
+            }];
+            
+            [helper buildTextFieldRow:^(TBTextFieldRow *row) {
+                row_2_6 = row;
+                row.title = @"Text";
+                row.text = nil;
+                row.placeholder = @"Optional";
+                row.textChangeHandler = ^(NSString *text) {
+                    NSLog(@"text is %@", text);
+                };
+                row.textFieldConfigulator = ^(UITextField *textField) {
+                    textField.returnKeyType = UIReturnKeyDone;
+                };
+                row.textFieldShouldReturnHandler = ^BOOL (UITextField *textField) {
+                    [textField resignFirstResponder];
+                    return NO;
                 };
             }];
         }];

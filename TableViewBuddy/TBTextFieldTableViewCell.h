@@ -1,5 +1,5 @@
 //
-// TableViewBuddy.h
+// TBTextFieldTableViewCell.h
 // TableViewBuddy
 //
 // Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
@@ -23,34 +23,21 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "TBTableDataBuildHelper.h"
-#import "TBTableViewController.h"
+#import "TBUntappableCell.h"
 
-#import "TBTableData.h"
-#import "TBTableDataSection.h"
-#import "TBTableDataRow.h"
-#import "TBTableDataContext.h"
+@interface TBTextFieldTableViewCell : TBUntappableCell
 
-#import "TBTableViewCell.h"
+@property(nonatomic, copy) NSString *text;
+@property(nonatomic, strong, readonly) UITextField *textField;
 
-#import "TBSingleChoiceSection.h"
+@property(nonatomic, copy) void (^textFieldEditingChangedHandler)(UITextField *textField);
 
-#import "TBButtonRow.h"
-#import "TBButtonTableViewCell.h"
+@property(nonatomic, copy) BOOL (^textFieldShouldBeginEditingHandler)(UITextField *textField);
+@property(nonatomic, copy) void (^textFieldDidBeginEditingHandler)(UITextField *textField);
+@property(nonatomic, copy) BOOL (^textFieldShouldEndEditingHandler)(UITextField *textField);
+@property(nonatomic, copy) void (^textFieldDidEndEditingHandler)(UITextField *textField);
+@property(nonatomic, copy) BOOL (^textFieldShouldChangeCharactersHandler)(UITextField *textField, NSRange range, NSString *replacementString);
+@property(nonatomic, copy) BOOL (^textFieldShouldClearHandler)(UITextField *textField);
+@property(nonatomic, copy) BOOL (^textFieldShouldReturnHandler)(UITextField *textField);
 
-#import "TBCheckRow.h"
-
-#import "TBChoiceRow.h"
-
-#import "TBLabelRow.h"
-#import "TBLabelTableViewCell.h"
-
-#import "TBNavigationRow.h"
-
-#import "TBSingleChoiceNavigationRow.h"
-
-#import "TBSwitchRow.h"
-#import "TBSwitchTableViewCell.h"
-
-#import "TBTextFieldRow.h"
-#import "TBTextFieldTableViewCell.h"
+@end
