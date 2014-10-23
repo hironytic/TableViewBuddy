@@ -77,22 +77,26 @@
     NSAssert(self.navigationController != nil, @"please set your navigation controller.");
 
     TBSingleChoiceNavigationRow * __weak weakSelf = self;
-    TBTableViewController *choiseViewController = [[TBTableViewController alloc] initWithStyle:UITableViewStyleGrouped configureBlock:^(TBTableViewController *vc, TBTableDataBuildHelper *helper) {
-        [helper buildSingleChoiceSection:^(TBSingleChoiceSection *section) {
-            [section setHeaderTitle:weakSelf.choiseSectionHeaderTitle withContext:helper.context];
-            [section setFooterTitle:weakSelf.choiseSectionFooterTitle withContext:helper.context];
-            
-            [section setOptions:weakSelf.options
-                  selectedIndex:weakSelf.selectedIndex
-                    withContext:helper.context];
-            section.selectionChangeHandler = ^(NSInteger selectedIndex) {
-                weakSelf.selectedIndex = selectedIndex;
-                if (weakSelf.selectionChangeHandler != nil) {
-                    weakSelf.selectionChangeHandler(selectedIndex);
-                }
-            };
+    TBTableViewController *choiseViewController = [[TBTableViewController alloc] initWithStyle:UITableViewStyleGrouped buildTableDataBlock:^TBTableData *(TBTableViewController *vc) {
+        TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] init];
+        return [helper buildTableData:^{
+            [helper buildSingleChoiceSection:^(TBSingleChoiceSection *section) {
+                [section setHeaderTitle:weakSelf.choiseSectionHeaderTitle withContext:helper.context];
+                [section setFooterTitle:weakSelf.choiseSectionFooterTitle withContext:helper.context];
+                
+                [section setOptions:weakSelf.options
+                      selectedIndex:weakSelf.selectedIndex
+                        withContext:helper.context];
+                section.selectionChangeHandler = ^(NSInteger selectedIndex) {
+                    weakSelf.selectedIndex = selectedIndex;
+                    if (weakSelf.selectionChangeHandler != nil) {
+                        weakSelf.selectionChangeHandler(selectedIndex);
+                    }
+                };
+            }];
         }];
     }];
+    
     choiseViewController.title = self.choiceViewControllerTitle;
     [self.navigationController pushViewController:choiseViewController animated:YES];
 }

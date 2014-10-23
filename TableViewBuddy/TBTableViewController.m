@@ -25,31 +25,26 @@
 
 #import "TBTableViewController.h"
 #import "TBTableData.h"
-#import "TBTableDataBuildHelper.h"
 
 @interface TBTableViewController ()
-@property(nonatomic, copy) void (^configureBlock)(TBTableViewController *vc, TBTableDataBuildHelper *helper);
+@property(nonatomic, copy) TBTableData *(^buildTableDataBlock)(TBTableViewController *vc);
 @end
 
 @implementation TBTableViewController
 
-- (instancetype)initWithStyle:(UITableViewStyle)style configureBlock:(void (^)(TBTableViewController *vc, TBTableDataBuildHelper *helper))block {
+- (instancetype)initWithStyle:(UITableViewStyle)style buildTableDataBlock:(TBTableData *(^)(TBTableViewController *vc))block {
     self = [super initWithStyle:style];
     if (self != nil) {
         if (block != nil) {
-            _configureBlock = [block copy];
+            _buildTableDataBlock = [block copy];
         }
     }
     return self;
 }
 
 - (TBTableData *)buildTableData {
-    TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] init];
-    if (self.configureBlock != nil) {
-        TBTableViewController * __weak weakSelf = self;
-        return [helper buildTableData:^{
-            self.configureBlock(weakSelf, helper);
-        }];
+    if (self.buildTableDataBlock != nil) {
+        return self.buildTableDataBlock(self);
     } else {
         return [[TBTableData alloc] init];
     }
