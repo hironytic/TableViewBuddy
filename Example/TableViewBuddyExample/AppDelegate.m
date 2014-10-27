@@ -24,7 +24,7 @@
 //
 
 #import "AppDelegate.h"
-#import "SampleTableViewController1.h"
+#import "SampleMenuViewController.h"
 
 @implementation AppDelegate
 
@@ -33,7 +33,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    SampleTableViewController1 *viewController = [[SampleTableViewController1 alloc] initWithStyle:UITableViewStyleGrouped];
+    SampleMenuViewController *viewController = [[SampleMenuViewController alloc] initWithStyle:UITableViewStylePlain];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
     self.window.rootViewController = navController;
     
