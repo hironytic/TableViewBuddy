@@ -35,6 +35,8 @@
 
 #import "TBSingleChoiceSection.h"
 
+#import "TBActionRow.h"
+
 #import "TBButtonRow.h"
 #import "TBButtonTableViewCell.h"
 
