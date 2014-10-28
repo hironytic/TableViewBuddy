@@ -91,6 +91,8 @@
                 row.navigationController = weakSelf.navigationController;
                 NSArray *options = @[@"One", @"Two", @"Three"];
                 [row setOptions:options selectedIndex:0 withContext:helper.context];
+                row.choiceViewControllerTitle = @"Select";
+                row.choiseSectionHeaderTitle = @"Options";
                 row.selectionChangeHandler = ^(NSInteger index) {
                     NSLog(@"%@ is selected.", options[index]);
                 };
@@ -104,6 +106,17 @@
                     NSLog(@"Switch is %@", (value) ? @"on" : @"off");
                 };
             }];
+        }];
+        
+        // Section "Single Choice Section"
+        [helper buildSingleChoiceSection:^(TBSingleChoiceSection *section) {
+            [section setHeaderTitle:@"Single Choice Section" withContext:helper.context];
+            NSArray *options = @[@"Brewed Coffee", @"Caffè Latte", @"Cappuccino", @"Hot Chocolate"];
+            [section setOptions:options selectedIndex:1 withContext:helper.context];
+            section.selectionChangeHandler = ^(NSInteger index) {
+                NSLog(@"%@ is selected.", options[index]);
+            };
+            [section setFooterTitle:@"Select Your Favorite Drink." withContext:helper.context];
         }];
     }];
     return tableData;
