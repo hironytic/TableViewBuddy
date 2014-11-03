@@ -40,7 +40,7 @@
         [helper buildGenericSection:^(TBTableDataSection *section) {
             // "Catalogs"
             [helper buildActionRow:^(TBActionRow *row) {
-                row.title = @"Catalogs";
+                [row setTitle:@"Catalogs" withContext:helper.context];
                 row.tapHandler = ^{
                     CatalogsViewController *catalogsViewController = [[CatalogsViewController alloc] init];
                     [weakSelf executeViewController:catalogsViewController];

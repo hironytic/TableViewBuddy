@@ -25,28 +25,33 @@
 
 #import "TBActionRow.h"
 #import "TBTableData.h"
+#import "TBTableDataContext.h"
 #import "TBTableDataSection.h"
 #import "TBTableViewCell.h"
 
 @implementation TBActionRow
 
-- (void)setImage:(UIImage *)image {
+- (void)setImage:(UIImage *)image withContext:(TBTableDataContext *)context {
     _image = image;
     
-    UITableViewCell *cell = [self findVisibleCell];
-    if (cell != nil) {
-        cell.imageView.image = image;
-        [cell layoutSubviews];
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        UITableViewCell *cell = [self findVisibleCell];
+        if (cell != nil) {
+            cell.imageView.image = image;
+            [cell layoutSubviews];
+        }
     }
 }
 
-- (void)setTitle:(NSString *)title {
+- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context {
     _title = [title copy];
     
-    UITableViewCell *cell = [self findVisibleCell];
-    if (cell != nil) {
-        cell.textLabel.text = (self.title != nil) ? self.title : @"";
-        [cell layoutSubviews];
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        UITableViewCell *cell = [self findVisibleCell];
+        if (cell != nil) {
+            cell.textLabel.text = (self.title != nil) ? self.title : @"";
+            [cell layoutSubviews];
+        }
     }
 }
 

@@ -77,8 +77,8 @@
             }];
             
             [helper buildActionRow:^(TBActionRow *row) {
-                row.image = [UIImage imageNamed:@"SampleIcon.png"];
-                row.title = @"Y";
+                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:helper.context];
+                [row setTitle:@"Y" withContext:helper.context];
                 row.tapHandler = ^{
                     [weakSelf.tableData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {
                         if (section_1.headerTitle == nil) {
@@ -101,7 +101,7 @@
             }];
             
             [helper buildButtonRow:^(TBButtonRow *row) {
-                row.title = @"Z";
+                [row setTitle:@"Z" withContext:helper.context];
                 row.tapHandler = ^{
                     [weakSelf.tableData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {
                         for (NSInteger ix = 0; ix < 3; ++ix) {
@@ -111,7 +111,7 @@
                                                     withContext:context
                                                       generator:[TBButtonRow rowGeneratorWithConfigurator:^(TBTableDataInitializationContext *context) {
                                 TBButtonRow *row = (TBButtonRow *)context.row;
-                                row.title = [NSString stringWithFormat:@"hoge %ld", (long)myCounter];
+                                [row setTitle:[NSString stringWithFormat:@"hoge %ld", (long)myCounter] withContext:context];
                             }]];
                         }
                     }];
@@ -135,7 +135,7 @@
             [section setFooterTitle:@"Section 2" withContext:helper.context];
             
             [helper buildButtonRow:^(TBButtonRow *row) {
-                row.title = @"Tap Here";
+                [row setTitle:@"Tap Here" withContext:helper.context];
                 row.tapHandler = ^{
                     [weakSelf.tableData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {
                         [row_1_1 setHidden:!row_1_1.hidden withContext:context];
@@ -144,7 +144,7 @@
             }];
            
             [helper buildButtonRow:^(TBButtonRow *row) {
-                row.title = @"...";
+                [row setTitle:@"..." withContext:helper.context];
                 row.tapHandler = ^{
                     ++counter2;
                     row_2_2.title = [NSString stringWithFormat:@"Count %ld", (long)counter2];

@@ -46,8 +46,8 @@
             
             // Row "Action"
             [helper buildActionRow:^(TBActionRow *row) {
-                row.title = @"Action";
-                row.image = [UIImage imageNamed:@"SampleIcon.png"];
+                [row setTitle:@"Action" withContext:helper.context];
+                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:helper.context];
                 row.tapHandler = ^{
                     NSLog(@"Action is tapped.");
                 };
@@ -55,7 +55,7 @@
             
             // Row "Button"
             [helper buildButtonRow:^(TBButtonRow *row) {
-                row.title = @"Button";
+                [row setTitle:@"Button" withContext:helper.context];
                 row.tapHandler = ^{
                     NSLog(@"Button is tapped.");
                 };
