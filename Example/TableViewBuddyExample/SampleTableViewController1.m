@@ -150,7 +150,7 @@
                     row_2_2.title = [NSString stringWithFormat:@"Count %ld", (long)counter2];
                     
                     row_2_4.value = !row_2_4.value;
-                    row_2_5.value = !row_2_5.value;
+                    [row_2_5 setValue:!row_2_5.value withContext:nil];
                 };
             }];
             
@@ -171,8 +171,8 @@
             
             [helper buildCheckRow:^(TBCheckRow *row) {
                 row_2_5 = row;
-                row.title = @"Check it";
-                row.value = NO;
+                [row setTitle:@"Check it" withContext:helper.context];
+                [row setValue:NO withContext:helper.context];
                 row.valueChangeHandler = ^(BOOL value) {
                     NSLog(@"check value changed to %@", (value) ? @"ON" : @"OFF");
                 };

@@ -58,12 +58,12 @@
             } else {
                 optTitle = [opt description];
             }
-            row.title = optTitle;
+            [row setTitle:optTitle withContext:context];
             
             if (ix == selectedIndex) {
-                row.value = YES;
+                [row setValue:YES withContext:context];
             } else {
-                row.value = NO;
+                [row setValue:NO withContext:context];
             }
             
             row.valueChangeHandler = ^(BOOL value) {
@@ -77,7 +77,7 @@
 - (void)optionValueSelected:(NSInteger)index {
     if (_selectedIndex >= 0) {
         TBChoiceRow *prevSelectedRow = self.choiceRows[_selectedIndex];
-        prevSelectedRow.value = NO;
+        [prevSelectedRow setValue:NO withContext:nil];
     }
     _selectedIndex = index;
     if (self.selectionChangeHandler != nil) {
@@ -88,11 +88,11 @@
 - (void)setSelectedIndex:(NSInteger)selectedIndex {
     if (_selectedIndex >= 0) {
         TBChoiceRow *prevSelectedRow = self.choiceRows[_selectedIndex];
-        prevSelectedRow.value = NO;
+        [prevSelectedRow setValue:NO withContext:nil];
     }
     if (selectedIndex >= 0) {
         TBChoiceRow *nowSelectedRow = self.choiceRows[selectedIndex];
-        nowSelectedRow.value = YES;
+        [nowSelectedRow setValue:YES withContext:nil];
     }
     _selectedIndex = selectedIndex;
 }

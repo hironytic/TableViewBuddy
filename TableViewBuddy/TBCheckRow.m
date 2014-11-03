@@ -26,28 +26,33 @@
 #import "TBCheckRow.h"
 #import "TBCheckRow_Internal.h"
 #import "TBTableData.h"
+#import "TBTableDataContext.h"
 #import "TBTableDataSection.h"
 #import "TBTableViewCell.h"
 
 @implementation TBCheckRow
 
-- (void)setTitle:(NSString *)title {
+- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context {
     _title = [title copy];
     
-    UITableViewCell *cell = [self findVisibleCell];
-    if (cell != nil) {
-        cell.textLabel.text = (self.title != nil) ? self.title : @"";
-        [cell layoutSubviews];
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        UITableViewCell *cell = [self findVisibleCell];
+        if (cell != nil) {
+            cell.textLabel.text = (self.title != nil) ? self.title : @"";
+            [cell layoutSubviews];
+        }
     }
 }
 
-- (void)setValue:(BOOL)value {
+- (void)setValue:(BOOL)value withContext:(TBTableDataContext *)context {
     _value = value;
     
-    UITableViewCell *cell = [self findVisibleCell];
-    if (cell != nil) {
-        cell.accessoryType = (value) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
-        [cell layoutSubviews];
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        UITableViewCell *cell = [self findVisibleCell];
+        if (cell != nil) {
+            cell.accessoryType = (value) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+            [cell layoutSubviews];
+        }
     }
 }
 
@@ -68,7 +73,7 @@
 - (void)rowDidTapInTableView:(UITableView *)tableView AtIndexPath:(NSIndexPath *)indexPath {
     [super rowDidTapInTableView:tableView AtIndexPath:indexPath];
     if ([self canChangeValueTo:!self.value]) {
-        self.value = !self.value;
+        [self setValue:!self.value withContext:nil];
         if (self.valueChangeHandler != nil) {
             self.valueChangeHandler(self.value);
         }

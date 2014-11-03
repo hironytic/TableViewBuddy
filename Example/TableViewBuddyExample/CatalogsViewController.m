@@ -63,8 +63,8 @@
             
             // Row "Check"
             [helper buildCheckRow:^(TBCheckRow *row) {
-                row.title = @"Check";
-                row.value = YES;
+                [row setTitle:@"Check" withContext:helper.context];
+                [row setValue:YES withContext:helper.context];
                 row.valueChangeHandler = ^(BOOL value) {
                     NSLog(@"Check value becomes %@", (value) ? @"checked" : @"unchecked");
                 };

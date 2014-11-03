@@ -28,8 +28,12 @@
 
 @interface TBCheckRow : TBTableDataRow
 
-@property(nonatomic, copy) NSString *title;
-@property(nonatomic, assign) BOOL value;
+@property(nonatomic, copy, readonly) NSString *title;
+@property(nonatomic, assign, readonly) BOOL value;
+
+- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context;
+- (void)setValue:(BOOL)value withContext:(TBTableDataContext *)context;
+
 @property(nonatomic, copy) void (^valueChangeHandler)(BOOL value);
 
 @end
