@@ -180,9 +180,9 @@
             
             [helper buildTextFieldRow:^(TBTextFieldRow *row) {
                 row_2_6 = row;
-                row.title = @"Text";
-                row.text = nil;
-                row.placeholder = @"Optional";
+                [row setTitle:@"Text" withContext:helper.context];
+                [row setText:nil withContext:helper.context];
+                [row setPlaceholder:@"Optional" withContext:helper.context];
                 row.textChangeHandler = ^(NSString *text) {
                     NSLog(@"text is %@", text);
                 };
