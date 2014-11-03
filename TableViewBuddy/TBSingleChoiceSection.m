@@ -85,14 +85,14 @@
     }
 }
 
-- (void)setSelectedIndex:(NSInteger)selectedIndex {
+- (void)setSelectedIndex:(NSInteger)selectedIndex withContext:(TBTableDataContext *)context {
     if (_selectedIndex >= 0) {
         TBChoiceRow *prevSelectedRow = self.choiceRows[_selectedIndex];
-        [prevSelectedRow setValue:NO withContext:nil];
+        [prevSelectedRow setValue:NO withContext:context];
     }
     if (selectedIndex >= 0) {
         TBChoiceRow *nowSelectedRow = self.choiceRows[selectedIndex];
-        [nowSelectedRow setValue:YES withContext:nil];
+        [nowSelectedRow setValue:YES withContext:context];
     }
     _selectedIndex = selectedIndex;
 }
