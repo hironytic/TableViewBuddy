@@ -91,8 +91,8 @@
                 row.navigationController = weakSelf.navigationController;
                 NSArray *options = @[@"One", @"Two", @"Three"];
                 [row setOptions:options selectedIndex:0 withContext:helper.context];
-                row.choiceViewControllerTitle = @"Select";
-                row.choiseSectionHeaderTitle = @"Options";
+                [row setChoiceViewControllerTitle:@"Select" withContext:helper.context];
+                [row setChoiceSectionHeaderTitle:@"Options" withContext:helper.context];
                 row.selectionChangeHandler = ^(NSInteger index) {
                     NSLog(@"%@ is selected.", options[index]);
                 };

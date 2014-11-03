@@ -214,9 +214,9 @@
                 TBSingleChoiceNavigationRow * __weak weakRow = row;
                 [row setTitle:@"Burger" withContext:helper.context];
                 row.navigationController = weakSelf.navigationController;
-                row.choiceViewControllerTitle = @"Select Burger";
-                row.choiseSectionHeaderTitle = @"Menu";
-                row.choiseSectionFooterTitle = @"Please select your favorite burger.";
+                [row setChoiceViewControllerTitle:@"Select Burger" withContext:helper.context];
+                [row setChoiceSectionHeaderTitle:@"Menu" withContext:helper.context];
+                [row setChoiceSectionFooterTitle:@"Please select your favorite burger." withContext:helper.context];
                 [row setOptions:@[@"None", @"Cheese Burger", @"Omlet Burger", @"Chili Burger", @"Special Burger"] selectedIndex:0 withContext:helper.context];
                 row.selectionChangeHandler = ^(NSInteger index) {
                     NSLog(@"%@ is selected", weakRow.options[index]);
