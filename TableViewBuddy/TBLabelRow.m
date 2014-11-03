@@ -26,27 +26,32 @@
 #import "TBLabelRow.h"
 #import "TBLabelTableViewCell.h"
 #import "TBTableData.h"
+#import "TBTableDataContext.h"
 #import "TBTableDataSection.h"
 
 @implementation TBLabelRow
 
-- (void)setTitle:(NSString *)title {
+- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context {
     _title = [title copy];
     
-    UITableViewCell *cell = [self findVisibleCell];
-    if (cell != nil) {
-        cell.textLabel.text = (self.title != nil) ? self.title : @"";
-        [cell layoutSubviews];
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        UITableViewCell *cell = [self findVisibleCell];
+        if (cell != nil) {
+            cell.textLabel.text = (self.title != nil) ? self.title : @"";
+            [cell layoutSubviews];
+        }
     }
 }
 
-- (void)setDetailText:(NSString *)detailText {
+- (void)setDetailText:(NSString *)detailText withContext:(TBTableDataContext *)context {
     _detailText = [detailText copy];
     
-    UITableViewCell *cell = [self findVisibleCell];
-    if (cell != nil) {
-        cell.detailTextLabel.text = (self.detailText != nil) ? self.detailText : @"";
-        [cell layoutSubviews];
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        UITableViewCell *cell = [self findVisibleCell];
+        if (cell != nil) {
+            cell.detailTextLabel.text = (self.detailText != nil) ? self.detailText : @"";
+            [cell layoutSubviews];
+        }
     }
 }
 

@@ -28,10 +28,12 @@
 
 @interface TBSingleChoiceSection : TBTableDataSection
 
-- (void)setOptions:(NSArray *)options selectedIndex:(NSInteger)selectedIndex withContext:(TBTableDataContext *)context;
-
 @property(nonatomic, copy, readonly) NSArray *options;
-@property(nonatomic, assign) NSInteger selectedIndex;
+@property(nonatomic, assign, readonly) NSInteger selectedIndex;
+
+- (void)setOptions:(NSArray *)options selectedIndex:(NSInteger)selectedIndex withContext:(TBTableDataContext *)context;
+- (void)setSelectedIndex:(NSInteger)selectedIndex withContext:(TBTableDataContext *)context;
+
 @property(nonatomic, copy) void (^selectionChangeHandler)(NSInteger selectedIndex);
 
 @end

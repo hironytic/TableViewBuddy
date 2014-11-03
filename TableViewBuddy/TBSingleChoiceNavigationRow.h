@@ -29,15 +29,21 @@
 
 @interface TBSingleChoiceNavigationRow : TBNavigationRow
 
-- (void)setOptions:(NSArray *)options selectedIndex:(NSInteger)selectedIndex withContext:(TBTableDataContext *)context;
-
 @property(nonatomic, weak) UINavigationController *navigationController;
-@property(nonatomic, copy) NSString *choiceViewControllerTitle;
-@property(nonatomic, copy) NSString *choiseSectionHeaderTitle;
-@property(nonatomic, copy) NSString *choiseSectionFooterTitle;
+
+@property(nonatomic, copy, readonly) NSString *choiceViewControllerTitle;
+@property(nonatomic, copy, readonly) NSString *choiceSectionHeaderTitle;
+@property(nonatomic, copy, readonly) NSString *choiceSectionFooterTitle;
 
 @property(nonatomic, copy, readonly) NSArray *options;
-@property(nonatomic, assign) NSInteger selectedIndex;
+@property(nonatomic, assign, readonly) NSInteger selectedIndex;
+
+- (void)setChoiceViewControllerTitle:(NSString *)choiceViewControllerTitle withContext:(TBTableDataContext *)context;
+- (void)setChoiceSectionHeaderTitle:(NSString *)choiceSectionHeaderTitle withContext:(TBTableDataContext *)context;
+- (void)setChoiceSectionFooterTitle:(NSString *)choiceSectionFooterTitle withContext:(TBTableDataContext *)context;
+- (void)setOptions:(NSArray *)options selectedIndex:(NSInteger)selectedIndex withContext:(TBTableDataContext *)context;
+- (void)setSelectedIndex:(NSInteger)selectedIndex withContext:(TBTableDataContext *)context;
+
 @property(nonatomic, copy) void (^selectionChangeHandler)(NSInteger selectedIndex);
 
 @end

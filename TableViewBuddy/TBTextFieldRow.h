@@ -28,10 +28,15 @@
 
 @interface TBTextFieldRow : TBTableDataRow
 
-@property(nonatomic, copy) NSString *title;
-@property(nonatomic, copy) NSString *text;
-@property(nonatomic, copy) NSString *placeholder;
-@property(nonatomic, assign) CGFloat textFieldWidth;
+@property(nonatomic, copy, readonly) NSString *title;
+@property(nonatomic, copy, readonly) NSString *text;
+@property(nonatomic, copy, readonly) NSString *placeholder;
+@property(nonatomic, assign, readonly) CGFloat textFieldWidth;
+
+- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context;
+- (void)setText:(NSString *)text withContext:(TBTableDataContext *)context;
+- (void)setPlaceholder:(NSString *)placeholder withContext:(TBTableDataContext *)context;
+- (void)setTextFieldWidth:(CGFloat)textFieldWidth withContext:(TBTableDataContext *)context;
 
 @property(nonatomic, copy) void (^textChangeHandler)(NSString *text);
 @property(nonatomic, copy) void (^textFieldConfigulator)(UITextField *textField);

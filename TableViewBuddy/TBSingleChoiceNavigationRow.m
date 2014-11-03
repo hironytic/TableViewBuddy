@@ -43,10 +43,10 @@
     }
     
     _options = options;
-    self.selectedIndex = selectedIndex;
+    [self setSelectedIndex:selectedIndex withContext:context];
 }
 
-- (void)setSelectedIndex:(NSInteger)selectedIndex {
+- (void)setSelectedIndex:(NSInteger)selectedIndex withContext:(TBTableDataContext *)context {
     _selectedIndex = selectedIndex;
 
     NSString *optTitle = nil;
@@ -60,7 +60,34 @@
             optTitle = [opt description];
         }
     }
-    self.detailText = optTitle;
+    [self setDetailText:optTitle withContext:context];
+}
+
+- (void)setChoiceViewControllerTitle:(NSString *)choiceViewControllerTitle withContext:(TBTableDataContext *)context {
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        NSAssert(NO, @"currently, choiceViewControllerTitle can be set only on initialization.");
+        return;
+    }
+
+    _choiceViewControllerTitle = choiceViewControllerTitle;
+}
+
+- (void)setChoiceSectionHeaderTitle:(NSString *)choiceSectionHeaderTitle withContext:(TBTableDataContext *)context {
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        NSAssert(NO, @"currently, choiceSectionHeaderTitle can be set only on initialization.");
+        return;
+    }
+    
+    _choiceSectionHeaderTitle = choiceSectionHeaderTitle;
+}
+
+- (void)setChoiceSectionFooterTitle:(NSString *)choiceSectionFooterTitle withContext:(TBTableDataContext *)context {
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        NSAssert(NO, @"currently, choiceSectionFooterTitle can be set only on initialization.");
+        return;
+    }
+    
+    _choiceSectionFooterTitle = choiceSectionFooterTitle;
 }
 
 - (void)setTapHandler:(void (^)())tapHandler {
@@ -81,14 +108,14 @@
         TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] init];
         return [helper buildTableData:^{
             [helper buildSingleChoiceSection:^(TBSingleChoiceSection *section) {
-                [section setHeaderTitle:weakSelf.choiseSectionHeaderTitle withContext:helper.context];
-                [section setFooterTitle:weakSelf.choiseSectionFooterTitle withContext:helper.context];
+                [section setHeaderTitle:weakSelf.choiceSectionHeaderTitle withContext:helper.context];
+                [section setFooterTitle:weakSelf.choiceSectionFooterTitle withContext:helper.context];
                 
                 [section setOptions:weakSelf.options
                       selectedIndex:weakSelf.selectedIndex
                         withContext:helper.context];
                 section.selectionChangeHandler = ^(NSInteger selectedIndex) {
-                    weakSelf.selectedIndex = selectedIndex;
+                    [weakSelf setSelectedIndex:selectedIndex withContext:nil];
                     if (weakSelf.selectionChangeHandler != nil) {
                         weakSelf.selectionChangeHandler(selectedIndex);
                     }

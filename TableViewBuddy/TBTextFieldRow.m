@@ -26,6 +26,7 @@
 #import "TBTextFieldRow.h"
 #import "TBTextFieldTableViewCell.h"
 #import "TBTableData.h"
+#import "TBTableDataContext.h"
 #import "TBTableDataSection.h"
 
 @implementation TBTextFieldRow
@@ -38,45 +39,53 @@
     return self;
 }
 
-- (void)setTitle:(NSString *)title {
+- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context {
     _title = [title copy];
     
-    UITableViewCell *cell = [self findVisibleCell];
-    if (cell != nil) {
-        cell.textLabel.text = (self.title != nil) ? self.title : @"";
-        [cell layoutSubviews];
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        UITableViewCell *cell = [self findVisibleCell];
+        if (cell != nil) {
+            cell.textLabel.text = (self.title != nil) ? self.title : @"";
+            [cell layoutSubviews];
+        }
     }
 }
 
-- (void)setText:(NSString *)text {
+- (void)setText:(NSString *)text withContext:(TBTableDataContext *)context {
     _text = text;
     
-    TBTextFieldTableViewCell *cell = (TBTextFieldTableViewCell *)[self findVisibleCell];
-    if (cell != nil) {
-        cell.textField.text = (self.text != nil) ? self.text : @"";
-        [cell layoutSubviews];
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        TBTextFieldTableViewCell *cell = (TBTextFieldTableViewCell *)[self findVisibleCell];
+        if (cell != nil) {
+            cell.textField.text = (self.text != nil) ? self.text : @"";
+            [cell layoutSubviews];
+        }
     }
 }
 
-- (void)setPlaceholder:(NSString *)placeholder {
+- (void)setPlaceholder:(NSString *)placeholder withContext:(TBTableDataContext *)context {
     _placeholder = placeholder;
     
-    TBTextFieldTableViewCell *cell = (TBTextFieldTableViewCell *)[self findVisibleCell];
-    if (cell != nil) {
-        cell.textField.placeholder = placeholder;
-        [cell layoutSubviews];
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        TBTextFieldTableViewCell *cell = (TBTextFieldTableViewCell *)[self findVisibleCell];
+        if (cell != nil) {
+            cell.textField.placeholder = placeholder;
+            [cell layoutSubviews];
+        }
     }
 }
 
-- (void)setTextFieldWidth:(CGFloat)textFieldWidth {
+- (void)setTextFieldWidth:(CGFloat)textFieldWidth withContext:(TBTableDataContext *)context {
     _textFieldWidth = textFieldWidth;
 
-    TBTextFieldTableViewCell *cell = (TBTextFieldTableViewCell *)[self findVisibleCell];
-    if (cell != nil) {
-        CGRect textFieldFrame = cell.textField.frame;
-        textFieldFrame.size.width = textFieldWidth;
-        cell.textField.frame = textFieldFrame;
-        [cell layoutSubviews];
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        TBTextFieldTableViewCell *cell = (TBTextFieldTableViewCell *)[self findVisibleCell];
+        if (cell != nil) {
+            CGRect textFieldFrame = cell.textField.frame;
+            textFieldFrame.size.width = textFieldWidth;
+            cell.textField.frame = textFieldFrame;
+            [cell layoutSubviews];
+        }
     }
 }
 
@@ -102,9 +111,9 @@
     
     TBTextFieldRow * __weak weakSelf = self;
     textFieldCell.textFieldEditingChangedHandler = ^(UITextField *textField) {
-        weakSelf.text = textField.text;
+        _text = textField.text;
         if (weakSelf.textChangeHandler != nil) {
-            weakSelf.textChangeHandler(weakSelf.text);
+            weakSelf.textChangeHandler(textField.text);
         }
     };
     textFieldCell.textFieldShouldReturnHandler = ^BOOL (UITextField *textField) {

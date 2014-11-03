@@ -39,7 +39,7 @@
     TBTableData *tableData = [helper buildTableData:^{
         [helper buildGenericSection:^(TBTableDataSection *section) {
             [helper buildLabelRow:^(TBLabelRow *row) {
-                row.title = @"Detail";
+                [row setTitle:@"Detail" withContext:helper.context];
             }];
         }];
     }];

@@ -34,7 +34,7 @@
 @property(nonatomic, weak, readonly) TBTableDataSection *section;
 @property(nonatomic, copy, readonly) NSString *reuseIdentifier;
 @property(nonatomic, assign, readonly) BOOL hidden;
-@property(nonatomic, assign) BOOL enabled;
+@property(nonatomic, assign, readonly) BOOL enabled;
 
 + (TBTableDataRow *(^)(TBTableDataInitializationContext *context))rowGeneratorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator;
 
@@ -44,6 +44,7 @@
 - (UITableViewCell *)findVisibleCell;
 
 - (void)setHidden:(BOOL)hidden withContext:(TBTableDataContext *)context;
+- (void)setEnabled:(BOOL)enabled withContext:(TBTableDataContext *)context;
 - (void)reloadWithContext:(TBTableDataContext *)context;
 - (void)deleteWithContext:(TBTableDataContext *)context;
 

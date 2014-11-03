@@ -46,8 +46,8 @@
             
             // Row "Action"
             [helper buildActionRow:^(TBActionRow *row) {
-                row.title = @"Action";
-                row.image = [UIImage imageNamed:@"SampleIcon.png"];
+                [row setTitle:@"Action" withContext:helper.context];
+                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:helper.context];
                 row.tapHandler = ^{
                     NSLog(@"Action is tapped.");
                 };
@@ -55,7 +55,7 @@
             
             // Row "Button"
             [helper buildButtonRow:^(TBButtonRow *row) {
-                row.title = @"Button";
+                [row setTitle:@"Button" withContext:helper.context];
                 row.tapHandler = ^{
                     NSLog(@"Button is tapped.");
                 };
@@ -63,8 +63,8 @@
             
             // Row "Check"
             [helper buildCheckRow:^(TBCheckRow *row) {
-                row.title = @"Check";
-                row.value = YES;
+                [row setTitle:@"Check" withContext:helper.context];
+                [row setValue:YES withContext:helper.context];
                 row.valueChangeHandler = ^(BOOL value) {
                     NSLog(@"Check value becomes %@", (value) ? @"checked" : @"unchecked");
                 };
@@ -72,13 +72,13 @@
             
             // Row "Label"
             [helper buildLabelRow:^(TBLabelRow *row) {
-                row.title = @"Label";
-                row.detailText = @"text";
+                [row setTitle:@"Label" withContext:helper.context];
+                [row setDetailText:@"text" withContext:helper.context];
             }];
             
             // Row "Navigation"
             [helper buildNavigationRow:^(TBNavigationRow *row) {
-                row.title = @"Navigation";
+                [row setTitle:@"Navigation" withContext:helper.context];
                 row.tapHandler = ^{
                     TBTableViewController *nextViewController = [[TBTableViewController alloc] initWithStyle:UITableViewStylePlain];
                     [weakSelf.navigationController pushViewController:nextViewController animated:YES];
@@ -87,12 +87,12 @@
             
             // Row "SingleChoice"
             [helper buildSingleChoiceNavigationRow:^(TBSingleChoiceNavigationRow *row) {
-                row.title = @"Single Choice";
+                [row setTitle:@"Single Choice" withContext:helper.context];
                 row.navigationController = weakSelf.navigationController;
                 NSArray *options = @[@"One", @"Two", @"Three"];
                 [row setOptions:options selectedIndex:0 withContext:helper.context];
-                row.choiceViewControllerTitle = @"Select";
-                row.choiseSectionHeaderTitle = @"Options";
+                [row setChoiceViewControllerTitle:@"Select" withContext:helper.context];
+                [row setChoiceSectionHeaderTitle:@"Options" withContext:helper.context];
                 row.selectionChangeHandler = ^(NSInteger index) {
                     NSLog(@"%@ is selected.", options[index]);
                 };
@@ -100,8 +100,8 @@
             
             // Row "Switch"
             [helper buildSwitchRow:^(TBSwitchRow *row) {
-                row.title = @"Switch";
-                row.value = YES;
+                [row setTitle:@"Switch" withContext:helper.context];
+                [row setValue:YES withContext:helper.context];
                 row.valueChangeHandler = ^(BOOL value) {
                     NSLog(@"Switch is %@", (value) ? @"on" : @"off");
                 };
