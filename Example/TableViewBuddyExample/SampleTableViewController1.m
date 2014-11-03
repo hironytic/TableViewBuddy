@@ -149,7 +149,7 @@
                     ++counter2;
                     [row_2_2 setTitle:[NSString stringWithFormat:@"Count %ld", (long)counter2] withContext:nil];
                     
-                    row_2_4.value = !row_2_4.value;
+                    [row_2_4 setValue:!row_2_4.value withContext:nil];
                     [row_2_5 setValue:!row_2_5.value withContext:nil];
                 };
             }];
@@ -162,8 +162,8 @@
             
             [helper buildSwitchRow:^(TBSwitchRow *row) {
                 row_2_4 = row;
-                row.title = @"On/Off";
-                row.value = YES;
+                [row setTitle:@"On/Off" withContext:helper.context];
+                [row setValue:YES withContext:helper.context];
                 row.valueChangeHandler = ^(BOOL value) {
                     NSLog(@"switch value changed to %@", (value) ? @"ON" : @"OFF");
                 };

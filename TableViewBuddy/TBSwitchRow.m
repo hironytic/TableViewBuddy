@@ -26,27 +26,32 @@
 #import "TBSwitchRow.h"
 #import "TBSwitchTableViewCell.h"
 #import "TBTableData.h"
+#import "TBTableDataContext.h"
 #import "TBTableDataSection.h"
 
 @implementation TBSwitchRow
 
-- (void)setTitle:(NSString *)title {
+- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context {
     _title = [title copy];
     
-    UITableViewCell *cell = [self findVisibleCell];
-    if (cell != nil) {
-        cell.textLabel.text = (self.title != nil) ? self.title : @"";
-        [cell layoutSubviews];
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        UITableViewCell *cell = [self findVisibleCell];
+        if (cell != nil) {
+            cell.textLabel.text = (self.title != nil) ? self.title : @"";
+            [cell layoutSubviews];
+        }
     }
 }
 
-- (void)setValue:(BOOL)value {
+- (void)setValue:(BOOL)value withContext:(TBTableDataContext *)context {
     _value = value;
     
-    TBSwitchTableViewCell *cell = (TBSwitchTableViewCell *)[self findVisibleCell];
-    if (cell != nil) {
-        [cell setSwitchValue:value animated:YES];
-        [cell layoutSubviews];
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        TBSwitchTableViewCell *cell = (TBSwitchTableViewCell *)[self findVisibleCell];
+        if (cell != nil) {
+            [cell setSwitchValue:value animated:YES];
+            [cell layoutSubviews];
+        }
     }
 }
 
@@ -64,7 +69,7 @@
     
     TBSwitchRow * __weak weakSelf = self;
     switchCell.switchValueChanged = ^(BOOL value){
-        weakSelf.value = value;
+        _value = value;
         if (weakSelf.valueChangeHandler != nil) {
             weakSelf.valueChangeHandler(value);
         }

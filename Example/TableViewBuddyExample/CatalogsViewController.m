@@ -100,8 +100,8 @@
             
             // Row "Switch"
             [helper buildSwitchRow:^(TBSwitchRow *row) {
-                row.title = @"Switch";
-                row.value = YES;
+                [row setTitle:@"Switch" withContext:helper.context];
+                [row setValue:YES withContext:helper.context];
                 row.valueChangeHandler = ^(BOOL value) {
                     NSLog(@"Switch is %@", (value) ? @"on" : @"off");
                 };
