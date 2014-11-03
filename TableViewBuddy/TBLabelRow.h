@@ -28,8 +28,11 @@
 
 @interface TBLabelRow : TBTableDataRow
 
-@property(nonatomic, copy) NSString *title;
-@property(nonatomic, copy) NSString *detailText;
+@property(nonatomic, copy, readonly) NSString *title;
+@property(nonatomic, copy, readonly) NSString *detailText;
+
+- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context;
+- (void)setDetailText:(NSString *)detailText withContext:(TBTableDataContext *)context;
 
 @end
 

@@ -72,8 +72,8 @@
             
             // Row "Label"
             [helper buildLabelRow:^(TBLabelRow *row) {
-                row.title = @"Label";
-                row.detailText = @"text";
+                [row setTitle:@"Label" withContext:helper.context];
+                [row setDetailText:@"text" withContext:helper.context];
             }];
             
             // Row "Navigation"

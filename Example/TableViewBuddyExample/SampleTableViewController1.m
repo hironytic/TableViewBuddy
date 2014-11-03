@@ -73,7 +73,7 @@
             
             [helper buildLabelRow:^(TBLabelRow *row) {
                 row_1_1 = row;
-                row.title = @"X";
+                [row setTitle:@"X" withContext:helper.context];
             }];
             
             [helper buildActionRow:^(TBActionRow *row) {
@@ -147,7 +147,7 @@
                 [row setTitle:@"..." withContext:helper.context];
                 row.tapHandler = ^{
                     ++counter2;
-                    row_2_2.title = [NSString stringWithFormat:@"Count %ld", (long)counter2];
+                    [row_2_2 setTitle:[NSString stringWithFormat:@"Count %ld", (long)counter2] withContext:nil];
                     
                     row_2_4.value = !row_2_4.value;
                     [row_2_5 setValue:!row_2_5.value withContext:nil];
@@ -156,8 +156,8 @@
             
             [helper buildLabelRow:^(TBLabelRow *row) {
                 row_2_2 = row;
-                row.title = [NSString stringWithFormat:@"Count %ld", (long)counter2];
-                row.detailText = @"long long long long text is here.";
+                [row setTitle:[NSString stringWithFormat:@"Count %ld", (long)counter2] withContext:helper.context];
+                [row setDetailText:@"long long long long text is here." withContext:helper.context];
             }];
             
             [helper buildSwitchRow:^(TBSwitchRow *row) {
