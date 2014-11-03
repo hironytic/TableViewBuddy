@@ -120,8 +120,8 @@
             
             [helper buildNavigationRow:^(TBNavigationRow *row) {
                 row_1_3 = row;
-                row.title = @"Show Detail";
-                row.detailText = @"Normal";
+                [row setTitle:@"Show Detail" withContext:helper.context];
+                [row setDetailText:@"Normal" withContext:helper.context];
                 row.tapHandler = ^{
                     SampleTableViewController2 *nextViewController = [[SampleTableViewController2 alloc] initWithStyle:UITableViewStylePlain];
                     [weakSelf.navigationController pushViewController:nextViewController animated:YES];
@@ -212,7 +212,7 @@
         [helper buildGenericSection:^(TBTableDataSection *section) {
             [helper buildSingleChoiceNavigationRow:^(TBSingleChoiceNavigationRow *row) {
                 TBSingleChoiceNavigationRow * __weak weakRow = row;
-                row.title = @"Burger";
+                [row setTitle:@"Burger" withContext:helper.context];
                 row.navigationController = weakSelf.navigationController;
                 row.choiceViewControllerTitle = @"Select Burger";
                 row.choiseSectionHeaderTitle = @"Menu";

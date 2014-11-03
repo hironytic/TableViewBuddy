@@ -78,7 +78,7 @@
             
             // Row "Navigation"
             [helper buildNavigationRow:^(TBNavigationRow *row) {
-                row.title = @"Navigation";
+                [row setTitle:@"Navigation" withContext:helper.context];
                 row.tapHandler = ^{
                     TBTableViewController *nextViewController = [[TBTableViewController alloc] initWithStyle:UITableViewStylePlain];
                     [weakSelf.navigationController pushViewController:nextViewController animated:YES];
@@ -87,7 +87,7 @@
             
             // Row "SingleChoice"
             [helper buildSingleChoiceNavigationRow:^(TBSingleChoiceNavigationRow *row) {
-                row.title = @"Single Choice";
+                [row setTitle:@"Single Choice" withContext:helper.context];
                 row.navigationController = weakSelf.navigationController;
                 NSArray *options = @[@"One", @"Two", @"Three"];
                 [row setOptions:options selectedIndex:0 withContext:helper.context];

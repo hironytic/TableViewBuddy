@@ -60,7 +60,7 @@
             optTitle = [opt description];
         }
     }
-    self.detailText = optTitle;
+    [self setDetailText:optTitle withContext:nil];  // TODO: add context
 }
 
 - (void)setTapHandler:(void (^)())tapHandler {
