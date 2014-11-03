@@ -141,6 +141,18 @@
     }
 }
 
+- (void)setEnabled:(BOOL)enabled withContext:(TBTableDataContext *)context {
+    _enabled = enabled;
+
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        UITableViewCell *cell = [self findVisibleCell];
+        if (cell != nil && [cell isKindOfClass:[TBTableViewCell class]]) {
+            [(TBTableViewCell *)cell setAvailable:enabled];
+        }
+    }
+}
+
+
 - (void)reloadWithContext:(TBTableDataContext *)context {
     if ([context isKindOfClass:[TBTableDataUpdateContext class]]) {
         TBTableDataUpdateContext *updateContext = (TBTableDataUpdateContext *)context;
@@ -164,15 +176,6 @@
                 self.updateStatus = TBUpdateStatusDeleted;
                 break;
         }
-    }
-}
-
-- (void)setEnabled:(BOOL)enabled {
-    _enabled = enabled;
-
-    UITableViewCell *cell = [self findVisibleCell];
-    if (cell != nil && [cell isKindOfClass:[TBTableViewCell class]]) {
-        [(TBTableViewCell *)cell setAvailable:enabled];
     }
 }
 
