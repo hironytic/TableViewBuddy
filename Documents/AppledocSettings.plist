@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>--project-name</key>
+	<string>TableViewBuddy</string>
+	<key>--project-company</key>
+	<string>hironytic</string>
+	<key>--company-id</key>
+	<string>com.hironytic</string>
+	<key>--docset-bundle-id</key>
+	<string>com.hironytic.docs.tableviewbuddy</string>
+	<key>--create-html</key>
+	<true/>
+	<key>--create-docset</key>
+	<true/>
+	<key>--install-docset</key>
+	<true/>
+	<key>--keep-intermediate-files</key>
+	<true/>
+	<key>--clean-output</key>
+	<true/>
+	<key>--output</key>
+	<string>Generated</string>
+	<key>--input</key>
+	<array>
+		<string>../TableViewBuddy</string>
+	</array>
+</dict>
+</plist>
