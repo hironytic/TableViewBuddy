@@ -77,7 +77,7 @@
 - (void)optionValueSelected:(NSInteger)index {
     if (_selectedIndex >= 0) {
         TBChoiceRow *prevSelectedRow = self.choiceRows[_selectedIndex];
-        [prevSelectedRow setValue:NO withContext:nil];
+        [prevSelectedRow setValue:NO withContext:[TBTableDataContext context]];
     }
     _selectedIndex = index;
     if (self.selectionChangeHandler != nil) {

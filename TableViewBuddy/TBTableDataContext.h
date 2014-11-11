@@ -57,6 +57,8 @@
  */
 @interface TBTableDataContext : NSObject
 
++ (instancetype)context;
+
 @end
 
 
