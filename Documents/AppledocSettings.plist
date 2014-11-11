@@ -26,5 +26,10 @@
 	<array>
 		<string>../TableViewBuddy</string>
 	</array>
+	<key>--ignore</key>
+	<array>
+		<string>.m</string>
+		<string>internal</string>
+	</array>
 </dict>
 </plist>
