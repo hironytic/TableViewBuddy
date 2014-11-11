@@ -147,10 +147,10 @@
                 [row setTitle:@"..." withContext:helper.context];
                 row.tapHandler = ^{
                     ++counter2;
-                    [row_2_2 setTitle:[NSString stringWithFormat:@"Count %ld", (long)counter2] withContext:nil];
+                    [row_2_2 setTitle:[NSString stringWithFormat:@"Count %ld", (long)counter2] withContext:[TBTableDataContext context]];
                     
-                    [row_2_4 setValue:!row_2_4.value withContext:nil];
-                    [row_2_5 setValue:!row_2_5.value withContext:nil];
+                    [row_2_4 setValue:!row_2_4.value withContext:[TBTableDataContext context]];
+                    [row_2_5 setValue:!row_2_5.value withContext:[TBTableDataContext context]];
                 };
             }];
             

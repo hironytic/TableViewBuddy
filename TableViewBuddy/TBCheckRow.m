@@ -73,7 +73,7 @@
 - (void)rowDidTapInTableView:(UITableView *)tableView AtIndexPath:(NSIndexPath *)indexPath {
     [super rowDidTapInTableView:tableView AtIndexPath:indexPath];
     if ([self canChangeValueTo:!self.value]) {
-        [self setValue:!self.value withContext:nil];
+        [self setValue:!self.value withContext:[TBTableDataContext context]];
         if (self.valueChangeHandler != nil) {
             self.valueChangeHandler(self.value);
         }

@@ -115,7 +115,7 @@
                       selectedIndex:weakSelf.selectedIndex
                         withContext:helper.context];
                 section.selectionChangeHandler = ^(NSInteger selectedIndex) {
-                    [weakSelf setSelectedIndex:selectedIndex withContext:nil];
+                    [weakSelf setSelectedIndex:selectedIndex withContext:[TBTableDataContext context]];
                     if (weakSelf.selectionChangeHandler != nil) {
                         weakSelf.selectionChangeHandler(selectedIndex);
                     }

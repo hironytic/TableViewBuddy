@@ -28,6 +28,19 @@
 
 @implementation TBTableDataContext
 
++ (instancetype)context {
+    if ([self class] == [TBTableDataContext class]) {
+        static TBTableDataContext *instance = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            instance = [[TBTableDataContext alloc] init];
+        });
+        return instance;
+    } else {
+        return [[[self class] alloc] init];
+    }
+}
+
 @end
 
 
