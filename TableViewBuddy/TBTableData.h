@@ -31,10 +31,10 @@
 @class TBTableDataUpdateContext;
 
 /**
- * `TBTableData` represents a data model of the table view.
- * 
- * `TBTableData` adopts the `UITableViewDataSource` and `UITableViewDelegate` protocols and is
- * supposed to be set to `UITableView` as a data source and a delegate.
+ `TBTableData` represents a data model of the table view.
+ 
+ `TBTableData` adopts the `UITableViewDataSource` and `UITableViewDelegate` protocols and is
+ supposed to be set to `UITableView` as a data source and a delegate.
  */
 @interface TBTableData : NSObject <UITableViewDataSource, UITableViewDelegate>
 
@@ -42,38 +42,38 @@
 @property(nonatomic, weak) UITableView *tableView;
 
 /**
- * Section list.
- *
- * An list of `TBTableDataSection` objects.
+ Section list.
+ 
+ An list of `TBTableDataSection` objects.
  */
 @property(nonatomic, strong, readonly) NSArray *sections;
 
 /**
- * Creates a new table data using specified configurator.
- *
- * @param configurator A block object to configure table data.
- * @return The table data object.
+ Creates a new table data using specified configurator.
+
+ @param configurator A block object to configure table data.
+ @return The table data object.
  */
 + (instancetype)tableDataWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator;
 
 /**
- * Updates the table view.
- *
- * With this method, you can get a `TBTableDataUpdateContext` object.
- * It is required in some edit operations that may cause increase or decrease of sections/rows.
- * 
- * @param animated Specify `YES` to animate.
- * @param updater A block object to edit table data with `TBTableDataUpdateContext` object.
+ Updates the table view.
+ 
+ With this method, you can get a `<TBTableDataUpdateContext>` object.
+ It is required in some edit operations that may cause increase or decrease of sections/rows.
+ 
+ @param animated Specify `YES` to animate.
+ @param updater A block object to edit table data with `<TBTableDataUpdateContext>` object.
  */
 - (void)updateAnimated:(BOOL)animated updater:(void (^)(TBTableDataUpdateContext *context))updater;
 
 /**
- * Creates a section and inserts it after specified section.
- *
- * @param previousSection The new section is inserted after this section.
- * @param context A context object. `TBTableDataInitializationContext` or `TBTableDataUpdateContext` object is required.
- * @param generator A block object to generate section object.
- * @return The section object created by this method.
+ Creates a section and inserts it after specified section.
+ 
+ @param previousSection The new section is inserted after this section.
+ @param context A context object. `<TBTableDataInitializationContext>` or `<TBTableDataUpdateContext>` object is required.
+ @param generator A block object to generate section object.
+ @return The section object created by this method.
  */
 - (TBTableDataSection *)insertSectionAfter:(TBTableDataSection *)previousSection
                                withContext:(TBTableDataContext *)context

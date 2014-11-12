@@ -31,71 +31,71 @@
 @class TBTableDataRow;
 
 /**
- * `TBTableDataSection` represents a data model of the section as a part of the table data.
+ `TBTableDataSection` represents a data model of the section as a part of the table data.
  */
 @interface TBTableDataSection : NSObject
 
 /**
- * A `TBTableData` object to which this object belongs.
+ A `<TBTableData>` object to which this object belongs.
  */
 @property(nonatomic, weak, readonly) TBTableData *tableData;
 
 /**
- * A boolean value that determines whether the section is hidden.
+ A boolean value that determines whether the section is hidden.
  */
 @property(nonatomic, assign, readonly) BOOL hidden;
 
 /**
- * A title for the header of the section.
+ A title for the header of the section.
  */
 @property(nonatomic, copy, readonly) NSString *headerTitle;
 
 /**
- * A title for the footer of the section.
+ A title for the footer of the section.
  */
 @property(nonatomic, copy, readonly) NSString *footerTitle;
 
 /**
- * Row list.
- *
- * An list of `TBTableDataRow` objects.
+ Row list.
+ 
+ An list of `<TBTableDataRow>` objects.
  */
 @property(nonatomic, strong, readonly) NSArray *rows;
 
 /**
- * Returns a generator block object, which can be used as a last parameter in `[TBTableData insertSectionAfter:withContext:generator:]`.
- *
- * @param configurator A block object to configure the section.
- * @return The generator block object.
+ Returns a generator block object, which can be used as a last parameter in `<[TBTableData insertSectionAfter:withContext:generator:]>`.
+ 
+ @param configurator A block object to configure the section.
+ @return The generator block object.
  */
 + (TBTableDataSection *(^)(TBTableDataInitializationContext *context))sectionGeneratorWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator;
 
 /**
- * Returns a `TBTableDataSection` object initialized with specified context.
- *
- * This is the designated initializer method.
- *
- * @param context A context object to initialize.
- * @return The section object.
+ Returns a `TBTableDataSection` object initialized with specified context.
+ 
+ This is the designated initializer method.
+ 
+ @param context A context object to initialize.
+ @return The section object.
  */
 - (instancetype)initWithContext:(TBTableDataInitializationContext *)context;
 
 /**
- * Returns an index of the section in the table view.
- *
- * Returned value is index in the visible sections. Hidden sections are not counted.
- *
- * @return The index, or NSNotFound when this section is not visible.
+ Returns an index of the section in the table view.
+ 
+ Returned value is index in the visible sections. Hidden sections are not counted.
+ 
+ @return The index, or NSNotFound when this section is not visible.
  */
 - (NSInteger)sectionIndex;
 
 /**
- * Creates a row and inserts it after specified row.
- *
- * @param previousRow The new row is inserted after this row.
- * @param context A context object. `TBTableDataInitializationContext` or `TBTableDataUpdateContext` object is required.
- * @param generator A block object to generate row object.
- * @return The row object created by this method.
+ Creates a row and inserts it after specified row.
+ 
+ @param previousRow The new row is inserted after this row.
+ @param context A context object. `<TBTableDataInitializationContext>` or `<TBTableDataUpdateContext>` object is required.
+ @param generator A block object to generate row object.
+ @return The row object created by this method.
  */
 - (TBTableDataRow *)insertRowAfter:(TBTableDataRow *)previousRow
                        withContext:(TBTableDataContext *)context
@@ -103,40 +103,40 @@
 
 
 /**
- * Changes the visibility of the section.
- *
- * @param hidden `YES` to hide the section, or `NO` to show.
- * @param context A context object. `TBTableDataInitializationContext` or `TBTableDataUpdateContext` object is required.
+ Changes the visibility of the section.
+ 
+ @param hidden `YES` to hide the section, or `NO` to show.
+ @param context A context object. `<TBTableDataInitializationContext>` or `<TBTableDataUpdateContext>` object is required.
  */
 - (void)setHidden:(BOOL)hidden withContext:(TBTableDataContext *)context;
 
 /**
- * Changes the title for the header.
- *
- * @param headerTitle The title used for the header.
- * @param context A context object.
+ Changes the title for the header.
+ 
+ @param headerTitle The title used for the header.
+ @param context A context object.
  */
 - (void)setHeaderTitle:(NSString *)headerTitle withContext:(TBTableDataContext *)context;
 
 /**
- * Changes the title for the footer.
- *
- * @param footerTitle The title used for the footer.
- * @param context A context object.
+ Changes the title for the footer.
+ 
+ @param footerTitle The title used for the footer.
+ @param context A context object.
  */
 - (void)setFooterTitle:(NSString *)footerTitle withContext:(TBTableDataContext *)context;
 
 /**
- * Reloads the section in table view.
- *
- * @param context A context object. `TBTableDataUpdateContext` object is required.
+ Reloads the section in table view.
+ 
+ @param context A context object. `<TBTableDataUpdateContext>` object is required.
  */
 - (void)reloadWithContext:(TBTableDataContext *)context;
 
 /**
- * Deletes the section.
- *
- * @param context A context object. `TBTableDataInitializationContext` or `TBTableDataUpdateContext` object is required.
+ Deletes the section.
+ 
+ @param context A context object. `<TBTableDataInitializationContext>` or `<TBTableDataUpdateContext>` object is required.
  */
 - (void)deleteWithContext:(TBTableDataContext *)context;
 

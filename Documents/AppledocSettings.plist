@@ -20,6 +20,8 @@
 	<true/>
 	<key>--clean-output</key>
 	<true/>
+	<key>--explicit-crossref</key>
+	<true/>
 	<key>--output</key>
 	<string>Generated</string>
 	<key>--input</key>
