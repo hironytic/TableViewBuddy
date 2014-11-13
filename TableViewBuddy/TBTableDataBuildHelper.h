@@ -30,8 +30,12 @@
 @class TBTableDataRow;
 @class TBTableDataSection;
 
+/**
+ */
 @interface TBTableDataBuildHelper : NSObject
 
+/**
+ */
 @property(nonatomic, weak, readonly) TBTableDataInitializationContext *context;
 
 - (TBTableData *)buildTableData:(void (^)())configurator;

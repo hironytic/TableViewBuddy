@@ -26,6 +26,8 @@
 #import "TBCheckRow.h"
 #import "TBTableDataBuildHelper.h"
 
+/**
+ */
 @interface TBChoiceRow : TBCheckRow
 
 @end
