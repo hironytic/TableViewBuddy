@@ -27,6 +27,10 @@
 #import "TBTableDataBuildHelper.h"
 
 /**
+ `TBChoiceRow` is a row which has checked state.
+ 
+ Unlike `<TBCheckRow>`, user cannot uncheck the row by tapping it.
+ This class is typically used in the implementaton of `<TBSingleChoiceSection>`.
  */
 @interface TBChoiceRow : TBCheckRow
 
@@ -34,5 +38,10 @@
 
 
 @interface TBTableDataBuildHelper (TBChoiceRow)
+/**
+ Build a row of `TBChoiceRow`.
+ 
+ @param configurator A block object which configure the row.
+ */
 - (void)buildChoiceRow:(void (^)(TBChoiceRow *row))configurator;
 @end
