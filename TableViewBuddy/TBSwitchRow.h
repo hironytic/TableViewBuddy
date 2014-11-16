@@ -26,19 +26,52 @@
 #import "TBTableDataRow.h"
 #import "TBTableDataBuildHelper.h"
 
+/**
+ `TBSwitchRow` is a row that has an On/Off switch.
+ */
 @interface TBSwitchRow : TBTableDataRow
 
+/**
+ A string which is shown in the cell.
+ */
 @property(nonatomic, copy, readonly) NSString *title;
+
+/**
+ A boolean value that indicates whether the switch is On.
+ */
 @property(nonatomic, assign, readonly) BOOL value;
 
+/**
+ Changes the text in the cell.
+ 
+ @param title A string object.
+ @param context A context object.
+ */
 - (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context;
+
+/**
+ Changes the state of the swtich.
+ 
+ @param value A boolean value. Specify `YES` to make the switch On, or `NO to Off.
+ @param context A context object.
+ */
 - (void)setValue:(BOOL)value withContext:(TBTableDataContext *)context;
 
+/**
+ A block object which is called when the state of the switch is changed.
+ 
+ The parameter of the block is an boolean value that indicates the switch is On.
+ */
 @property(nonatomic, copy) void (^valueChangeHandler)(BOOL value);
 
 @end
 
 
 @interface TBTableDataBuildHelper (TBSwitchRow)
+/**
+ Build a row of `<TBSwitchRow>`.
+ 
+ @param configurator A block object which configure the row.
+ */
 - (void)buildSwitchRow:(void (^)(TBSwitchRow *row))configurator;
 @end
