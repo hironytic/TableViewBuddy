@@ -26,25 +26,92 @@
 #import "TBTableDataRow.h"
 #import "TBTableDataBuildHelper.h"
 
+/**
+ `TBTextFieldRow` is a row that has a text field.
+ */
 @interface TBTextFieldRow : TBTableDataRow
 
+/**
+ A string which is shown in the cell.
+ */
 @property(nonatomic, copy, readonly) NSString *title;
+
+/**
+ A string which is the value of the text field.
+ */
 @property(nonatomic, copy, readonly) NSString *text;
+
+/**
+ A string which is shown in the text field when there is no other text in it.
+ */
 @property(nonatomic, copy, readonly) NSString *placeholder;
+
+/**
+ The width of the text field.
+ */
 @property(nonatomic, assign, readonly) CGFloat textFieldWidth;
 
+/**
+ Changes the title text in the cell.
+ 
+ @param title A string object.
+ @param context A context object.
+ */
 - (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context;
+
+/**
+ Changes the text in the text field.
+ 
+ @param text A string object.
+ @param context A context object.
+ */
 - (void)setText:(NSString *)text withContext:(TBTableDataContext *)context;
+
+/**
+ Changes the placeholder text in the text field.
+ 
+ @param placeholder A string object.
+ @param context A context object.
+ */
 - (void)setPlaceholder:(NSString *)placeholder withContext:(TBTableDataContext *)context;
+
+/**
+ Changes the width of the text field.
+ 
+ @param textFieldWidth A CGFloat value which specifies the width of the text field.
+ @param context A context object.
+ */
 - (void)setTextFieldWidth:(CGFloat)textFieldWidth withContext:(TBTableDataContext *)context;
 
+/**
+ A block object which is called when the text in the text field is changed.
+ 
+ The parameter of the block is a text in the text field.
+ */
 @property(nonatomic, copy) void (^textChangeHandler)(NSString *text);
+
+/**
+ A block object which is called in configuring the cell.
+ 
+ Within this block, you can configure properties of the text field.
+ */
 @property(nonatomic, copy) void (^textFieldConfigulator)(UITextField *textField);
+
+/**
+ A block object which is called to ask if the text field should process the pressing of the return button.
+ 
+ This block should return `YES` if the text field should do the default behavior; otherwise, `NO`.
+ */
 @property(nonatomic, copy) BOOL (^textFieldShouldReturnHandler)(UITextField *textField);
 
 @end
 
 
 @interface TBTableDataBuildHelper (TBTextFieldRow)
+/**
+ Build a row of `<TBTextFieldRow>`.
+ 
+ @param configurator A block object which configure the row.
+ */
 - (void)buildTextFieldRow:(void (^)(TBTextFieldRow *row))configurator;
 @end
