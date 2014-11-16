@@ -26,11 +26,22 @@
 #import "TBActionRow.h"
 #import "TBTableDataBuildHelper.h"
 
+/**
+ `TBButtonRow` is a row that user can tap and execute some action.
+ 
+ In addition to `TBActionRow`, the look and feel of the cell indicates that the row has some action,
+ i.e. the title text is tinted on iOS 7 or over.
+ */
 @interface TBButtonRow : TBActionRow
 
 @end
 
 
 @interface TBTableDataBuildHelper (TBButtonRow)
+/**
+ Build a row of `TBButtonRow`.
+ 
+ @param configurator A block object which configure the row.
+ */
 - (void)buildButtonRow:(void (^)(TBButtonRow *row))configurator;
 @end
