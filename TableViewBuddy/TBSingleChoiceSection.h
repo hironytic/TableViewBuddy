@@ -75,7 +75,7 @@
 
 @interface TBTableDataBuildHelper (TBSingleChoiceSection)
 /**
- Build a section of `TBSingleChoiceSection`.
+ Build a section of `<TBSingleChoiceSection>`.
  
  @param configurator A block object which configure the section.
  */

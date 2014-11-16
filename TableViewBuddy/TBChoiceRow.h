@@ -39,7 +39,7 @@
 
 @interface TBTableDataBuildHelper (TBChoiceRow)
 /**
- Build a row of `TBChoiceRow`.
+ Build a row of `<TBChoiceRow>`.
  
  @param configurator A block object which configure the row.
  */
