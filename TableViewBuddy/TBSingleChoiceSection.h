@@ -43,7 +43,7 @@
 @property(nonatomic, assign, readonly) NSInteger selectedIndex;
 
 /**
- Set a list of options and specify which one is selected.
+ Sets a list of options and specify which one is selected.
  
  If the option is a string, it is used as title of the row.
  If the option is not a string and it has method `stringValue` that returns string, the return value of the method is used as title.
@@ -56,7 +56,7 @@
 - (void)setOptions:(NSArray *)options selectedIndex:(NSInteger)selectedIndex withContext:(TBTableDataContext *)context;
 
 /**
- Set the selected option.
+ Changes the selected option.
  
  @param selectedIndex An index of selected option in the list.
  @param context A context object.
