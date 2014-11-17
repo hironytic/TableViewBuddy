@@ -109,7 +109,7 @@
 
 @interface TBTableDataBuildHelper (TBTextFieldRow)
 /**
- Build a row of `<TBTextFieldRow>`.
+ Builds a row of `<TBTextFieldRow>`.
  
  @param configurator A block object which configure the row.
  */

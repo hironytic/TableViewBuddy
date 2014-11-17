@@ -39,7 +39,7 @@
 
 @interface TBTableDataBuildHelper (TBButtonRow)
 /**
- Build a row of `<TBButtonRow>`.
+ Builds a row of `<TBButtonRow>`.
  
  @param configurator A block object which configure the row.
  */

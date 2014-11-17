@@ -62,7 +62,7 @@
 
 @interface TBTableDataBuildHelper (TBLabelRow)
 /**
- Build a row of `<TBLabelRow>`.
+ Builds a row of `<TBLabelRow>`.
  
  @param configurator A block object which configure the row.
  */

@@ -124,7 +124,7 @@
 
 @interface TBTableDataBuildHelper (TBSingleChoiceNavigationRow)
 /**
- Build a row of `<TBSingleChoiceNavigationRow>`.
+ Builds a row of `<TBSingleChoiceNavigationRow>`.
  
  @param configurator A block object which configure the row.
  */

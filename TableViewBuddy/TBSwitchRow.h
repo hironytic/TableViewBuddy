@@ -69,7 +69,7 @@
 
 @interface TBTableDataBuildHelper (TBSwitchRow)
 /**
- Build a row of `<TBSwitchRow>`.
+ Builds a row of `<TBSwitchRow>`.
  
  @param configurator A block object which configure the row.
  */

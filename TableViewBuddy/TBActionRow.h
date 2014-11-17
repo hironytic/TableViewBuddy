@@ -67,7 +67,7 @@
 
 @interface TBTableDataBuildHelper (TBActionRow)
 /**
- Build a row of `<TBActionRow>`.
+ Builds a row of `<TBActionRow>`.
  
  @param configurator A block object which configure the row.
  */

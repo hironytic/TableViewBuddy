@@ -71,7 +71,7 @@
 
 @interface TBTableDataBuildHelper (TBNavigationRow)
 /**
- Build a row of `<TBNavigationRow>`.
+ Builds a row of `<TBNavigationRow>`.
  
  @param configurator A block object which configure the row.
  */

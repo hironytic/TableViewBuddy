@@ -69,7 +69,7 @@
 
 @interface TBTableDataBuildHelper (TBCheckRow)
 /**
- Build a row of `<TBCheckRow>`.
+ Builds a row of `<TBCheckRow>`.
  
  @param configurator A block object which configure the row.
  */
