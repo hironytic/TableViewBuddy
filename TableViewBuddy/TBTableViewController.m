@@ -54,12 +54,11 @@
     [super viewDidLoad];
 
     if (self.tableData == nil) {
-        TBTableData *tableData = [self buildTableData];
-        tableData.tableView = self.tableView;
-        self.tableData = tableData;
-        self.tableView.dataSource = tableData;
-        self.tableView.delegate = tableData;
+        self.tableData = [self buildTableData];
     }
+    self.tableData.tableView = self.tableView;
+    self.tableView.dataSource = self.tableData;
+    self.tableView.delegate = self.tableData;
 }
 
 @end
