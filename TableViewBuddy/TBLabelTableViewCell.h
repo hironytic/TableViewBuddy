@@ -25,6 +25,9 @@
 
 #import "TBUntappableCell.h"
 
+/**
+ `TBLabelTableViewCell` represents a cell used by `<TBLabelRow>`.
+ */
 @interface TBLabelTableViewCell : TBUntappableCell
 
 @end
