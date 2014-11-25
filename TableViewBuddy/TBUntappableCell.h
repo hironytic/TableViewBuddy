@@ -25,6 +25,9 @@
 
 #import "TBTableViewCell.h"
 
+/**
+ `TBUntappableCell` represents a cell that does not respond to tap. 
+ */
 @interface TBUntappableCell : TBTableViewCell
 
 @end
