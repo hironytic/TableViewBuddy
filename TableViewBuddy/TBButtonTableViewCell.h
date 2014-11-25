@@ -25,6 +25,9 @@
 
 #import "TBTableViewCell.h"
 
+/**
+ `TBButtonTableViewCell` represents a cell used by `<TBButtonRow>`.
+ */
 @interface TBButtonTableViewCell : TBTableViewCell
 
 @end
