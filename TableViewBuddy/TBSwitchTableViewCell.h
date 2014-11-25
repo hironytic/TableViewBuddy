@@ -25,11 +25,29 @@
 
 #import "TBUntappableCell.h"
 
+/**
+ `TBSwitchTableViewCell` represents a cell used by `<TBSwitchRow>`.
+ */
 @interface TBSwitchTableViewCell : TBUntappableCell
 
+/**
+ A boolean value that indicates whether the switch is On or Off.
+ */
 @property(nonatomic, assign) BOOL switchValue;
+
+/**
+ A block object that is called when state of the switch is changed.
+ 
+ The parameter of the block is a boolean value that indicates the switch is On.
+ */
 @property(nonatomic, copy) void (^switchValueChanged)(BOOL value);
 
+/**
+ Changes the state of the switch.
+ 
+ @param switchValue Specify `YES` to turn to the On
+ @param animated Specify `YES` to animate.
+ */
 - (void)setSwitchValue:(BOOL)switchValue animated:(BOOL)animated;
 
 @end

@@ -26,19 +26,54 @@
 #import "TBTableDataRow.h"
 #import "TBTableDataBuildHelper.h"
 
+/**
+ `TBNavigationRow` is a row that yields next screen by tapping it.
+ 
+ Note that this class has no function to show next screen.
+ It just has a look and feel to navigate, i.e. it has a disclosure indicator.
+ You should write your code in the block which is set to `<tapHandler>` property.
+ */
 @interface TBNavigationRow : TBTableDataRow
 
+/**
+ A string which is shown in the cell.
+ */
 @property(nonatomic, copy, readonly) NSString *title;
+
+/**
+ A secondary string which is shown in the cell.
+ */
 @property(nonatomic, copy, readonly) NSString *detailText;
 
+/**
+ Changes the text in the cell.
+ 
+ @param title A string object.
+ @param context A context object.
+ */
 - (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context;
+
+/**
+ Changes the secondary text in the cell.
+ 
+ @param detailText A string object.
+ @param context A context object.
+ */
 - (void)setDetailText:(NSString *)detailText withContext:(TBTableDataContext *)context;
 
+/**
+ A block object which is called when the row is tapped.
+ */
 @property(nonatomic, copy) void (^tapHandler)();
 
 @end
 
 
 @interface TBTableDataBuildHelper (TBNavigationRow)
+/**
+ Builds a row of `<TBNavigationRow>`.
+ 
+ @param configurator A block object which configure the row.
+ */
 - (void)buildNavigationRow:(void (^)(TBNavigationRow *row))configurator;
 @end

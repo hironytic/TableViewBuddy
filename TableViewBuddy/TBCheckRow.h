@@ -26,19 +26,52 @@
 #import "TBTableDataRow.h"
 #import "TBTableDataBuildHelper.h"
 
+/**
+ `TBCheckRow` is a row that user can check or uncheck it by tapping.
+ */
 @interface TBCheckRow : TBTableDataRow
 
+/**
+ A string which is shown in the cell.
+ */
 @property(nonatomic, copy, readonly) NSString *title;
+
+/**
+ A boolean value that indicates whether checked or not.
+ */
 @property(nonatomic, assign, readonly) BOOL value;
 
+/**
+ Changes the text in the cell.
+ 
+ @param title A string object.
+ @param context A context object.
+ */
 - (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context;
+
+/**
+ Checks of unchecks the row.
+ 
+ @param value A boolean value. Specify `YES` to check, or `NO to uncheck.
+ @param context A context object.
+ */
 - (void)setValue:(BOOL)value withContext:(TBTableDataContext *)context;
 
+/**
+ A block object which is called when the checked state is changed.
+ 
+ The parameter of the block is a boolean value that indicates the row has been checked or not.
+ */
 @property(nonatomic, copy) void (^valueChangeHandler)(BOOL value);
 
 @end
 
 
 @interface TBTableDataBuildHelper (TBCheckRow)
+/**
+ Builds a row of `<TBCheckRow>`.
+ 
+ @param configurator A block object which configure the row.
+ */
 - (void)buildCheckRow:(void (^)(TBCheckRow *row))configurator;
 @end

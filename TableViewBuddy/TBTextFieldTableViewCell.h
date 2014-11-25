@@ -25,19 +25,61 @@
 
 #import "TBUntappableCell.h"
 
+/**
+ `TBTextFieldTableViewCell` represents a cell used by `<TBTextFieldRow>`.
+ */
 @interface TBTextFieldTableViewCell : TBUntappableCell
 
+/**
+ A string which is the value of the text field.
+ */
 @property(nonatomic, copy) NSString *text;
+
+/**
+ A `UITextField` object.
+ */
 @property(nonatomic, strong, readonly) UITextField *textField;
 
+
+/**
+ A block object which is called when UIControlEventEditingChanged control event is occured.
+ */
 @property(nonatomic, copy) void (^textFieldEditingChangedHandler)(UITextField *textField);
 
+
+/**
+ A block object which is called to ask if editing should begin.
+ */
 @property(nonatomic, copy) BOOL (^textFieldShouldBeginEditingHandler)(UITextField *textField);
+
+/**
+ A block object which is called to tell that editing began.
+ */
 @property(nonatomic, copy) void (^textFieldDidBeginEditingHandler)(UITextField *textField);
+
+/**
+ A block object which is called to asks if editing should stop.
+ */
 @property(nonatomic, copy) BOOL (^textFieldShouldEndEditingHandler)(UITextField *textField);
+
+/**
+ A block object which is called to tell that editing stopped.
+ */
 @property(nonatomic, copy) void (^textFieldDidEndEditingHandler)(UITextField *textField);
+
+/**
+ A block object which is called to ask if the specified text should be changed.
+ */
 @property(nonatomic, copy) BOOL (^textFieldShouldChangeCharactersHandler)(UITextField *textField, NSRange range, NSString *replacementString);
+
+/**
+ A block object which is called to ask if the text field's current contents should be removed.
+ */
 @property(nonatomic, copy) BOOL (^textFieldShouldClearHandler)(UITextField *textField);
+
+/**
+ A block object which is called to asks if the text field should process the pressing of the return button.
+ */
 @property(nonatomic, copy) BOOL (^textFieldShouldReturnHandler)(UITextField *textField);
 
 @end

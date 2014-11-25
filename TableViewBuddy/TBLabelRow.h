@@ -26,17 +26,45 @@
 #import "TBTableDataRow.h"
 #import "TBTableDataBuildHelper.h"
 
+/**
+ `TBLabelRow` is a row that displays an information. The tap gesture is not handled in it.
+ */
 @interface TBLabelRow : TBTableDataRow
 
+/**
+ A string which is shown in the cell.
+ */
 @property(nonatomic, copy, readonly) NSString *title;
+
+/**
+ A secondary string which is shown in the cell.
+ */
 @property(nonatomic, copy, readonly) NSString *detailText;
 
+/**
+ Changes the text in the cell.
+ 
+ @param title A string object.
+ @param context A context object.
+ */
 - (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context;
+
+/**
+ Changes the secondary text in the cell.
+ 
+ @param detailText A string object.
+ @param context A context object.
+ */
 - (void)setDetailText:(NSString *)detailText withContext:(TBTableDataContext *)context;
 
 @end
 
 
 @interface TBTableDataBuildHelper (TBLabelRow)
+/**
+ Builds a row of `<TBLabelRow>`.
+ 
+ @param configurator A block object which configure the row.
+ */
 - (void)buildLabelRow:(void (^)(TBLabelRow *row))configurator;
 @end

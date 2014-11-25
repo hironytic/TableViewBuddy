@@ -28,12 +28,81 @@
 @class TBTableData;
 @class TBTableDataBuildHelper;
 
+/**
+ `TBTableViewController` is a table view controller that has a `<TBTableData>` object for data source.
+ 
+ This is a convenient utility class that allows you to create `<TBTableData>` based view controller.
+ You can use `<TBTableData>` in combination with any `UITableView` object without benefit of this class.
+ But if you want a simple table view based controller, this class may help.
+ 
+ `TBTableViewController` is used in many way.
+ 
+ If you already have configured `<TBTableData>` object,
+ create a `TBTableViewController` object, simply set the table data
+ to `<tableData>` property, and present.
+ For examle:
+
+    TBTableViewController *viewController
+            = [[TBTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    viewController.tableData = yourTableDataObject;
+    [self.navigationController pushViewController:viewController animated:YES];
+ 
+ Or you can create a `TBTableViewController` object with a block to configure its table data like below:
+ 
+    TBTableViewController *viewController
+            = [[TBTableViewController alloc] initWithStyle:UITableViewStyleGrouped
+                                       buildTableDataBlock:^TBTableData *(TBTableViewController *vc) {
+        TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] init];
+        TBTableData *tableData = [helper buildTableData:^{
+            // ... configuring table data here ...
+        }];
+        return tableData;
+    }];
+    [self.navigationController pushViewController:viewController animated:YES];
+ 
+ You can also create a subclass of `TBTableViewController`.
+ In this case, you may override `buildTableData` method to configure the table data.
+ Here is an example:
+ 
+    @interface XXXTableViewController : TBTableViewController
+    @end
+    
+    @implementation XXXTableViewController
+    - (TBTableData *)buildTableData {
+        TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] init];
+        TBTableData *tableData = [helper buildTableData:^{
+            // ... configuring table data here ...
+        }];
+        return tableData;
+    }
+ 
+    // ... other implementations ...
+ 
+    @end
+ */
 @interface TBTableViewController : UITableViewController
 
+/**
+ A `TBTableData` object used as a model of the table view.
+ */
 @property(nonatomic, strong) TBTableData *tableData;
 
+/**
+ Initializes object with a block object that configures table data.
+ 
+ @param style A constant that specifies the style of table view.
+ @param block A block object that configures table data. It is called from `buildTableData` method.
+ */
 - (instancetype)initWithStyle:(UITableViewStyle)style buildTableDataBlock:(TBTableData *(^)(TBTableViewController *vc))block;
 
+/**
+ Creates table data and configures it.
+ 
+ This method is typically overridden by the derived class.
+ It is called from `viewDidLoad` method if table data is not set yet.
+ 
+ @return A generated table data.
+ */
 - (TBTableData *)buildTableData;
 
 @end
