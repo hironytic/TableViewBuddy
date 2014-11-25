@@ -25,8 +25,16 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ `TBTableViewCell` represents a generic cell in table view.
+ */
 @interface TBTableViewCell : UITableViewCell
 
+/**
+ Makes appearance of the cell enabled/disabled.
+ 
+ @param available To change appearance enabled, specify YES. Otherwise NO.
+ */
 - (void)setAvailable:(BOOL)available;
 
 @end
