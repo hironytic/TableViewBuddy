@@ -60,7 +60,7 @@
 /**
  A block object which is called when the state of the switch is changed.
  
- The parameter of the block is an boolean value that indicates the switch is On.
+ The parameter of the block is a boolean value that indicates the switch is On.
  */
 @property(nonatomic, copy) void (^valueChangeHandler)(BOOL value);
 

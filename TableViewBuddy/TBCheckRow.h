@@ -60,7 +60,7 @@
 /**
  A block object which is called when the checked state is changed.
  
- The parameter of the block is an boolean value that indicates the row have been checked or not.
+ The parameter of the block is a boolean value that indicates the row has been checked or not.
  */
 @property(nonatomic, copy) void (^valueChangeHandler)(BOOL value);
 
