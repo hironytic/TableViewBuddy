@@ -39,7 +39,7 @@
         UITableViewCell *cell = [self findVisibleCell];
         if (cell != nil) {
             cell.accessoryType = (value) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
-            [cell layoutSubviews];
+            [cell setNeedsLayout];
         }
     }
 }
@@ -54,7 +54,7 @@
     
     cell.accessoryType = (self.value) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
 
-    [cell layoutSubviews];
+    [cell setNeedsLayout];
 }
 
 - (void)rowDidTapInTableView:(UITableView *)tableView AtIndexPath:(NSIndexPath *)indexPath {

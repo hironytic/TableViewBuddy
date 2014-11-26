@@ -46,7 +46,7 @@
         TBTextFieldTableViewCell *cell = (TBTextFieldTableViewCell *)[self findVisibleCell];
         if (cell != nil) {
             cell.textField.text = (self.text != nil) ? self.text : @"";
-            [cell layoutSubviews];
+            [cell setNeedsLayout];
         }
     }
 }
@@ -58,7 +58,7 @@
         TBTextFieldTableViewCell *cell = (TBTextFieldTableViewCell *)[self findVisibleCell];
         if (cell != nil) {
             cell.textField.placeholder = placeholder;
-            [cell layoutSubviews];
+            [cell setNeedsLayout];
         }
     }
 }
@@ -72,7 +72,7 @@
             CGRect textFieldFrame = cell.textField.frame;
             textFieldFrame.size.width = textFieldWidth;
             cell.textField.frame = textFieldFrame;
-            [cell layoutSubviews];
+            [cell setNeedsLayout];
         }
     }
 }
@@ -111,7 +111,7 @@
         }
     };
     
-    [cell layoutSubviews];
+    [cell setNeedsLayout];
 }
 
 @end

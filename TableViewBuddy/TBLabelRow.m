@@ -38,7 +38,7 @@
         UITableViewCell *cell = [self findVisibleCell];
         if (cell != nil) {
             cell.detailTextLabel.text = (self.detailText != nil) ? self.detailText : @"";
-            [cell layoutSubviews];
+            [cell setNeedsLayout];
         }
     }
 }
@@ -51,7 +51,7 @@
 - (void)configureTableViewCell:(UITableViewCell *)cell {
     [super configureTableViewCell:cell];
     cell.detailTextLabel.text = (self.detailText != nil) ? self.detailText : @"";
-    [cell layoutSubviews];
+    [cell setNeedsLayout];
 }
 
 @end

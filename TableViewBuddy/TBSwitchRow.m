@@ -38,7 +38,7 @@
         TBSwitchTableViewCell *cell = (TBSwitchTableViewCell *)[self findVisibleCell];
         if (cell != nil) {
             [cell setSwitchValue:value animated:YES];
-            [cell layoutSubviews];
+            [cell setNeedsLayout];
         }
     }
 }
@@ -62,7 +62,7 @@
         }
     };
     
-    [cell layoutSubviews];
+    [cell setNeedsLayout];
 }
 
 @end

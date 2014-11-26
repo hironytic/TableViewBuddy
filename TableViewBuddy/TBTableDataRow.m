@@ -161,7 +161,7 @@
         UITableViewCell *cell = [self findVisibleCell];
         if (cell != nil) {
             cell.imageView.image = image;
-            [cell layoutSubviews];
+            [cell setNeedsLayout];
         }
     }
 }
@@ -173,7 +173,7 @@
         UITableViewCell *cell = [self findVisibleCell];
         if (cell != nil) {
             cell.textLabel.text = (self.title != nil) ? self.title : @"";
-            [cell layoutSubviews];
+            [cell setNeedsLayout];
         }
     }
 }
