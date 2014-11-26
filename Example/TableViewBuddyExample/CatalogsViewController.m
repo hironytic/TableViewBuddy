@@ -56,6 +56,7 @@
             // Row "Button"
             [helper buildButtonRow:^(TBButtonRow *row) {
                 [row setTitle:@"Button" withContext:helper.context];
+                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:helper.context];
                 row.tapHandler = ^{
                     NSLog(@"Button is tapped.");
                 };
@@ -64,6 +65,7 @@
             // Row "Check"
             [helper buildCheckRow:^(TBCheckRow *row) {
                 [row setTitle:@"Check" withContext:helper.context];
+                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:helper.context];
                 [row setValue:YES withContext:helper.context];
                 row.valueChangeHandler = ^(BOOL value) {
                     NSLog(@"Check value becomes %@", (value) ? @"checked" : @"unchecked");
@@ -73,12 +75,14 @@
             // Row "Label"
             [helper buildLabelRow:^(TBLabelRow *row) {
                 [row setTitle:@"Label" withContext:helper.context];
+                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:helper.context];
                 [row setDetailText:@"text" withContext:helper.context];
             }];
             
             // Row "Navigation"
             [helper buildNavigationRow:^(TBNavigationRow *row) {
                 [row setTitle:@"Navigation" withContext:helper.context];
+                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:helper.context];
                 row.tapHandler = ^{
                     TBTableViewController *nextViewController = [[TBTableViewController alloc] initWithStyle:UITableViewStylePlain];
                     [weakSelf.navigationController pushViewController:nextViewController animated:YES];
@@ -88,6 +92,7 @@
             // Row "SingleChoice"
             [helper buildSingleChoiceNavigationRow:^(TBSingleChoiceNavigationRow *row) {
                 [row setTitle:@"Single Choice" withContext:helper.context];
+                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:helper.context];
                 row.navigationController = weakSelf.navigationController;
                 NSArray *options = @[@"One", @"Two", @"Three"];
                 [row setOptions:options selectedIndex:0 withContext:helper.context];
@@ -101,6 +106,7 @@
             // Row "Switch"
             [helper buildSwitchRow:^(TBSwitchRow *row) {
                 [row setTitle:@"Switch" withContext:helper.context];
+                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:helper.context];
                 [row setValue:YES withContext:helper.context];
                 row.valueChangeHandler = ^(BOOL value) {
                     NSLog(@"Switch is %@", (value) ? @"on" : @"off");

@@ -86,7 +86,6 @@
     [super configureTableViewCell:cell];
     
     TBTextFieldTableViewCell *textFieldCell = (TBTextFieldTableViewCell *)cell;
-    textFieldCell.textLabel.text = (self.title != nil) ? self.title : @"";
     textFieldCell.textField.text = (self.text != nil) ? self.text : @"";
     textFieldCell.textField.placeholder = self.placeholder;
     if (self.textFieldConfigulator != nil) {

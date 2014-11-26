@@ -36,14 +36,6 @@
     return cell;
 }
 
-- (void)configureTableViewCell:(UITableViewCell *)cell {
-    [super configureTableViewCell:cell];
-    
-    cell.textLabel.text = (self.title != nil) ? self.title : @"";
-    cell.imageView.image = self.image;
-    [cell layoutSubviews];
-}
-
 - (void)rowDidTapInTableView:(UITableView *)tableView AtIndexPath:(NSIndexPath *)indexPath {
     [super rowDidTapInTableView:tableView AtIndexPath:indexPath];
     if (self.enabled) {

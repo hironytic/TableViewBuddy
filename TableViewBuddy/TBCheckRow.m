@@ -52,7 +52,6 @@
 - (void)configureTableViewCell:(UITableViewCell *)cell {
     [super configureTableViewCell:cell];
     
-    cell.textLabel.text = (self.title != nil) ? self.title : @"";
     cell.accessoryType = (self.value) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
 
     [cell layoutSubviews];

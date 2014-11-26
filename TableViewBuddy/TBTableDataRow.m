@@ -101,11 +101,13 @@
 }
 
 - (void)configureTableViewCell:(UITableViewCell *)cell {
-    // to be overridden
-
     if ([cell isKindOfClass:[TBTableViewCell class]]) {
         [(TBTableViewCell *)cell setAvailable:self.enabled];
     }
+    
+    cell.textLabel.text = (self.title != nil) ? self.title : @"";
+    cell.imageView.image = self.image;
+    [cell setNeedsLayout];
 }
 
 - (void)rowDidTapInTableView:(UITableView *)tableView AtIndexPath:(NSIndexPath *)indexPath {

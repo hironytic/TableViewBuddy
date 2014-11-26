@@ -50,7 +50,6 @@
 
 - (void)configureTableViewCell:(UITableViewCell *)cell {
     [super configureTableViewCell:cell];
-    cell.textLabel.text = (self.title != nil) ? self.title : @"";
     cell.detailTextLabel.text = (self.detailText != nil) ? self.detailText : @"";
     [cell layoutSubviews];
 }

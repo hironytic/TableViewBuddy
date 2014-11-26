@@ -52,7 +52,6 @@
     [super configureTableViewCell:cell];
     
     TBSwitchTableViewCell *switchCell = (TBSwitchTableViewCell *)cell;
-    switchCell.textLabel.text = (self.title != nil) ? self.title : @"";
     switchCell.switchValue = self.value;
     
     TBSwitchRow * __weak weakSelf = self;
