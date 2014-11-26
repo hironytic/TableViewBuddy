@@ -31,18 +31,6 @@
 
 @implementation TBNavigationRow
 
-- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context {
-    _title = [title copy];
-    
-    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
-        UITableViewCell *cell = [self findVisibleCell];
-        if (cell != nil) {
-            cell.textLabel.text = (self.title != nil) ? self.title : @"";
-            [cell layoutSubviews];
-        }
-    }
-}
-
 - (void)setDetailText:(NSString *)detailText withContext:(TBTableDataContext *)context {
     _detailText = [detailText copy];
     
@@ -63,18 +51,8 @@
 
 - (void)configureTableViewCell:(UITableViewCell *)cell {
     [super configureTableViewCell:cell];
-    cell.textLabel.text = (self.title != nil) ? self.title : @"";
     cell.detailTextLabel.text = (self.detailText != nil) ? self.detailText : @"";
     [cell layoutSubviews];
-}
-
-- (void)rowDidTapInTableView:(UITableView *)tableView AtIndexPath:(NSIndexPath *)indexPath {
-    [super rowDidTapInTableView:tableView AtIndexPath:indexPath];
-    if (self.enabled) {
-        if (self.tapHandler != nil) {
-            self.tapHandler();
-        }
-    }
 }
 
 @end

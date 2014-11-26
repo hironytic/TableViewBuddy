@@ -23,7 +23,7 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "TBTableDataRow.h"
+#import "TBActionRow.h"
 #import "TBTableDataBuildHelper.h"
 
 /**
@@ -33,25 +33,12 @@
  It just has a look and feel to navigate, i.e. it has a disclosure indicator.
  You should write your code in the block which is set to `<tapHandler>` property.
  */
-@interface TBNavigationRow : TBTableDataRow
-
-/**
- A string which is shown in the cell.
- */
-@property(nonatomic, copy, readonly) NSString *title;
+@interface TBNavigationRow : TBActionRow
 
 /**
  A secondary string which is shown in the cell.
  */
 @property(nonatomic, copy, readonly) NSString *detailText;
-
-/**
- Changes the text in the cell.
- 
- @param title A string object.
- @param context A context object.
- */
-- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context;
 
 /**
  Changes the secondary text in the cell.
@@ -60,11 +47,6 @@
  @param context A context object.
  */
 - (void)setDetailText:(NSString *)detailText withContext:(TBTableDataContext *)context;
-
-/**
- A block object which is called when the row is tapped.
- */
-@property(nonatomic, copy) void (^tapHandler)();
 
 @end
 
