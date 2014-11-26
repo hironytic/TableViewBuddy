@@ -31,18 +31,6 @@
 
 @implementation TBLabelRow
 
-- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context {
-    _title = [title copy];
-    
-    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
-        UITableViewCell *cell = [self findVisibleCell];
-        if (cell != nil) {
-            cell.textLabel.text = (self.title != nil) ? self.title : @"";
-            [cell layoutSubviews];
-        }
-    }
-}
-
 - (void)setDetailText:(NSString *)detailText withContext:(TBTableDataContext *)context {
     _detailText = [detailText copy];
     

@@ -39,18 +39,6 @@
     return self;
 }
 
-- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context {
-    _title = [title copy];
-    
-    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
-        UITableViewCell *cell = [self findVisibleCell];
-        if (cell != nil) {
-            cell.textLabel.text = (self.title != nil) ? self.title : @"";
-            [cell layoutSubviews];
-        }
-    }
-}
-
 - (void)setText:(NSString *)text withContext:(TBTableDataContext *)context {
     _text = text;
     

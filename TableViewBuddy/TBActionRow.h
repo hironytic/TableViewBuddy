@@ -32,32 +32,6 @@
 @interface TBActionRow : TBTableDataRow
 
 /**
- An image which is shown in the cell.
- */
-@property(nonatomic, strong, readonly) UIImage *image;
-
-/**
- A string which is shown in the cell.
- */
-@property(nonatomic, copy, readonly) NSString *title;
-
-/**
- Changes the image in the cell.
- 
- @param image An image object.
- @param context A context object.
- */
-- (void)setImage:(UIImage *)image withContext:(TBTableDataContext *)context;
-
-/**
- Changes the text in the cell.
- 
- @param title A string object.
- @param context A context object.
- */
-- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context;
-
-/**
  A block object which is called when the row is tapped.
  */
 @property(nonatomic, copy) void (^tapHandler)();

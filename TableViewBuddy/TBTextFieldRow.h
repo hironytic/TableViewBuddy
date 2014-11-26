@@ -32,11 +32,6 @@
 @interface TBTextFieldRow : TBTableDataRow
 
 /**
- A string which is shown in the cell.
- */
-@property(nonatomic, copy, readonly) NSString *title;
-
-/**
  A string which is the value of the text field.
  */
 @property(nonatomic, copy, readonly) NSString *text;
@@ -50,14 +45,6 @@
  The width of the text field.
  */
 @property(nonatomic, assign, readonly) CGFloat textFieldWidth;
-
-/**
- Changes the title text in the cell.
- 
- @param title A string object.
- @param context A context object.
- */
-- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context;
 
 /**
  Changes the text in the text field.

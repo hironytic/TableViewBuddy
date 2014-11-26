@@ -55,6 +55,16 @@
 @property(nonatomic, assign, readonly) BOOL enabled;
 
 /**
+ An image which is shown in the cell.
+ */
+@property(nonatomic, strong, readonly) UIImage *image;
+
+/**
+ A string which is shown in the cell.
+ */
+@property(nonatomic, copy, readonly) NSString *title;
+
+/**
  Returns a generator block object, which can be used as a last parameter in `<[TBTableDataSection insertRowAfter:withContext:generator:]>`.
  
  @param configurator A block object to configure the row.
@@ -103,6 +113,22 @@
  @param context A context object.
  */
 - (void)setEnabled:(BOOL)enabled withContext:(TBTableDataContext *)context;
+
+/**
+ Changes the image in the cell.
+ 
+ @param image An image object.
+ @param context A context object.
+ */
+- (void)setImage:(UIImage *)image withContext:(TBTableDataContext *)context;
+
+/**
+ Changes the text in the cell.
+ 
+ @param title A string object.
+ @param context A context object.
+ */
+- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context;
 
 /**
  Reloads the row in table view.

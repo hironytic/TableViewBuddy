@@ -32,22 +32,9 @@
 @interface TBCheckRow : TBTableDataRow
 
 /**
- A string which is shown in the cell.
- */
-@property(nonatomic, copy, readonly) NSString *title;
-
-/**
  A boolean value that indicates whether checked or not.
  */
 @property(nonatomic, assign, readonly) BOOL value;
-
-/**
- Changes the text in the cell.
- 
- @param title A string object.
- @param context A context object.
- */
-- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context;
 
 /**
  Checks of unchecks the row.

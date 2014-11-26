@@ -32,18 +32,6 @@
 
 @implementation TBCheckRow
 
-- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context {
-    _title = [title copy];
-    
-    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
-        UITableViewCell *cell = [self findVisibleCell];
-        if (cell != nil) {
-            cell.textLabel.text = (self.title != nil) ? self.title : @"";
-            [cell layoutSubviews];
-        }
-    }
-}
-
 - (void)setValue:(BOOL)value withContext:(TBTableDataContext *)context {
     _value = value;
     

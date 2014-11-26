@@ -32,22 +32,9 @@
 @interface TBLabelRow : TBTableDataRow
 
 /**
- A string which is shown in the cell.
- */
-@property(nonatomic, copy, readonly) NSString *title;
-
-/**
  A secondary string which is shown in the cell.
  */
 @property(nonatomic, copy, readonly) NSString *detailText;
-
-/**
- Changes the text in the cell.
- 
- @param title A string object.
- @param context A context object.
- */
-- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context;
 
 /**
  Changes the secondary text in the cell.

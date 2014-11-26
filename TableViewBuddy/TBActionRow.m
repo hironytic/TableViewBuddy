@@ -31,30 +31,6 @@
 
 @implementation TBActionRow
 
-- (void)setImage:(UIImage *)image withContext:(TBTableDataContext *)context {
-    _image = image;
-    
-    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
-        UITableViewCell *cell = [self findVisibleCell];
-        if (cell != nil) {
-            cell.imageView.image = image;
-            [cell layoutSubviews];
-        }
-    }
-}
-
-- (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context {
-    _title = [title copy];
-    
-    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
-        UITableViewCell *cell = [self findVisibleCell];
-        if (cell != nil) {
-            cell.textLabel.text = (self.title != nil) ? self.title : @"";
-            [cell layoutSubviews];
-        }
-    }
-}
-
 - (UITableViewCell *)createTableViewCell {
     TBTableViewCell *cell = [[TBTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[self reuseIdentifier]];
     return cell;
