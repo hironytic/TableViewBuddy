@@ -32,6 +32,10 @@
 
 @implementation TBTableViewController
 
+- (instancetype)initWithStyle:(UITableViewStyle)style {
+    return [self initWithStyle:style buildTableDataBlock:nil];
+}
+
 - (instancetype)initWithStyle:(UITableViewStyle)style buildTableDataBlock:(TBTableData *(^)(TBTableViewController *vc))block {
     self = [super initWithStyle:style];
     if (self != nil) {
