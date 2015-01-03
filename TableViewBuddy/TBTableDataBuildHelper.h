@@ -141,6 +141,14 @@
 - (TBTableData *)buildTableData:(void (^)())configurator;
 
 /**
+ Creates a `<TBTableData>` (or its derived class) object and configures it.
+ 
+ @param tableDataClass A class object of `<TBTableData>` or its derived class.
+ @param configurator A block object that configures table data.
+ */
+- (TBTableData *)buildTableDataWithTableDataClass:(Class)tableDataClass configulator:(void (^)())configurator;
+
+/**
  Creates a section object, adds it at the end of sections, and configures it.
  
  @param sectionClass A class object of `<TBTableDataSection>` or its derived class.

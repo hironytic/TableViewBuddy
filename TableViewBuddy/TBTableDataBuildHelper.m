@@ -38,7 +38,11 @@
 @implementation TBTableDataBuildHelper
 
 - (TBTableData *)buildTableData:(void (^)())configurator {
-    TBTableData *tableData = [TBTableData tableDataWithConfigurator:^(TBTableDataInitializationContext *context) {
+    return [self buildTableDataWithTableDataClass:[TBTableData class] configulator:configurator];
+}
+
+- (TBTableData *)buildTableDataWithTableDataClass:(Class)tableDataClass configulator:(void (^)())configurator {
+    TBTableData *tableData = [tableDataClass tableDataWithConfigurator:^(TBTableDataInitializationContext *context) {
         self.previousSection = nil;
         self.context = context;
         configurator();
