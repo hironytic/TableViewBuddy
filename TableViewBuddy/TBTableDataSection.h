@@ -2,7 +2,7 @@
 // TBTableDataSection.h
 // TableViewBuddy
 //
-// Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
+// Copyright (c) 2014,2015 Hironori Ichimiya <hiron@hironytic.com>
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -58,9 +58,20 @@
 /**
  Row list.
  
- An list of `<TBTableDataRow>` objects.
+ A list of `<TBTableDataRow>` objects.
  */
 @property(nonatomic, strong, readonly) NSArray *rows;
+
+/**
+ Returns a row at index in unhidden rows.
+
+ Because `<rows>` can contain hidden sections,
+ the result of `[tableDataSection.rows objectAtIndex:index]` may different from `[tableDataSection rowAtUnhiddenRowIndex:index]`.
+ 
+ @param rowIndex An index of the row counting except hidden ones.
+ @return The row object.
+ */
+- (TBTableDataRow *)rowAtUnhiddenRowIndex:(NSInteger)rowIndex;
 
 /**
  Returns a generator block object, which can be used as a last parameter in `<[TBTableData insertSectionAfter:withContext:generator:]>`.
@@ -83,9 +94,9 @@
 /**
  Returns an index of the section in the table view.
  
- Returned value is index in the visible sections. Hidden sections are not counted.
+ Returned value is index in the unhidden sections. Hidden sections are not counted.
  
- @return The index, or NSNotFound when this section is not visible.
+ @return The index, or NSNotFound when this section is hidden.
  */
 - (NSInteger)sectionIndex;
 

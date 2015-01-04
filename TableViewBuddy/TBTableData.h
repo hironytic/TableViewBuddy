@@ -28,6 +28,7 @@
 
 @class TBTableDataContext;
 @class TBTableDataInitializationContext;
+@class TBTableDataRow;
 @class TBTableDataSection;
 @class TBTableDataUpdateContext;
 
@@ -45,9 +46,39 @@
 /**
  Section list.
  
- An list of `TBTableDataSection` objects.
+ An list of `<TBTableDataSection>` objects.
  */
 @property(nonatomic, strong, readonly) NSArray *sections;
+
+/**
+ Returns a section at index in unhidden sections.
+ 
+ Because `<sections>` can contain hidden sections,
+ the result of `[tableData.sections objectAtIndex:index]` may different from `[tableData sectionAtUnhiddenSectionIndex:index]`.
+ 
+ @param sectionIndex An index of the section counting except hidden ones.
+ @return The section object.
+ */
+- (TBTableDataSection *)sectionAtUnhiddenSectionIndex:(NSInteger)sectionIndex;
+
+/**
+ Returns a row at index in unhidden rows/sections.
+
+ @param rowIndex An index of the row counting except hidden ones.
+ @param sectionIndex An index of the section counting except hidden ones.
+ @return The row object.
+ @see - sectionAtUnhiddenSectionIndex:
+ */
+- (TBTableDataRow *)rowAtUnhiddenRowIndex:(NSInteger)rowIndex inUnhiddenSectionIndex:(NSInteger)sectionIndex;
+
+/**
+ Returns a row at index in unhidden rows/sections.
+ 
+ @param indexPath A index path of the row counting except hidden ones.
+ @return The row object.
+ @see - sectionAtUnhiddenSectionIndex:
+ */
+- (TBTableDataRow *)rowAtUnhiddenIndexPath:(NSIndexPath *)indexPath;
 
 /**
  Creates a new table data using specified configurator.

@@ -86,9 +86,9 @@
 /**
  Returns an index path of the row in the table view.
  
- Indices in the returned path are indices in the visible sections/rows. Hidden sections/rows are not counted.
+ Indices in the returned path are indices in the unhidden sections/rows. Hidden sections/rows are not counted.
  
- @return The index path, or nil when this row is not visible.
+ @return The index path, or nil when this row is hidden.
  */
 - (NSIndexPath *)rowIndexPath;
 

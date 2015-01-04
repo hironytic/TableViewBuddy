@@ -2,7 +2,7 @@
 // TBTableData.m
 // TableViewBuddy
 //
-// Copyright (c) 2014 Hironori Ichimiya <hiron@hironytic.com>
+// Copyright (c) 2014,2015 Hironori Ichimiya <hiron@hironytic.com>
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -54,7 +54,7 @@
     return self;
 }
 
-- (TBTableDataSection *)visibleSectionAtSectionIndex:(NSInteger)sectionIndex {
+- (TBTableDataSection *)sectionAtUnhiddenSectionIndex:(NSInteger)sectionIndex {
     for (TBTableDataSection *section in self.sections) {
         if (!section.hidden) {
             if (sectionIndex == 0) {
@@ -66,23 +66,16 @@
     return nil;
 }
 
-- (TBTableDataRow *)visibleRowAtIndex:(NSInteger)rowIndex inSectionIndex:(NSInteger)sectionIndex {
-    TBTableDataSection *section = [self visibleSectionAtSectionIndex:sectionIndex];
+- (TBTableDataRow *)rowAtUnhiddenRowIndex:(NSInteger)rowIndex inUnhiddenSectionIndex:(NSInteger)sectionIndex {
+    TBTableDataSection *section = [self sectionAtUnhiddenSectionIndex:sectionIndex];
     if (section != nil) {
-        for (TBTableDataRow *row in section.rows) {
-            if (!row.hidden) {
-                if (rowIndex == 0) {
-                    return row;
-                }
-                --rowIndex;
-            }
-        }
+        return [section rowAtUnhiddenRowIndex:rowIndex];
     }
     return nil;
 }
 
-- (TBTableDataRow *)visibleRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [self visibleRowAtIndex:indexPath.row inSectionIndex:indexPath.section];
+- (TBTableDataRow *)rowAtUnhiddenIndexPath:(NSIndexPath *)indexPath {
+    return [self rowAtUnhiddenRowIndex:indexPath.row inUnhiddenSectionIndex:indexPath.section];
 }
 
 - (void)updateAnimated:(BOOL)animated updater:(void (^)(TBTableDataUpdateContext *context))updater {
@@ -209,24 +202,24 @@
     }
     for (TBTableDataSection *section in self.mutableSections) {
         rowIndex = 0;
-        BOOL isSectionVisible = NO;
+        BOOL isSectionUnhidden = NO;
         switch (section.updateStatus) {
             case TBUpdateStatusNotChanged:
                 if (!section.hidden) {
-                    isSectionVisible = YES;
+                    isSectionUnhidden = YES;
                 }
                 break;
             case TBUpdateStatusShown:
                 if (section.hidden) {
                     [sectionIndices addIndex:sectionIndex];
                 }
-                isSectionVisible = YES;
+                isSectionUnhidden = YES;
                 break;
             case TBUpdateStatusDeleted:
             case TBUpdateStatusHidden:
                 break;
         }
-        if (isSectionVisible) {
+        if (isSectionUnhidden) {
             if (section.insertedRows != nil) {
                 for (TBTableDataRow *insertedRow in section.insertedRows) {
                     [self collectAppearedRowIndexPaths:rowIndexPaths
@@ -236,24 +229,24 @@
                 }
             }
             for (TBTableDataRow *row in section.mutableRows) {
-                BOOL isRowVisible = NO;
+                BOOL isRowUnhidden = NO;
                 switch (row.updateStatus) {
                     case TBUpdateStatusNotChanged:
                         if (!row.hidden) {
-                            isRowVisible = YES;
+                            isRowUnhidden = YES;
                         }
                         break;
                     case TBUpdateStatusShown:
                         if (row.hidden) {
                             [rowIndexPaths addObject:[NSIndexPath indexPathForRow:rowIndex inSection:sectionIndex]];
                         }
-                        isRowVisible = YES;
+                        isRowUnhidden = YES;
                         break;
                     case TBUpdateStatusDeleted:
                     case TBUpdateStatusHidden:
                         break;
                 }
-                if (isRowVisible) {
+                if (isRowUnhidden) {
                     ++rowIndex;
                 }
                 if (row.insertedRows != nil) {
@@ -279,23 +272,23 @@
 - (void)collectAppearedSectionIndices:(NSMutableIndexSet *)sectionIndices
                     inInsertedSection:(TBTableDataSection *)section
                          sectionIndex:(NSInteger *)sectionIndex {
-    BOOL isSectionVisible = NO;
+    BOOL isSectionUnhidden = NO;
     switch (section.updateStatus) {
         case TBUpdateStatusNotChanged:
             if (!section.hidden) {
                 [sectionIndices addIndex:*sectionIndex];
-                isSectionVisible = YES;
+                isSectionUnhidden = YES;
             }
             break;
         case TBUpdateStatusShown:
             [sectionIndices addIndex:*sectionIndex];
-            isSectionVisible = YES;
+            isSectionUnhidden = YES;
             break;
         case TBUpdateStatusDeleted:
         case TBUpdateStatusHidden:
             break;
     }
-    if (isSectionVisible) {
+    if (isSectionUnhidden) {
         *sectionIndex = *sectionIndex + 1;
     }
     if (section.insertedSections != nil) {
@@ -309,23 +302,23 @@
                        inInsertedRow:(TBTableDataRow *)row
                         sectionIndex:(NSInteger)sectionIndex
                             rowIndex:(NSInteger *)rowIndex {
-    BOOL isRowVisible = NO;
+    BOOL isRowUnhidden = NO;
     switch (row.updateStatus) {
         case TBUpdateStatusNotChanged:
             if (!row.hidden) {
                 [rowIndexPaths addObject:[NSIndexPath indexPathForRow:*rowIndex inSection:sectionIndex]];
-                isRowVisible = YES;
+                isRowUnhidden = YES;
             }
             break;
         case TBUpdateStatusShown:
             [rowIndexPaths addObject:[NSIndexPath indexPathForRow:*rowIndex inSection:sectionIndex]];
-            isRowVisible = YES;
+            isRowUnhidden = YES;
             break;
         case TBUpdateStatusDeleted:
         case TBUpdateStatusHidden:
             break;
     }
-    if (isRowVisible) {
+    if (isRowUnhidden) {
         *rowIndex = *rowIndex + 1;
     }
     if (row.insertedRows != nil) {
@@ -519,7 +512,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)sectionIndex {
-    TBTableDataSection *section = [self visibleSectionAtSectionIndex:sectionIndex];
+    TBTableDataSection *section = [self sectionAtUnhiddenSectionIndex:sectionIndex];
     if (section != nil) {
         return section.headerTitle;
     }
@@ -527,7 +520,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)sectionIndex {
-    TBTableDataSection *section = [self visibleSectionAtSectionIndex:sectionIndex];
+    TBTableDataSection *section = [self sectionAtUnhiddenSectionIndex:sectionIndex];
     if (section != nil) {
         return section.footerTitle;
     }
@@ -535,7 +528,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex {
-    TBTableDataSection *section = [self visibleSectionAtSectionIndex:sectionIndex];
+    TBTableDataSection *section = [self sectionAtUnhiddenSectionIndex:sectionIndex];
     if (section != nil) {
         NSInteger count = 0;
         for (TBTableDataRow *row in section.rows) {
@@ -550,7 +543,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TBTableDataRow *row = [self visibleRowAtIndexPath:indexPath];
+    TBTableDataRow *row = [self rowAtUnhiddenIndexPath:indexPath];
     if (row != nil) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:row.reuseIdentifier];
         if (cell == nil) {
@@ -565,7 +558,7 @@
 #pragma mark UITableViewDelegate
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TBTableDataRow *row = [self visibleRowAtIndexPath:indexPath];
+    TBTableDataRow *row = [self rowAtUnhiddenIndexPath:indexPath];
     if (row == nil || !row.enabled) {
         return nil;
     }
@@ -573,7 +566,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TBTableDataRow *row = [self visibleRowAtIndexPath:indexPath];
+    TBTableDataRow *row = [self rowAtUnhiddenIndexPath:indexPath];
     if (row != nil) {
         [row rowDidTapInTableView:tableView AtIndexPath:indexPath];
     }
