@@ -26,6 +26,7 @@
 #import "SampleMenuViewController.h"
 #import "TableViewBuddy.h"
 #import "CatalogsViewController.h"
+#import "InsertDeleteViewController.h"
 
 @interface SampleMenuViewController ()
 
@@ -44,6 +45,16 @@
                 row.tapHandler = ^{
                     CatalogsViewController *catalogsViewController = [[CatalogsViewController alloc] init];
                     [weakSelf executeViewController:catalogsViewController];
+                };
+            }];
+            
+            // "Insert and Delete"
+            [helper buildActionRow:^(TBActionRow *row) {
+                [row setTitle:@"Insert and Delete" withContext:helper.context];
+                row.tapHandler = ^{
+                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InsertDelete" bundle:nil];
+                    UIViewController *viewController = [storyboard instantiateInitialViewController];
+                    [weakSelf executeViewController:viewController];
                 };
             }];
         }];

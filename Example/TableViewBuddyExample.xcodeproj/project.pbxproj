@@ -27,6 +27,8 @@
 		50C5520D19DFEE4200F546AA /* TBNavigationRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5520C19DFEE4200F546AA /* TBNavigationRow.m */; };
 		50C5521019DFF0AB00F546AA /* SampleTableViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5520F19DFF0AB00F546AA /* SampleTableViewController2.m */; };
 		50C5521319E0CEA500F546AA /* TBTableDataBuildHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5521219E0CEA500F546AA /* TBTableDataBuildHelper.m */; };
+		50CEDECF1AA2E85F00A0D21A /* InsertDeleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50CEDECE1AA2E85F00A0D21A /* InsertDeleteViewController.m */; };
+		50CEDED11AA2E88500A0D21A /* InsertDelete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CEDED01AA2E88500A0D21A /* InsertDelete.storyboard */; };
 		50E09F6419925F3200911E02 /* TBLabelRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E09F6319925F3200911E02 /* TBLabelRow.m */; };
 		50E50F1019A99D2C007D4F56 /* TBUntappableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E50F0F19A99D2C007D4F56 /* TBUntappableCell.m */; };
 		50E92DAE198E2D5600D6C224 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E92DAD198E2D5600D6C224 /* Foundation.framework */; };
@@ -100,6 +102,9 @@
 		50C5520F19DFF0AB00F546AA /* SampleTableViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTableViewController2.m; sourceTree = "<group>"; };
 		50C5521119E0CEA500F546AA /* TBTableDataBuildHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTableDataBuildHelper.h; sourceTree = "<group>"; };
 		50C5521219E0CEA500F546AA /* TBTableDataBuildHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTableDataBuildHelper.m; sourceTree = "<group>"; };
+		50CEDECD1AA2E85F00A0D21A /* InsertDeleteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsertDeleteViewController.h; sourceTree = "<group>"; };
+		50CEDECE1AA2E85F00A0D21A /* InsertDeleteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsertDeleteViewController.m; sourceTree = "<group>"; };
+		50CEDED01AA2E88500A0D21A /* InsertDelete.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InsertDelete.storyboard; sourceTree = "<group>"; };
 		50E09F6219925F3200911E02 /* TBLabelRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBLabelRow.h; sourceTree = "<group>"; };
 		50E09F6319925F3200911E02 /* TBLabelRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBLabelRow.m; sourceTree = "<group>"; };
 		50E50F0E19A99D2C007D4F56 /* TBUntappableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBUntappableCell.h; sourceTree = "<group>"; };
@@ -198,6 +203,9 @@
 				50E92DBD198E2D5600D6C224 /* AppDelegate.m */,
 				500F479919FF07D80014D732 /* CatalogsViewController.h */,
 				500F479A19FF07D80014D732 /* CatalogsViewController.m */,
+				50CEDECD1AA2E85F00A0D21A /* InsertDeleteViewController.h */,
+				50CEDECE1AA2E85F00A0D21A /* InsertDeleteViewController.m */,
+				50CEDED01AA2E88500A0D21A /* InsertDelete.storyboard */,
 				500F479619FF068A0014D732 /* SampleMenuViewController.h */,
 				500F479719FF068A0014D732 /* SampleMenuViewController.m */,
 				5048F5CF19911E6000E746DD /* SampleTableViewController1.h */,
@@ -384,6 +392,7 @@
 			files = (
 				50E92DB8198E2D5600D6C224 /* InfoPlist.strings in Resources */,
 				50E92DC0198E2D5600D6C224 /* Images.xcassets in Resources */,
+				50CEDED11AA2E88500A0D21A /* InsertDelete.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50CEDECF1AA2E85F00A0D21A /* InsertDeleteViewController.m in Sources */,
 				5048F5D119911E6000E746DD /* SampleTableViewController1.m in Sources */,
 				50E92DE8198E328000D6C224 /* TBTableDataContext.m in Sources */,
 				504E5F6419E18BA7002868E2 /* TBSingleChoiceSection.m in Sources */,
