@@ -30,12 +30,55 @@
 #import "TBTableDataSection.h"
 
 @interface TBTableDataBuildHelper ()
-@property(nonatomic, weak) TBTableDataInitializationContext *context;
+@property(nonatomic, weak) TBTableDataContext *context;
+@property(nonatomic, weak) TBTableData *currentTableData;
+@property(nonatomic, weak) TBTableDataSection *currentSection;
 @property(nonatomic, weak) TBTableDataSection *previousSection;
 @property(nonatomic, weak) TBTableDataRow *previousRow;
 @end
 
 @implementation TBTableDataBuildHelper
+
+- (instancetype)init {
+    return [self initWithUpdateContext:nil
+                             tableData:nil
+                               section:nil
+                       previousSection:nil
+                           previousRow:nil];
+}
+
+- (instancetype)initWithUpdateContext:(TBTableDataUpdateContext *)context tableData:(TBTableData *)currentTableData previousSection:(TBTableDataSection *)previousSection {
+    return [self initWithUpdateContext:context
+                             tableData:currentTableData
+                               section:nil
+                       previousSection:previousSection
+                           previousRow:nil];
+}
+
+- (instancetype)initWithUpdateContext:(TBTableDataUpdateContext *)context section:(TBTableDataSection *)currentSection previousRow:(TBTableDataRow *)previousRow {
+    return [self initWithUpdateContext:context
+                             tableData:currentSection.tableData
+                               section:currentSection
+                       previousSection:currentSection
+                           previousRow:previousRow];
+}
+
+- (instancetype)initWithUpdateContext:(TBTableDataUpdateContext *)context
+                            tableData:(TBTableData *)currentTableData
+                              section:(TBTableDataSection *)currentSection
+                      previousSection:(TBTableDataSection *)previousSection
+                          previousRow:(TBTableDataRow *)previousRow
+{
+    self = [super init];
+    if (self != nil) {
+        _context = context;
+        _currentTableData = currentTableData;
+        _currentSection = currentSection;
+        _previousSection = previousSection;
+        _previousRow = previousRow;
+    }
+    return self;
+}
 
 - (TBTableData *)buildTableData:(void (^)())configurator {
     return [self buildTableDataWithTableDataClass:[TBTableData class] configulator:configurator];
@@ -45,24 +88,28 @@
     TBTableData *tableData = [tableDataClass tableDataWithConfigurator:^(TBTableDataInitializationContext *context) {
         self.previousSection = nil;
         self.context = context;
+        self.currentTableData = context.tableData;
         configurator();
+        self.currentTableData = nil;
     }];
     return tableData;
 }
 
 - (void)buildSectionWithSectionClass:(Class)sectionClass configurator:(void (^)(TBTableDataSection *section))configurator {
-    TBTableDataInitializationContext *orgContext = self.context;
+    TBTableDataContext *orgContext = self.context;
     self.previousRow = nil;
-    self.previousSection = [self.context.tableData insertSectionAfter:self.previousSection withContext:self.context generator:[sectionClass sectionGeneratorWithConfigurator:^(TBTableDataInitializationContext *context) {
+    self.previousSection = [self.currentTableData insertSectionAfter:self.previousSection withContext:self.context generator:[sectionClass sectionGeneratorWithConfigurator:^(TBTableDataInitializationContext *context) {
         self.context = context;
+        self.currentSection = context.section;
         configurator(context.section);
+        self.currentSection = nil;
     }]];
     self.context = orgContext;
 }
 
 - (void)buildRowWithRowClass:(Class)rowClass configurator:(void (^)(TBTableDataRow *row))configurator {
-    TBTableDataInitializationContext *orgContext = self.context;
-    self.previousRow = [self.context.section insertRowAfter:self.previousRow withContext:self.context generator:[rowClass rowGeneratorWithConfigurator:^(TBTableDataInitializationContext *context) {
+    TBTableDataContext *orgContext = self.context;
+    self.previousRow = [self.currentSection insertRowAfter:self.previousRow withContext:self.context generator:[rowClass rowGeneratorWithConfigurator:^(TBTableDataInitializationContext *context) {
         self.context = context;
         configurator(context.row);
     }]];
