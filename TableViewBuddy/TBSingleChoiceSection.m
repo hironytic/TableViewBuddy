@@ -45,32 +45,32 @@
     _options = options;
     _selectedIndex = selectedIndex;
     self.choiceRows = [[NSMutableArray alloc] initWithCapacity:[options count]];
-    __block TBTableDataRow *previousRow = nil;
-    [options enumerateObjectsUsingBlock:^(id opt, NSUInteger ix, BOOL *stop) {
-        previousRow = [((TBTableDataInitializationContext *)context).section insertRowAfter:previousRow withContext:context generator:[TBChoiceRow rowGeneratorWithConfigurator:^(TBTableDataInitializationContext *context) {
-            TBChoiceRow *row = (TBChoiceRow *)context.row;
-            
-            NSString *optTitle = nil;
-            if ([opt isKindOfClass:[NSString class]]) {
-                optTitle = opt;
-            } else if ([opt respondsToSelector:@selector(stringValue)]) {
-                optTitle = [opt stringValue];
-            } else {
-                optTitle = [opt description];
-            }
-            [row setTitle:optTitle withContext:context];
-            
-            if (ix == selectedIndex) {
-                [row setValue:YES withContext:context];
-            } else {
-                [row setValue:NO withContext:context];
-            }
-            
-            row.valueChangeHandler = ^(BOOL value) {
-                [weakSelf optionValueSelected:ix];
-            };
-        }]];
-        [self.choiceRows addObject:previousRow];
+    [((TBTableDataInitializationContext *)context).section insertAfter:nil withContext:context buildBlock:^(TBTableDataBuilder *builder) {
+        [options enumerateObjectsUsingBlock:^(id opt, NSUInteger ix, BOOL *stop) {
+            [builder buildChoiceRow:^(TBChoiceRow *row) {
+                NSString *optTitle = nil;
+                if ([opt isKindOfClass:[NSString class]]) {
+                    optTitle = opt;
+                } else if ([opt respondsToSelector:@selector(stringValue)]) {
+                    optTitle = [opt stringValue];
+                } else {
+                    optTitle = [opt description];
+                }
+                [row setTitle:optTitle withContext:context];
+                
+                if (ix == selectedIndex) {
+                    [row setValue:YES withContext:context];
+                } else {
+                    [row setValue:NO withContext:context];
+                }
+                
+                row.valueChangeHandler = ^(BOOL value) {
+                    [weakSelf optionValueSelected:ix];
+                };
+                
+                [self.choiceRows addObject:row];
+            }];
+        }];
     }];
 }
 
