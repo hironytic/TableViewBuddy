@@ -35,8 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    TBTableDataBuilder *builder = [[TBTableDataBuilder alloc] init];
-    TBTableData *tableData = [builder buildTableData:^{
+    TBTableData *tableData = [TBTableData tableDataWithBuildBlock:^(TBTableDataBuilder *builder) {
         [builder buildGenericSection:^(TBTableDataSection *section) {
             [builder buildLabelRow:^(TBLabelRow *row) {
                 [row setTitle:@"Detail" withContext:builder.context];

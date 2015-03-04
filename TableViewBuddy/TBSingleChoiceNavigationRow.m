@@ -105,8 +105,7 @@
 
     TBSingleChoiceNavigationRow * __weak weakSelf = self;
     TBTableViewController *choiseViewController = [[TBTableViewController alloc] initWithStyle:UITableViewStyleGrouped buildTableDataBlock:^TBTableData *(TBTableViewController *vc) {
-        TBTableDataBuilder *builder = [[TBTableDataBuilder alloc] init];
-        return [builder buildTableData:^{
+        return [TBTableData tableDataWithBuildBlock:^(TBTableDataBuilder *builder) {
             [builder buildSingleChoiceSection:^(TBSingleChoiceSection *section) {
                 [section setHeaderTitle:weakSelf.choiceSectionHeaderTitle withContext:builder.context];
                 [section setFooterTitle:weakSelf.choiceSectionFooterTitle withContext:builder.context];

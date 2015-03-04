@@ -65,8 +65,7 @@
     __block TBTableDataRow *row_New = nil;
     
     SampleTableViewController1 * __weak weakSelf = self;
-    TBTableDataBuilder *builder = [[TBTableDataBuilder alloc] init];
-    TBTableData *tableData = [builder buildTableData:^{
+    TBTableData *tableData = [TBTableData tableDataWithBuildBlock:^(TBTableDataBuilder *builder) {
         // Section 1
         [builder buildGenericSection:^(TBTableDataSection *section) {
             section_1 = section;

@@ -36,8 +36,7 @@
  You can create a `<TBTableData>` object without this class,
  but using this class you can configure a series of sections and rows in a simple way like:
  
-    TBTableDataBuilder *builder = [[TBTableDataBuilder alloc] init];
-    TBTableData *tableData = [builder buildTableData:^{
+    TBTableData *tableData = [TBTableData tableDataWithBuildBlock:^(TBTableDataBuilder *builder) {
         // Section "Cache"
         [builder buildGenericSection:^(TBTableDataSection *section) {
             [section setHeaderTitle:@"Cache" withContext:builder.context];

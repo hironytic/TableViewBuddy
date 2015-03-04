@@ -40,8 +40,8 @@
  
  If you already have configured `<TBTableData>` object,
  create a `TBTableViewController` object, simply set the table data
- to `<tableData>` property, and present.
- For examle:
+ to `<tableData>` property, and present it.
+ For example:
 
     TBTableViewController *viewController
             = [[TBTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
@@ -52,9 +52,9 @@
  
     TBTableViewController *viewController
             = [[TBTableViewController alloc] initWithStyle:UITableViewStyleGrouped
-                                       buildTableDataBlock:^TBTableData *(TBTableViewController *vc) {
-        TBTableDataBuilder *builder = [[TBTableDataBuilder alloc] init];
-        TBTableData *tableData = [builder buildTableData:^{
+                                       buildTableDataBlock:^TBTableData *(TBTableViewController *vc)
+    {
+        TBTableData *tableData = [TBTableData tableDataWithBuildBlock:^(TBTableDataBuilder *builder) {
             // ... configuring table data here ...
         }];
         return tableData;
@@ -70,8 +70,7 @@
     
     @implementation XXXTableViewController
     - (TBTableData *)buildTableData {
-        TBTableDataBuilder *builder = [[TBTableDataBuilder alloc] init];
-        TBTableData *tableData = [builder buildTableData:^{
+        TBTableData *tableData = [TBTableData tableDataWithBuildBlock:^(TBTableDataBuilder *builder) {
             // ... configuring table data here ...
         }];
         return tableData;

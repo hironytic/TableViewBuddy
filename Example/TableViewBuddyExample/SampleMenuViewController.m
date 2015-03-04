@@ -36,8 +36,7 @@
 
 - (TBTableData *)buildTableData {
     SampleMenuViewController * __weak weakSelf = self;
-    TBTableDataBuilder *builder = [[TBTableDataBuilder alloc] init];
-    TBTableData *tableData = [builder buildTableData:^{
+    TBTableData *tableData = [TBTableData tableDataWithBuildBlock:^(TBTableDataBuilder *builder) {
         [builder buildGenericSection:^(TBTableDataSection *section) {
             // "Catalogs"
             [builder buildActionRow:^(TBActionRow *row) {
