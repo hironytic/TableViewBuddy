@@ -29,7 +29,6 @@
 @class TBTableDataContext;
 @class TBTableDataRow;
 @class TBTableDataSection;
-@class TBTableDataUpdateContext;
 
 /**
  `TBTableDataBuildHelper` helps to create a `<TBTableData>` object and to configure sections and rows.
@@ -136,7 +135,7 @@
  @param currentTableData A `<TBTableData>` object to which the new section will be inserted.
  @param previousSection The new section will be inserted after this section.
  */
-- (instancetype)initWithUpdateContext:(TBTableDataUpdateContext *)context tableData:(TBTableData *)currentTableData previousSection:(TBTableDataSection *)previousSection;
+- (instancetype)initWithContext:(TBTableDataContext *)context tableData:(TBTableData *)currentTableData previousSection:(TBTableDataSection *)previousSection;
 
 /**
  Initializes and returns build helper which is used for inserting rows.
@@ -145,7 +144,7 @@
  @param currentSection A `<TBTableDataSection>` object to which the new row will be inserted.
  @param previousRow The new section will be inserted after this row.
  */
-- (instancetype)initWithUpdateContext:(TBTableDataUpdateContext *)context section:(TBTableDataSection *)currentSection previousRow:(TBTableDataRow *)previousRow;
+- (instancetype)initWithContext:(TBTableDataContext *)context section:(TBTableDataSection *)currentSection previousRow:(TBTableDataRow *)previousRow;
 
 /**
  Designated initializer.
@@ -156,11 +155,11 @@
  @param previousSection The new section will be inserted after this section.
  @param previousRow The new section will be inserted after this row.
  */
-- (instancetype)initWithUpdateContext:(TBTableDataUpdateContext *)context
-                            tableData:(TBTableData *)currentTableData
-                              section:(TBTableDataSection *)currentSection
-                      previousSection:(TBTableDataSection *)previousSection
-                          previousRow:(TBTableDataRow *)previousRow;
+- (instancetype)initWithContext:(TBTableDataContext *)context
+                      tableData:(TBTableData *)currentTableData
+                        section:(TBTableDataSection *)currentSection
+                previousSection:(TBTableDataSection *)previousSection
+                    previousRow:(TBTableDataRow *)previousRow;
 
 /**
  A `<TBTableDataContext>` object being used in initializing or updating.

@@ -47,7 +47,7 @@
     TBTableDataRow *insertionPoint = section.rows[1];
     [self.itemData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {
         context.insertionAnimation = UITableViewRowAnimationFade;
-        TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] initWithUpdateContext:context section:section previousRow:insertionPoint];
+        TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] initWithContext:context section:section previousRow:insertionPoint];
         [helper buildCheckRow:^(TBCheckRow *row) {
             [row setTitle:itemName withContext:helper.context];
             [row setValue:NO withContext:helper.context];

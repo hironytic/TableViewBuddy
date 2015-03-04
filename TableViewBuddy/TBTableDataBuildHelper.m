@@ -40,34 +40,34 @@
 @implementation TBTableDataBuildHelper
 
 - (instancetype)init {
-    return [self initWithUpdateContext:nil
-                             tableData:nil
-                               section:nil
-                       previousSection:nil
-                           previousRow:nil];
+    return [self initWithContext:nil
+                       tableData:nil
+                         section:nil
+                 previousSection:nil
+                     previousRow:nil];
 }
 
-- (instancetype)initWithUpdateContext:(TBTableDataUpdateContext *)context tableData:(TBTableData *)currentTableData previousSection:(TBTableDataSection *)previousSection {
-    return [self initWithUpdateContext:context
-                             tableData:currentTableData
-                               section:nil
-                       previousSection:previousSection
-                           previousRow:nil];
+- (instancetype)initWithContext:(TBTableDataContext *)context tableData:(TBTableData *)currentTableData previousSection:(TBTableDataSection *)previousSection {
+    return [self initWithContext:context
+                       tableData:currentTableData
+                         section:nil
+                 previousSection:previousSection
+                     previousRow:nil];
 }
 
-- (instancetype)initWithUpdateContext:(TBTableDataUpdateContext *)context section:(TBTableDataSection *)currentSection previousRow:(TBTableDataRow *)previousRow {
-    return [self initWithUpdateContext:context
-                             tableData:currentSection.tableData
-                               section:currentSection
-                       previousSection:currentSection
-                           previousRow:previousRow];
+- (instancetype)initWithContext:(TBTableDataContext *)context section:(TBTableDataSection *)currentSection previousRow:(TBTableDataRow *)previousRow {
+    return [self initWithContext:context
+                       tableData:currentSection.tableData
+                         section:currentSection
+                 previousSection:currentSection
+                     previousRow:previousRow];
 }
 
-- (instancetype)initWithUpdateContext:(TBTableDataUpdateContext *)context
-                            tableData:(TBTableData *)currentTableData
-                              section:(TBTableDataSection *)currentSection
-                      previousSection:(TBTableDataSection *)previousSection
-                          previousRow:(TBTableDataRow *)previousRow
+- (instancetype)initWithContext:(TBTableDataContext *)context
+                      tableData:(TBTableData *)currentTableData
+                        section:(TBTableDataSection *)currentSection
+                previousSection:(TBTableDataSection *)previousSection
+                    previousRow:(TBTableDataRow *)previousRow
 {
     self = [super init];
     if (self != nil) {
