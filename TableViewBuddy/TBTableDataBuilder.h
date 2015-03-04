@@ -122,8 +122,6 @@
         }]];
     }];
  
- Note this class does not help inserting new sections/rows to existing table data.
- 
  */
 @interface TBTableDataBuilder : NSObject
 
@@ -133,6 +131,7 @@
  @param context A context object.
  @param currentTableData A `<TBTableData>` object to which the new section will be inserted.
  @param previousSection The new section will be inserted after this section.
+ @return A new builder object.
  */
 - (instancetype)initWithContext:(TBTableDataContext *)context tableData:(TBTableData *)currentTableData previousSection:(TBTableDataSection *)previousSection;
 
@@ -142,6 +141,7 @@
  @param context A context object.
  @param currentSection A `<TBTableDataSection>` object to which the new row will be inserted.
  @param previousRow The new section will be inserted after this row.
+ @return A new builder object.
  */
 - (instancetype)initWithContext:(TBTableDataContext *)context section:(TBTableDataSection *)currentSection previousRow:(TBTableDataRow *)previousRow;
 
@@ -153,6 +153,7 @@
  @param currentSection A `<TBTableDataSection>` object to which the new row will be inserted.
  @param previousSection The new section will be inserted after this section.
  @param previousRow The new section will be inserted after this row.
+ @return A new builder object.
  */
 - (instancetype)initWithContext:(TBTableDataContext *)context
                       tableData:(TBTableData *)currentTableData
