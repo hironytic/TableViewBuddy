@@ -26,6 +26,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class TBTableDataBuildHelper;
 @class TBTableDataContext;
 @class TBTableDataInitializationContext;
 @class TBTableDataRow;
@@ -80,6 +81,7 @@
  */
 - (TBTableDataRow *)rowAtUnhiddenIndexPath:(NSIndexPath *)indexPath;
 
+
 /**
  Creates a new table data using specified configurator.
 
@@ -87,6 +89,14 @@
  @return The table data object.
  */
 + (instancetype)tableDataWithConfigurator:(void (^)(TBTableDataInitializationContext *context))configurator;
+
+/**
+ Creates a new table data with build block.
+ 
+ @param buildBlock A block object to build a table data.
+ @return The table data object.
+ */
++ (instancetype)tableDataWithBuildBlock:(void (^)(TBTableDataBuildHelper *helper))buildBlock;
 
 /**
  Updates the table view.
@@ -110,5 +120,16 @@
 - (TBTableDataSection *)insertSectionAfter:(TBTableDataSection *)previousSection
                                withContext:(TBTableDataContext *)context
                                  generator:(TBTableDataSection *(^)(TBTableDataInitializationContext *context))generator;
+
+/**
+ Creates and inserts sections built by specified build block.
+ 
+ @param previousSection The new section is inserted after this section.
+ @param context A context object. `<TBTableDataInitializationContext>` or `<TBTableDataUpdateContext>` object is required.
+ @param buildBlock A block object to build sections.
+ */
+- (void)insertAfter:(TBTableDataSection *)previousSection
+        withContext:(TBTableDataContext *)context
+         buildBlock:(void (^)(TBTableDataBuildHelper *helper))buildBlock;
 
 @end

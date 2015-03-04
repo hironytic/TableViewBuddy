@@ -38,8 +38,7 @@
 
 - (TBTableData *)buildTableData {
     CatalogsViewController * __weak weakSelf = self;
-    TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] init];
-    TBTableData *tableData = [helper buildTableData:^{
+    TBTableData *tableData = [TBTableData tableDataWithBuildBlock:^(TBTableDataBuildHelper *helper) {
         // Section "Rows"
         [helper buildGenericSection:^(TBTableDataSection *section) {
             [section setHeaderTitle:@"Rows" withContext:helper.context];

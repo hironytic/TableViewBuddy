@@ -26,6 +26,7 @@
 #import <Foundation/Foundation.h>
 
 @class TBTableData;
+@class TBTableDataBuildHelper;
 @class TBTableDataContext;
 @class TBTableDataInitializationContext;
 @class TBTableDataRow;
@@ -112,6 +113,16 @@
                        withContext:(TBTableDataContext *)context
                       generator:(TBTableDataRow *(^)(TBTableDataInitializationContext *context))generator;
 
+/**
+ Creates and inserts rows built by specified build block.
+ 
+ @param previousRow The new row is inserted after this row.
+ @param context A context object. `<TBTableDataInitializationContext>` or `<TBTableDataUpdateContext>` object is required.
+ @param buildBlock A block object to build rows.
+ */
+- (void)insertAfter:(TBTableDataRow *)previousRow
+        withContext:(TBTableDataContext *)context
+         buildBlock:(void (^)(TBTableDataBuildHelper *helper))buildBlock;
 
 /**
  Changes the visibility of the section.
