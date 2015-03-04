@@ -1,5 +1,5 @@
 //
-// TBTableDataBuildHelper.h
+// TBTableDataBuilder.h
 // TableViewBuddy
 //
 // Copyright (c) 2014,2015 Hironori Ichimiya <hiron@hironytic.com>
@@ -31,38 +31,38 @@
 @class TBTableDataSection;
 
 /**
- `TBTableDataBuildHelper` helps to create a `<TBTableData>` object and to configure sections and rows.
+ `TBTableDataBuilder` helps to create a `<TBTableData>` object and to configure sections and rows.
  
  You can create a `<TBTableData>` object without this class,
  but using this class you can configure a series of sections and rows in a simple way like:
  
-    TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] init];
-    TBTableData *tableData = [helper buildTableData:^{
+    TBTableDataBuilder *builder = [[TBTableDataBuilder alloc] init];
+    TBTableData *tableData = [builder buildTableData:^{
         // Section "Cache"
-        [helper buildGenericSection:^(TBTableDataSection *section) {
-            [section setHeaderTitle:@"Cache" withContext:helper.context];
+        [builder buildGenericSection:^(TBTableDataSection *section) {
+            [section setHeaderTitle:@"Cache" withContext:builder.context];
             
             // Row "Use Cache"
-            [helper buildSwitchRow:^(TBSwitchRow *row) {
-                [row setTitle:@"Use Cache" withContext:helper.context];
-                [row setValue:YES withContext:helper.context];
+            [builder buildSwitchRow:^(TBSwitchRow *row) {
+                [row setTitle:@"Use Cache" withContext:builder.context];
+                [row setValue:YES withContext:builder.context];
                 // ...
             }];
             
             // Row "Clear All Cache"
-            [helper buildButtonRow:^(TBButtonRow *row) {
-                [row setTitle:@"Clear All Cache" withContext:helper.context];
+            [builder buildButtonRow:^(TBButtonRow *row) {
+                [row setTitle:@"Clear All Cache" withContext:builder.context];
                 // ...
             }];
         }];
         
         // Section "Search"
-        [helper buildGenericSection:^(TBTableDataSection *section) {
-            [section setHeaderTitle:@"Search" withContext:helper.context];
+        [builder buildGenericSection:^(TBTableDataSection *section) {
+            [section setHeaderTitle:@"Search" withContext:builder.context];
             
             // Row "Search Engine"
-            [helper buildSingleChoiceNavigationRow:^(TBSingleChoiceNavigationRow *row) {
-                [row setTitle:@"Search Engine" withContext:helper.context];
+            [builder buildSingleChoiceNavigationRow:^(TBSingleChoiceNavigationRow *row) {
+                [row setTitle:@"Search Engine" withContext:builder.context];
                 // ...
             }];
         }];
@@ -126,10 +126,10 @@
  Note this class does not help inserting new sections/rows to existing table data.
  
  */
-@interface TBTableDataBuildHelper : NSObject
+@interface TBTableDataBuilder : NSObject
 
 /**
- Initializes and returns build helper which is used for inserting sections.
+ Initializes and returns builder which is used for inserting sections.
  
  @param context A context object.
  @param currentTableData A `<TBTableData>` object to which the new section will be inserted.
@@ -138,7 +138,7 @@
 - (instancetype)initWithContext:(TBTableDataContext *)context tableData:(TBTableData *)currentTableData previousSection:(TBTableDataSection *)previousSection;
 
 /**
- Initializes and returns build helper which is used for inserting rows.
+ Initializes and returns builder which is used for inserting rows.
  
  @param context A context object.
  @param currentSection A `<TBTableDataSection>` object to which the new row will be inserted.

@@ -36,12 +36,12 @@
 
 - (TBTableData *)buildTableData {
     SampleMenuViewController * __weak weakSelf = self;
-    TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] init];
-    TBTableData *tableData = [helper buildTableData:^{
-        [helper buildGenericSection:^(TBTableDataSection *section) {
+    TBTableDataBuilder *builder = [[TBTableDataBuilder alloc] init];
+    TBTableData *tableData = [builder buildTableData:^{
+        [builder buildGenericSection:^(TBTableDataSection *section) {
             // "Catalogs"
-            [helper buildActionRow:^(TBActionRow *row) {
-                [row setTitle:@"Catalogs" withContext:helper.context];
+            [builder buildActionRow:^(TBActionRow *row) {
+                [row setTitle:@"Catalogs" withContext:builder.context];
                 row.tapHandler = ^{
                     CatalogsViewController *catalogsViewController = [[CatalogsViewController alloc] init];
                     [weakSelf executeViewController:catalogsViewController];
@@ -49,8 +49,8 @@
             }];
             
             // "Insert and Delete"
-            [helper buildActionRow:^(TBActionRow *row) {
-                [row setTitle:@"Insert and Delete" withContext:helper.context];
+            [builder buildActionRow:^(TBActionRow *row) {
+                [row setTitle:@"Insert and Delete" withContext:builder.context];
                 row.tapHandler = ^{
                     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InsertDelete" bundle:nil];
                     UIViewController *viewController = [storyboard instantiateInitialViewController];

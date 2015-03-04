@@ -100,7 +100,7 @@
 @end
 
 
-@implementation TBTableDataBuildHelper (TBSingleChoiceSection)
+@implementation TBTableDataBuilder (TBSingleChoiceSection)
 - (void)buildSingleChoiceSection:(void (^)(TBSingleChoiceSection *row))configurator {
     [self buildSectionWithSectionClass:[TBSingleChoiceSection class] configurator:^(TBTableDataSection *section) {
         configurator((TBSingleChoiceSection *)section);

@@ -48,7 +48,7 @@
 @end
 
 
-@implementation TBTableDataBuildHelper (TBActionRow)
+@implementation TBTableDataBuilder (TBActionRow)
 - (void)buildActionRow:(void (^)(TBActionRow *row))configurator {
     [self buildRowWithRowClass:[TBActionRow class] configurator:^(TBTableDataRow *row) {
         configurator((TBActionRow *)row);

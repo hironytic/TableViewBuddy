@@ -35,11 +35,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] init];
-    TBTableData *tableData = [helper buildTableData:^{
-        [helper buildGenericSection:^(TBTableDataSection *section) {
-            [helper buildLabelRow:^(TBLabelRow *row) {
-                [row setTitle:@"Detail" withContext:helper.context];
+    TBTableDataBuilder *builder = [[TBTableDataBuilder alloc] init];
+    TBTableData *tableData = [builder buildTableData:^{
+        [builder buildGenericSection:^(TBTableDataSection *section) {
+            [builder buildLabelRow:^(TBLabelRow *row) {
+                [row setTitle:@"Detail" withContext:builder.context];
             }];
         }];
     }];

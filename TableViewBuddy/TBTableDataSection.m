@@ -25,7 +25,7 @@
 
 #import "TBTableDataSection.h"
 #import "TBTableData_Internal.h"
-#import "TBTableDataBuildHelper.h"
+#import "TBTableDataBuilder.h"
 #import "TBTableDataContext_Internal.h"
 #import "TBTableDataRow_Internal.h"
 #import "TBTableDataSection_Internal.h"
@@ -126,9 +126,9 @@
 
 - (void)insertAfter:(TBTableDataRow *)previousRow
         withContext:(TBTableDataContext *)context
-         buildBlock:(void (^)(TBTableDataBuildHelper *helper))buildBlock {
-    TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] initWithContext:context section:self previousRow:previousRow];
-    buildBlock(helper);
+         buildBlock:(void (^)(TBTableDataBuilder *builder))buildBlock {
+    TBTableDataBuilder *builder = [[TBTableDataBuilder alloc] initWithContext:context section:self previousRow:previousRow];
+    buildBlock(builder);
 }
 
 - (void)setHidden:(BOOL)hidden withContext:(TBTableDataContext *)context {

@@ -24,7 +24,7 @@
 //
 
 #import "TBTableDataSection.h"
-#import "TBTableDataBuildHelper.h"
+#import "TBTableDataBuilder.h"
 
 /**
  `TBSingleChoiseSection` is a section that have options list in it.
@@ -73,7 +73,7 @@
 @end
 
 
-@interface TBTableDataBuildHelper (TBSingleChoiceSection)
+@interface TBTableDataBuilder (TBSingleChoiceSection)
 /**
  Builds a section of `<TBSingleChoiceSection>`.
  

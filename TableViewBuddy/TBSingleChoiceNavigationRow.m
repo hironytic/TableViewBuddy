@@ -26,7 +26,7 @@
 #import "TBSingleChoiceNavigationRow.h"
 #import "TBSingleChoiceSection.h"
 #import "TBTableData.h"
-#import "TBTableDataBuildHelper.h"
+#import "TBTableDataBuilder.h"
 #import "TBTableDataContext.h"
 #import "TBTableViewController.h"
 
@@ -105,15 +105,15 @@
 
     TBSingleChoiceNavigationRow * __weak weakSelf = self;
     TBTableViewController *choiseViewController = [[TBTableViewController alloc] initWithStyle:UITableViewStyleGrouped buildTableDataBlock:^TBTableData *(TBTableViewController *vc) {
-        TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] init];
-        return [helper buildTableData:^{
-            [helper buildSingleChoiceSection:^(TBSingleChoiceSection *section) {
-                [section setHeaderTitle:weakSelf.choiceSectionHeaderTitle withContext:helper.context];
-                [section setFooterTitle:weakSelf.choiceSectionFooterTitle withContext:helper.context];
+        TBTableDataBuilder *builder = [[TBTableDataBuilder alloc] init];
+        return [builder buildTableData:^{
+            [builder buildSingleChoiceSection:^(TBSingleChoiceSection *section) {
+                [section setHeaderTitle:weakSelf.choiceSectionHeaderTitle withContext:builder.context];
+                [section setFooterTitle:weakSelf.choiceSectionFooterTitle withContext:builder.context];
                 
                 [section setOptions:weakSelf.options
                       selectedIndex:weakSelf.selectedIndex
-                        withContext:helper.context];
+                        withContext:builder.context];
                 section.selectionChangeHandler = ^(NSInteger selectedIndex) {
                     [weakSelf setSelectedIndex:selectedIndex withContext:[TBTableDataContext context]];
                     if (weakSelf.selectionChangeHandler != nil) {
@@ -131,7 +131,7 @@
 @end
 
 
-@implementation TBTableDataBuildHelper (TBSingleChoiceNavigationRow)
+@implementation TBTableDataBuilder (TBSingleChoiceNavigationRow)
 - (void)buildSingleChoiceNavigationRow:(void (^)(TBSingleChoiceNavigationRow *row))configurator {
     [self buildRowWithRowClass:[TBSingleChoiceNavigationRow class] configurator:^(TBTableDataRow *row) {
         configurator((TBSingleChoiceNavigationRow *)row);

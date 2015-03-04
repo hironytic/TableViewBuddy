@@ -57,7 +57,7 @@
 @end
 
 
-@implementation TBTableDataBuildHelper (TBLabelRow)
+@implementation TBTableDataBuilder (TBLabelRow)
 - (void)buildLabelRow:(void (^)(TBLabelRow *row))configurator {
     [self buildRowWithRowClass:[TBLabelRow class] configurator:^(TBTableDataRow *row) {
         configurator((TBLabelRow *)row);

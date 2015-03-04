@@ -117,7 +117,7 @@
 @end
 
 
-@implementation TBTableDataBuildHelper (TBTextFieldRow)
+@implementation TBTableDataBuilder (TBTextFieldRow)
 - (void)buildTextFieldRow:(void (^)(TBTextFieldRow *row))configurator {
     [self buildRowWithRowClass:[TBTextFieldRow class] configurator:^(TBTableDataRow *row) {
         configurator((TBTextFieldRow *)row);

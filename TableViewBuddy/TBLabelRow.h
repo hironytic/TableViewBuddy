@@ -24,7 +24,7 @@
 //
 
 #import "TBTableDataRow.h"
-#import "TBTableDataBuildHelper.h"
+#import "TBTableDataBuilder.h"
 
 /**
  `TBLabelRow` is a row that displays an information. The tap gesture is not handled in it.
@@ -47,7 +47,7 @@
 @end
 
 
-@interface TBTableDataBuildHelper (TBLabelRow)
+@interface TBTableDataBuilder (TBLabelRow)
 /**
  Builds a row of `<TBLabelRow>`.
  

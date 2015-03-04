@@ -122,7 +122,7 @@
 @end
 
 
-@interface TBTableDataBuildHelper (TBSingleChoiceNavigationRow)
+@interface TBTableDataBuilder (TBSingleChoiceNavigationRow)
 /**
  Builds a row of `<TBSingleChoiceNavigationRow>`.
  

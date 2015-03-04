@@ -39,7 +39,7 @@
 @end
 
 
-@implementation TBTableDataBuildHelper (TBChoiceRow)
+@implementation TBTableDataBuilder (TBChoiceRow)
 - (void)buildChoiceRow:(void (^)(TBChoiceRow *row))configurator {
     [self buildRowWithRowClass:[TBChoiceRow class] configurator:^(TBTableDataRow *row) {
         configurator((TBChoiceRow *)row);

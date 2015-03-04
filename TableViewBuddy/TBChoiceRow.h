@@ -24,7 +24,7 @@
 //
 
 #import "TBCheckRow.h"
-#import "TBTableDataBuildHelper.h"
+#import "TBTableDataBuilder.h"
 
 /**
  `TBChoiceRow` is a row which has checked state.
@@ -37,7 +37,7 @@
 @end
 
 
-@interface TBTableDataBuildHelper (TBChoiceRow)
+@interface TBTableDataBuilder (TBChoiceRow)
 /**
  Builds a row of `<TBChoiceRow>`.
  

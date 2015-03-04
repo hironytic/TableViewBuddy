@@ -65,20 +65,20 @@
     __block TBTableDataRow *row_New = nil;
     
     SampleTableViewController1 * __weak weakSelf = self;
-    TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] init];
-    TBTableData *tableData = [helper buildTableData:^{
+    TBTableDataBuilder *builder = [[TBTableDataBuilder alloc] init];
+    TBTableData *tableData = [builder buildTableData:^{
         // Section 1
-        [helper buildGenericSection:^(TBTableDataSection *section) {
+        [builder buildGenericSection:^(TBTableDataSection *section) {
             section_1 = section;
             
-            [helper buildLabelRow:^(TBLabelRow *row) {
+            [builder buildLabelRow:^(TBLabelRow *row) {
                 row_1_1 = row;
-                [row setTitle:@"X" withContext:helper.context];
+                [row setTitle:@"X" withContext:builder.context];
             }];
             
-            [helper buildActionRow:^(TBActionRow *row) {
-                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:helper.context];
-                [row setTitle:@"Y" withContext:helper.context];
+            [builder buildActionRow:^(TBActionRow *row) {
+                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:builder.context];
+                [row setTitle:@"Y" withContext:builder.context];
                 row.tapHandler = ^{
                     [weakSelf.tableData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {
                         if (section_1.headerTitle == nil) {
@@ -100,8 +100,8 @@
                 };
             }];
             
-            [helper buildButtonRow:^(TBButtonRow *row) {
-                [row setTitle:@"Z" withContext:helper.context];
+            [builder buildButtonRow:^(TBButtonRow *row) {
+                [row setTitle:@"Z" withContext:builder.context];
                 row.tapHandler = ^{
                     [weakSelf.tableData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {
                         for (NSInteger ix = 0; ix < 3; ++ix) {
@@ -118,10 +118,10 @@
                 };
             }];
             
-            [helper buildNavigationRow:^(TBNavigationRow *row) {
+            [builder buildNavigationRow:^(TBNavigationRow *row) {
                 row_1_3 = row;
-                [row setTitle:@"Show Detail" withContext:helper.context];
-                [row setDetailText:@"Normal" withContext:helper.context];
+                [row setTitle:@"Show Detail" withContext:builder.context];
+                [row setDetailText:@"Normal" withContext:builder.context];
                 row.tapHandler = ^{
                     SampleTableViewController2 *nextViewController = [[SampleTableViewController2 alloc] initWithStyle:UITableViewStylePlain];
                     [weakSelf.navigationController pushViewController:nextViewController animated:YES];
@@ -130,12 +130,12 @@
         }];
         
         // Section 2
-        [helper buildGenericSection:^(TBTableDataSection *section) {
+        [builder buildGenericSection:^(TBTableDataSection *section) {
             section_2 = section;
-            [section setFooterTitle:@"Section 2" withContext:helper.context];
+            [section setFooterTitle:@"Section 2" withContext:builder.context];
             
-            [helper buildButtonRow:^(TBButtonRow *row) {
-                [row setTitle:@"Tap Here" withContext:helper.context];
+            [builder buildButtonRow:^(TBButtonRow *row) {
+                [row setTitle:@"Tap Here" withContext:builder.context];
                 row.tapHandler = ^{
                     [weakSelf.tableData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {
                         [row_1_1 setHidden:!row_1_1.hidden withContext:context];
@@ -143,8 +143,8 @@
                 };
             }];
            
-            [helper buildButtonRow:^(TBButtonRow *row) {
-                [row setTitle:@"..." withContext:helper.context];
+            [builder buildButtonRow:^(TBButtonRow *row) {
+                [row setTitle:@"..." withContext:builder.context];
                 row.tapHandler = ^{
                     ++counter2;
                     [row_2_2 setTitle:[NSString stringWithFormat:@"Count %ld", (long)counter2] withContext:[TBTableDataContext context]];
@@ -154,35 +154,35 @@
                 };
             }];
             
-            [helper buildLabelRow:^(TBLabelRow *row) {
+            [builder buildLabelRow:^(TBLabelRow *row) {
                 row_2_2 = row;
-                [row setTitle:[NSString stringWithFormat:@"Count %ld", (long)counter2] withContext:helper.context];
-                [row setDetailText:@"long long long long text is here." withContext:helper.context];
+                [row setTitle:[NSString stringWithFormat:@"Count %ld", (long)counter2] withContext:builder.context];
+                [row setDetailText:@"long long long long text is here." withContext:builder.context];
             }];
             
-            [helper buildSwitchRow:^(TBSwitchRow *row) {
+            [builder buildSwitchRow:^(TBSwitchRow *row) {
                 row_2_4 = row;
-                [row setTitle:@"On/Off" withContext:helper.context];
-                [row setValue:YES withContext:helper.context];
+                [row setTitle:@"On/Off" withContext:builder.context];
+                [row setValue:YES withContext:builder.context];
                 row.valueChangeHandler = ^(BOOL value) {
                     NSLog(@"switch value changed to %@", (value) ? @"ON" : @"OFF");
                 };
             }];
             
-            [helper buildCheckRow:^(TBCheckRow *row) {
+            [builder buildCheckRow:^(TBCheckRow *row) {
                 row_2_5 = row;
-                [row setTitle:@"Check it" withContext:helper.context];
-                [row setValue:NO withContext:helper.context];
+                [row setTitle:@"Check it" withContext:builder.context];
+                [row setValue:NO withContext:builder.context];
                 row.valueChangeHandler = ^(BOOL value) {
                     NSLog(@"check value changed to %@", (value) ? @"ON" : @"OFF");
                 };
             }];
             
-            [helper buildTextFieldRow:^(TBTextFieldRow *row) {
+            [builder buildTextFieldRow:^(TBTextFieldRow *row) {
                 row_2_6 = row;
-                [row setTitle:@"Text" withContext:helper.context];
-                [row setText:nil withContext:helper.context];
-                [row setPlaceholder:@"Optional" withContext:helper.context];
+                [row setTitle:@"Text" withContext:builder.context];
+                [row setText:nil withContext:builder.context];
+                [row setPlaceholder:@"Optional" withContext:builder.context];
                 row.textChangeHandler = ^(NSString *text) {
                     NSLog(@"text is %@", text);
                 };
@@ -197,27 +197,27 @@
         }];
         
         // Section 3 --- choice section
-        [helper buildSingleChoiceSection:^(TBSingleChoiceSection *section) {
+        [builder buildSingleChoiceSection:^(TBSingleChoiceSection *section) {
             TBSingleChoiceSection * __weak weakSection = section;
-            [section setHeaderTitle:@"Your Choice" withContext:helper.context];
+            [section setHeaderTitle:@"Your Choice" withContext:builder.context];
             [section setOptions:@[@"First", @"Second", @"Third", @"Fourth"]
                   selectedIndex:2
-                    withContext:helper.context];
+                    withContext:builder.context];
             section.selectionChangeHandler = ^(NSInteger index) {
                 NSLog(@"%@ is selected", weakSection.options[index]);
             };
         }];
         
         // Section 4
-        [helper buildGenericSection:^(TBTableDataSection *section) {
-            [helper buildSingleChoiceNavigationRow:^(TBSingleChoiceNavigationRow *row) {
+        [builder buildGenericSection:^(TBTableDataSection *section) {
+            [builder buildSingleChoiceNavigationRow:^(TBSingleChoiceNavigationRow *row) {
                 TBSingleChoiceNavigationRow * __weak weakRow = row;
-                [row setTitle:@"Burger" withContext:helper.context];
+                [row setTitle:@"Burger" withContext:builder.context];
                 row.navigationController = weakSelf.navigationController;
-                [row setChoiceViewControllerTitle:@"Select Burger" withContext:helper.context];
-                [row setChoiceSectionHeaderTitle:@"Menu" withContext:helper.context];
-                [row setChoiceSectionFooterTitle:@"Please select your favorite burger." withContext:helper.context];
-                [row setOptions:@[@"None", @"Cheese Burger", @"Omlet Burger", @"Chili Burger", @"Special Burger"] selectedIndex:0 withContext:helper.context];
+                [row setChoiceViewControllerTitle:@"Select Burger" withContext:builder.context];
+                [row setChoiceSectionHeaderTitle:@"Menu" withContext:builder.context];
+                [row setChoiceSectionFooterTitle:@"Please select your favorite burger." withContext:builder.context];
+                [row setOptions:@[@"None", @"Cheese Burger", @"Omlet Burger", @"Chili Burger", @"Special Burger"] selectedIndex:0 withContext:builder.context];
                 row.selectionChangeHandler = ^(NSInteger index) {
                     NSLog(@"%@ is selected", weakRow.options[index]);
                 };

@@ -24,7 +24,7 @@
 //
 
 #import "TBTableDataRow.h"
-#import "TBTableDataBuildHelper.h"
+#import "TBTableDataBuilder.h"
 
 /**
  `TBActionRow` is a row that user can tap and execute some action.
@@ -39,7 +39,7 @@
 @end
 
 
-@interface TBTableDataBuildHelper (TBActionRow)
+@interface TBTableDataBuilder (TBActionRow)
 /**
  Builds a row of `<TBActionRow>`.
  

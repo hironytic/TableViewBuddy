@@ -27,7 +27,7 @@
 #import <UIKit/UIKit.h>
 
 @class TBTableData;
-@class TBTableDataBuildHelper;
+@class TBTableDataBuilder;
 
 /**
  `TBTableViewController` is a table view controller that has a `<TBTableData>` object for data source.
@@ -53,8 +53,8 @@
     TBTableViewController *viewController
             = [[TBTableViewController alloc] initWithStyle:UITableViewStyleGrouped
                                        buildTableDataBlock:^TBTableData *(TBTableViewController *vc) {
-        TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] init];
-        TBTableData *tableData = [helper buildTableData:^{
+        TBTableDataBuilder *builder = [[TBTableDataBuilder alloc] init];
+        TBTableData *tableData = [builder buildTableData:^{
             // ... configuring table data here ...
         }];
         return tableData;
@@ -70,8 +70,8 @@
     
     @implementation XXXTableViewController
     - (TBTableData *)buildTableData {
-        TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] init];
-        TBTableData *tableData = [helper buildTableData:^{
+        TBTableDataBuilder *builder = [[TBTableDataBuilder alloc] init];
+        TBTableData *tableData = [builder buildTableData:^{
             // ... configuring table data here ...
         }];
         return tableData;

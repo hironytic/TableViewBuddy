@@ -1,5 +1,5 @@
 //
-// TBTableDataBuildHelper.m
+// TBTableDataBuilder.m
 // TableViewBuddy
 //
 // Copyright (c) 2014,2015 Hironori Ichimiya <hiron@hironytic.com>
@@ -23,13 +23,13 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "TBTableDataBuildHelper.h"
+#import "TBTableDataBuilder.h"
 #import "TBTableData.h"
 #import "TBTableDataContext.h"
 #import "TBTableDataRow.h"
 #import "TBTableDataSection.h"
 
-@interface TBTableDataBuildHelper ()
+@interface TBTableDataBuilder ()
 @property(nonatomic, weak) TBTableDataContext *context;
 @property(nonatomic, weak) TBTableData *currentTableData;
 @property(nonatomic, weak) TBTableDataSection *currentSection;
@@ -37,7 +37,7 @@
 @property(nonatomic, weak) TBTableDataRow *previousRow;
 @end
 
-@implementation TBTableDataBuildHelper
+@implementation TBTableDataBuilder
 
 - (instancetype)init {
     return [self initWithContext:nil

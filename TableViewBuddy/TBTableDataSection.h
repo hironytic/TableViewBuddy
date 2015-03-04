@@ -26,7 +26,7 @@
 #import <Foundation/Foundation.h>
 
 @class TBTableData;
-@class TBTableDataBuildHelper;
+@class TBTableDataBuilder;
 @class TBTableDataContext;
 @class TBTableDataInitializationContext;
 @class TBTableDataRow;
@@ -122,7 +122,7 @@
  */
 - (void)insertAfter:(TBTableDataRow *)previousRow
         withContext:(TBTableDataContext *)context
-         buildBlock:(void (^)(TBTableDataBuildHelper *helper))buildBlock;
+         buildBlock:(void (^)(TBTableDataBuilder *builder))buildBlock;
 
 /**
  Changes the visibility of the section.

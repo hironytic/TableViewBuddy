@@ -24,7 +24,7 @@
 //
 
 #import "TBTableDataRow.h"
-#import "TBTableDataBuildHelper.h"
+#import "TBTableDataBuilder.h"
 
 /**
  `TBSwitchRow` is a row that has an On/Off switch.
@@ -54,7 +54,7 @@
 @end
 
 
-@interface TBTableDataBuildHelper (TBSwitchRow)
+@interface TBTableDataBuilder (TBSwitchRow)
 /**
  Builds a row of `<TBSwitchRow>`.
  

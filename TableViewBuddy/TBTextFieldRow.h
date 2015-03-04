@@ -24,7 +24,7 @@
 //
 
 #import "TBTableDataRow.h"
-#import "TBTableDataBuildHelper.h"
+#import "TBTableDataBuilder.h"
 
 /**
  `TBTextFieldRow` is a row that has a text field.
@@ -94,7 +94,7 @@
 @end
 
 
-@interface TBTableDataBuildHelper (TBTextFieldRow)
+@interface TBTableDataBuilder (TBTextFieldRow)
 /**
  Builds a row of `<TBTextFieldRow>`.
  

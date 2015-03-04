@@ -20,14 +20,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    TBTableDataBuildHelper *helper = [TBTableDataBuildHelper new];
-    self.itemData = [helper buildTableData:^{
-        [helper buildGenericSection:^(TBTableDataSection *section) {
+    TBTableDataBuilder *builder = [TBTableDataBuilder new];
+    self.itemData = [builder buildTableData:^{
+        [builder buildGenericSection:^(TBTableDataSection *section) {
             // configure undeletable items
             for (NSInteger ix = 0; ix < 3; ++ix) {
-                [helper buildLabelRow:^(TBLabelRow *row) {
+                [builder buildLabelRow:^(TBLabelRow *row) {
                     NSString *title = [NSString stringWithFormat:@"Undeletable Item %ld", (long)ix];
-                    [row setTitle:title withContext:helper.context];
+                    [row setTitle:title withContext:builder.context];
                 }];
             }
         }];
@@ -47,10 +47,10 @@
     TBTableDataRow *insertionPoint = section.rows[1];
     [self.itemData updateAnimated:YES updater:^(TBTableDataUpdateContext *context) {
         context.insertionAnimation = UITableViewRowAnimationFade;
-        [section insertAfter:insertionPoint withContext:context buildBlock:^(TBTableDataBuildHelper *helper) {
-            [helper buildCheckRow:^(TBCheckRow *row) {
-                [row setTitle:itemName withContext:helper.context];
-                [row setValue:NO withContext:helper.context];
+        [section insertAfter:insertionPoint withContext:context buildBlock:^(TBTableDataBuilder *builder) {
+            [builder buildCheckRow:^(TBCheckRow *row) {
+                [row setTitle:itemName withContext:builder.context];
+                [row setValue:NO withContext:builder.context];
             }];
         }];
     }];

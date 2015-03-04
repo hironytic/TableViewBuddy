@@ -24,7 +24,7 @@
 //
 
 #import "TBTableDataRow.h"
-#import "TBTableDataBuildHelper.h"
+#import "TBTableDataBuilder.h"
 
 /**
  `TBCheckRow` is a row that user can check or uncheck it by tapping.
@@ -54,7 +54,7 @@
 @end
 
 
-@interface TBTableDataBuildHelper (TBCheckRow)
+@interface TBTableDataBuilder (TBCheckRow)
 /**
  Builds a row of `<TBCheckRow>`.
  

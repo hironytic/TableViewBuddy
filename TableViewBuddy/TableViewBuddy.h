@@ -23,7 +23,7 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "TBTableDataBuildHelper.h"
+#import "TBTableDataBuilder.h"
 #import "TBTableViewController.h"
 
 #import "TBTableData.h"

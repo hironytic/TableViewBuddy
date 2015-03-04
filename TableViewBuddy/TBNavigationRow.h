@@ -24,7 +24,7 @@
 //
 
 #import "TBActionRow.h"
-#import "TBTableDataBuildHelper.h"
+#import "TBTableDataBuilder.h"
 
 /**
  `TBNavigationRow` is a row that yields next screen by tapping it.
@@ -51,7 +51,7 @@
 @end
 
 
-@interface TBTableDataBuildHelper (TBNavigationRow)
+@interface TBTableDataBuilder (TBNavigationRow)
 /**
  Builds a row of `<TBNavigationRow>`.
  

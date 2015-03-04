@@ -26,7 +26,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class TBTableDataBuildHelper;
+@class TBTableDataBuilder;
 @class TBTableDataContext;
 @class TBTableDataInitializationContext;
 @class TBTableDataRow;
@@ -96,7 +96,7 @@
  @param buildBlock A block object to build a table data.
  @return The table data object.
  */
-+ (instancetype)tableDataWithBuildBlock:(void (^)(TBTableDataBuildHelper *helper))buildBlock;
++ (instancetype)tableDataWithBuildBlock:(void (^)(TBTableDataBuilder *builder))buildBlock;
 
 /**
  Updates the table view.
@@ -130,6 +130,6 @@
  */
 - (void)insertAfter:(TBTableDataSection *)previousSection
         withContext:(TBTableDataContext *)context
-         buildBlock:(void (^)(TBTableDataBuildHelper *helper))buildBlock;
+         buildBlock:(void (^)(TBTableDataBuilder *builder))buildBlock;
 
 @end

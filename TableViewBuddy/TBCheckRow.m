@@ -73,7 +73,7 @@
 @end
 
 
-@implementation TBTableDataBuildHelper (TBCheckRow)
+@implementation TBTableDataBuilder (TBCheckRow)
 - (void)buildCheckRow:(void (^)(TBCheckRow *row))configurator {
     [self buildRowWithRowClass:[TBCheckRow class] configurator:^(TBTableDataRow *row) {
         configurator((TBCheckRow *)row);

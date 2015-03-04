@@ -38,50 +38,50 @@
 
 - (TBTableData *)buildTableData {
     CatalogsViewController * __weak weakSelf = self;
-    TBTableData *tableData = [TBTableData tableDataWithBuildBlock:^(TBTableDataBuildHelper *helper) {
+    TBTableData *tableData = [TBTableData tableDataWithBuildBlock:^(TBTableDataBuilder *builder) {
         // Section "Rows"
-        [helper buildGenericSection:^(TBTableDataSection *section) {
-            [section setHeaderTitle:@"Rows" withContext:helper.context];
+        [builder buildGenericSection:^(TBTableDataSection *section) {
+            [section setHeaderTitle:@"Rows" withContext:builder.context];
             
             // Row "Action"
-            [helper buildActionRow:^(TBActionRow *row) {
-                [row setTitle:@"Action" withContext:helper.context];
-                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:helper.context];
+            [builder buildActionRow:^(TBActionRow *row) {
+                [row setTitle:@"Action" withContext:builder.context];
+                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:builder.context];
                 row.tapHandler = ^{
                     NSLog(@"Action is tapped.");
                 };
             }];
             
             // Row "Button"
-            [helper buildButtonRow:^(TBButtonRow *row) {
-                [row setTitle:@"Button" withContext:helper.context];
-                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:helper.context];
+            [builder buildButtonRow:^(TBButtonRow *row) {
+                [row setTitle:@"Button" withContext:builder.context];
+                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:builder.context];
                 row.tapHandler = ^{
                     NSLog(@"Button is tapped.");
                 };
             }];
             
             // Row "Check"
-            [helper buildCheckRow:^(TBCheckRow *row) {
-                [row setTitle:@"Check" withContext:helper.context];
-                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:helper.context];
-                [row setValue:YES withContext:helper.context];
+            [builder buildCheckRow:^(TBCheckRow *row) {
+                [row setTitle:@"Check" withContext:builder.context];
+                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:builder.context];
+                [row setValue:YES withContext:builder.context];
                 row.valueChangeHandler = ^(BOOL value) {
                     NSLog(@"Check value becomes %@", (value) ? @"checked" : @"unchecked");
                 };
             }];
             
             // Row "Label"
-            [helper buildLabelRow:^(TBLabelRow *row) {
-                [row setTitle:@"Label" withContext:helper.context];
-                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:helper.context];
-                [row setDetailText:@"text" withContext:helper.context];
+            [builder buildLabelRow:^(TBLabelRow *row) {
+                [row setTitle:@"Label" withContext:builder.context];
+                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:builder.context];
+                [row setDetailText:@"text" withContext:builder.context];
             }];
             
             // Row "Navigation"
-            [helper buildNavigationRow:^(TBNavigationRow *row) {
-                [row setTitle:@"Navigation" withContext:helper.context];
-                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:helper.context];
+            [builder buildNavigationRow:^(TBNavigationRow *row) {
+                [row setTitle:@"Navigation" withContext:builder.context];
+                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:builder.context];
                 row.tapHandler = ^{
                     TBTableViewController *nextViewController = [[TBTableViewController alloc] initWithStyle:UITableViewStylePlain];
                     [weakSelf.navigationController pushViewController:nextViewController animated:YES];
@@ -89,24 +89,24 @@
             }];
             
             // Row "SingleChoice"
-            [helper buildSingleChoiceNavigationRow:^(TBSingleChoiceNavigationRow *row) {
-                [row setTitle:@"Single Choice" withContext:helper.context];
-                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:helper.context];
+            [builder buildSingleChoiceNavigationRow:^(TBSingleChoiceNavigationRow *row) {
+                [row setTitle:@"Single Choice" withContext:builder.context];
+                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:builder.context];
                 row.navigationController = weakSelf.navigationController;
                 NSArray *options = @[@"One", @"Two", @"Three"];
-                [row setOptions:options selectedIndex:0 withContext:helper.context];
-                [row setChoiceViewControllerTitle:@"Select" withContext:helper.context];
-                [row setChoiceSectionHeaderTitle:@"Options" withContext:helper.context];
+                [row setOptions:options selectedIndex:0 withContext:builder.context];
+                [row setChoiceViewControllerTitle:@"Select" withContext:builder.context];
+                [row setChoiceSectionHeaderTitle:@"Options" withContext:builder.context];
                 row.selectionChangeHandler = ^(NSInteger index) {
                     NSLog(@"%@ is selected.", options[index]);
                 };
             }];
             
             // Row "Switch"
-            [helper buildSwitchRow:^(TBSwitchRow *row) {
-                [row setTitle:@"Switch" withContext:helper.context];
-                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:helper.context];
-                [row setValue:YES withContext:helper.context];
+            [builder buildSwitchRow:^(TBSwitchRow *row) {
+                [row setTitle:@"Switch" withContext:builder.context];
+                [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:builder.context];
+                [row setValue:YES withContext:builder.context];
                 row.valueChangeHandler = ^(BOOL value) {
                     NSLog(@"Switch is %@", (value) ? @"on" : @"off");
                 };
@@ -114,14 +114,14 @@
         }];
         
         // Section "Single Choice Section"
-        [helper buildSingleChoiceSection:^(TBSingleChoiceSection *section) {
-            [section setHeaderTitle:@"Single Choice Section" withContext:helper.context];
+        [builder buildSingleChoiceSection:^(TBSingleChoiceSection *section) {
+            [section setHeaderTitle:@"Single Choice Section" withContext:builder.context];
             NSArray *options = @[@"Brewed Coffee", @"Caffè Latte", @"Cappuccino", @"Hot Chocolate"];
-            [section setOptions:options selectedIndex:1 withContext:helper.context];
+            [section setOptions:options selectedIndex:1 withContext:builder.context];
             section.selectionChangeHandler = ^(NSInteger index) {
                 NSLog(@"%@ is selected.", options[index]);
             };
-            [section setFooterTitle:@"Select Your Favorite Drink." withContext:helper.context];
+            [section setFooterTitle:@"Select Your Favorite Drink." withContext:builder.context];
         }];
     }];
     return tableData;

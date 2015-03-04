@@ -76,7 +76,7 @@
  `<[TBTableDataSection sectionGeneratorWithConfigurator:]>`, or
  `<[TBTableDataRow rowGeneratorWithConfigurator:]>`.
  
- You can also get this context from `<[TBTableDataBuildHelper context]>`.
+ You can also get this context from `<[TBTableDataBuilder context]>`.
  */
 @interface TBTableDataInitializationContext : TBTableDataContext
 

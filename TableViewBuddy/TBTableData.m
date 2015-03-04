@@ -25,7 +25,7 @@
 
 #import "TBTableData.h"
 #import "TBTableData_Internal.h"
-#import "TBTableDataBuildHelper.h"
+#import "TBTableDataBuilder.h"
 #import "TBTableDataContext_Internal.h"
 #import "TBTableDataRow_Internal.h"
 #import "TBTableDataSection_Internal.h"
@@ -36,10 +36,10 @@
     return self.mutableSections;
 }
 
-+ (instancetype)tableDataWithBuildBlock:(void (^)(TBTableDataBuildHelper *helper))buildBlock {
-    TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] init];
-    return [helper buildTableDataWithTableDataClass:self configulator:^{
-        buildBlock(helper);
++ (instancetype)tableDataWithBuildBlock:(void (^)(TBTableDataBuilder *builder))buildBlock {
+    TBTableDataBuilder *builder = [[TBTableDataBuilder alloc] init];
+    return [builder buildTableDataWithTableDataClass:self configulator:^{
+        buildBlock(builder);
     }];
 }
 
@@ -509,9 +509,9 @@
 
 - (void)insertAfter:(TBTableDataSection *)previousSection
         withContext:(TBTableDataContext *)context
-         buildBlock:(void (^)(TBTableDataBuildHelper *helper))buildBlock {
-    TBTableDataBuildHelper *helper = [[TBTableDataBuildHelper alloc] initWithContext:context tableData:self previousSection:previousSection];
-    buildBlock(helper);
+         buildBlock:(void (^)(TBTableDataBuilder *builder))buildBlock {
+    TBTableDataBuilder *builder = [[TBTableDataBuilder alloc] initWithContext:context tableData:self previousSection:previousSection];
+    buildBlock(builder);
 }
 
 #pragma mark UITableViewDataSource
