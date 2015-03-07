@@ -27,6 +27,7 @@
 		50C5520D19DFEE4200F546AA /* TBNavigationRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5520C19DFEE4200F546AA /* TBNavigationRow.m */; };
 		50C5521019DFF0AB00F546AA /* SampleTableViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5520F19DFF0AB00F546AA /* SampleTableViewController2.m */; };
 		50C5521319E0CEA500F546AA /* TBTableDataBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5521219E0CEA500F546AA /* TBTableDataBuilder.m */; };
+		50C9BC841AAAB1C900384A75 /* TableViewBuddyExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E92DD2198E2D5600D6C224 /* TableViewBuddyExampleTests.m */; };
 		50CEDECF1AA2E85F00A0D21A /* InsertDeleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50CEDECE1AA2E85F00A0D21A /* InsertDeleteViewController.m */; };
 		50CEDED11AA2E88500A0D21A /* InsertDelete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CEDED01AA2E88500A0D21A /* InsertDelete.storyboard */; };
 		50E09F6419925F3200911E02 /* TBLabelRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E09F6319925F3200911E02 /* TBLabelRow.m */; };
@@ -42,11 +43,11 @@
 		50E92DC8198E2D5600D6C224 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E92DAD198E2D5600D6C224 /* Foundation.framework */; };
 		50E92DC9198E2D5600D6C224 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E92DB1198E2D5600D6C224 /* UIKit.framework */; };
 		50E92DD1198E2D5600D6C224 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50E92DCF198E2D5600D6C224 /* InfoPlist.strings */; };
-		50E92DD3198E2D5600D6C224 /* TableViewBuddyExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E92DD2198E2D5600D6C224 /* TableViewBuddyExampleTests.m */; };
 		50E92DDF198E2FDF00D6C224 /* TBTableData.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E92DDE198E2FDF00D6C224 /* TBTableData.m */; };
 		50E92DE8198E328000D6C224 /* TBTableDataContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E92DE7198E328000D6C224 /* TBTableDataContext.m */; };
 		50E92DF8198E61B300D6C224 /* TBTableDataRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E92DF5198E61B300D6C224 /* TBTableDataRow.m */; };
 		50E92DF9198E61B300D6C224 /* TBTableDataSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E92DF7198E61B300D6C224 /* TBTableDataSection.m */; };
+		E3509D12B9A342F1817C4A14 /* libPods-TableViewBuddyExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1A36B8118FBFC737519E5CE /* libPods-TableViewBuddyExampleTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A807C3E4C766F3F6DAF88BD /* Pods-TableViewBuddyExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewBuddyExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TableViewBuddyExampleTests/Pods-TableViewBuddyExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		500590F919E4B35C00E7DD3F /* TBSingleChoiceNavigationRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSingleChoiceNavigationRow.h; sourceTree = "<group>"; };
 		500590FA19E4B35C00E7DD3F /* TBSingleChoiceNavigationRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSingleChoiceNavigationRow.m; sourceTree = "<group>"; };
 		5007E29E19A8D7EC002DFDC9 /* TBSwitchRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSwitchRow.h; sourceTree = "<group>"; };
@@ -139,6 +141,8 @@
 		50E92E04198E65C100D6C224 /* TBUpdateStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBUpdateStatus.h; sourceTree = "<group>"; };
 		50E92E05198E75A600D6C224 /* TBTableDataContext_Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBTableDataContext_Internal.h; sourceTree = "<group>"; };
 		50E92E06198E7CA900D6C224 /* TableViewBuddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewBuddy.h; sourceTree = "<group>"; };
+		B1A36B8118FBFC737519E5CE /* libPods-TableViewBuddyExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TableViewBuddyExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE21F7F8AA1B8C70D40526A6 /* Pods-TableViewBuddyExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewBuddyExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TableViewBuddyExampleTests/Pods-TableViewBuddyExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,12 +163,22 @@
 				50E92DC7198E2D5600D6C224 /* XCTest.framework in Frameworks */,
 				50E92DC9198E2D5600D6C224 /* UIKit.framework in Frameworks */,
 				50E92DC8198E2D5600D6C224 /* Foundation.framework in Frameworks */,
+				E3509D12B9A342F1817C4A14 /* libPods-TableViewBuddyExampleTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22080EEE119FE8E300801470 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3A807C3E4C766F3F6DAF88BD /* Pods-TableViewBuddyExampleTests.debug.xcconfig */,
+				DE21F7F8AA1B8C70D40526A6 /* Pods-TableViewBuddyExampleTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		50E92DA1198E2D5600D6C224 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +187,7 @@
 				50E92DCC198E2D5600D6C224 /* TableViewBuddyExampleTests */,
 				50E92DAC198E2D5600D6C224 /* Frameworks */,
 				50E92DAB198E2D5600D6C224 /* Products */,
+				22080EEE119FE8E300801470 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -192,6 +207,7 @@
 				50E92DAF198E2D5600D6C224 /* CoreGraphics.framework */,
 				50E92DB1198E2D5600D6C224 /* UIKit.framework */,
 				50E92DC6198E2D5600D6C224 /* XCTest.framework */,
+				B1A36B8118FBFC737519E5CE /* libPods-TableViewBuddyExampleTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -339,9 +355,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50E92DD9198E2D5600D6C224 /* Build configuration list for PBXNativeTarget "TableViewBuddyExampleTests" */;
 			buildPhases = (
+				0E8E5109B8BF738F5CA22279 /* Check Pods Manifest.lock */,
 				50E92DC1198E2D5600D6C224 /* Sources */,
 				50E92DC2198E2D5600D6C224 /* Frameworks */,
 				50E92DC3198E2D5600D6C224 /* Resources */,
+				0CD9C052448E8FC2DD0ECF6C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -406,6 +424,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0CD9C052448E8FC2DD0ECF6C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TableViewBuddyExampleTests/Pods-TableViewBuddyExampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0E8E5109B8BF738F5CA22279 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		50E92DA6198E2D5600D6C224 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -447,7 +498,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50E92DD3198E2D5600D6C224 /* TableViewBuddyExampleTests.m in Sources */,
+				50C9BC841AAAB1C900384A75 /* TableViewBuddyExampleTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +634,7 @@
 		};
 		50E92DDA198E2D5600D6C224 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A807C3E4C766F3F6DAF88BD /* Pods-TableViewBuddyExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TableViewBuddyExample.app/TableViewBuddyExample";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -605,6 +657,7 @@
 		};
 		50E92DDB198E2D5600D6C224 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE21F7F8AA1B8C70D40526A6 /* Pods-TableViewBuddyExampleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TableViewBuddyExample.app/TableViewBuddyExample";
 				FRAMEWORK_SEARCH_PATHS = (
