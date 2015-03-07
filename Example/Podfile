@@ -7,5 +7,5 @@ end
 
 target 'TableViewBuddyExampleTests', :exclusive => true do
   pod 'KIF', '~> 3.0', :configurations => ['Debug']
+  pod 'Expecta', '~> 0.2.4'
 end
-
