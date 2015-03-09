@@ -72,6 +72,15 @@
     _choiceViewControllerTitle = choiceViewControllerTitle;
 }
 
+- (void)setChoiceTableAccessibilityIdentifier:(NSString *)choiceTableAccessibilityIdentifier withContext:(TBTableDataContext *)context {
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        NSAssert(NO, @"currently, choiceViewControllerTitle can be set only on initialization.");
+        return;
+    }
+    
+    _choiceTableAccessibilityIdentifier = choiceTableAccessibilityIdentifier;
+}
+
 - (void)setChoiceSectionHeaderTitle:(NSString *)choiceSectionHeaderTitle withContext:(TBTableDataContext *)context {
     if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
         NSAssert(NO, @"currently, choiceSectionHeaderTitle can be set only on initialization.");
@@ -104,7 +113,7 @@
     NSAssert(self.navigationController != nil, @"please set your navigation controller.");
 
     TBSingleChoiceNavigationRow * __weak weakSelf = self;
-    TBTableViewController *choiseViewController = [[TBTableViewController alloc] initWithStyle:UITableViewStyleGrouped buildTableDataBlock:^TBTableData *(TBTableViewController *vc) {
+    TBTableViewController *choiceViewController = [[TBTableViewController alloc] initWithStyle:UITableViewStyleGrouped buildTableDataBlock:^TBTableData *(TBTableViewController *vc) {
         return [TBTableData tableDataWithBuildBlock:^(TBTableDataBuilder *builder) {
             [builder buildSingleChoiceSection:^(TBSingleChoiceSection *section) {
                 [section setHeaderTitle:weakSelf.choiceSectionHeaderTitle withContext:builder.context];
@@ -123,8 +132,9 @@
         }];
     }];
     
-    choiseViewController.title = self.choiceViewControllerTitle;
-    [self.navigationController pushViewController:choiseViewController animated:YES];
+    choiceViewController.title = self.choiceViewControllerTitle;
+    choiceViewController.tableView.accessibilityIdentifier = self.choiceTableAccessibilityIdentifier;
+    [self.navigationController pushViewController:choiceViewController animated:YES];
 }
 
 @end

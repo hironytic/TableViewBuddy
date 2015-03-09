@@ -37,12 +37,25 @@
 @property(nonatomic, assign, readonly) BOOL value;
 
 /**
+ A string which identifies the switch.
+ */
+@property(nonatomic, copy, readonly) NSString *switchAccessibilityIdentifier;
+
+/**
  Changes the state of the swtich.
  
  @param value A boolean value. Specify `YES` to make the switch On, or `NO to Off.
  @param context A context object.
  */
 - (void)setValue:(BOOL)value withContext:(TBTableDataContext *)context;
+
+/**
+ Changes the accessibility identifier of the switch.
+ 
+ @param switchAccessibilityIdentifier A string which identifies the switch.
+ @param context A context object.
+ */
+- (void)setSwitchAccessibilityIdentifier:(NSString *)switchAccessibilityIdentifier withContext:(TBTableDataContext *)context;
 
 /**
  A block object which is called when the state of the switch is changed.

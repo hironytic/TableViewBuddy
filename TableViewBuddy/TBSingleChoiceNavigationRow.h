@@ -48,6 +48,11 @@
 @property(nonatomic, copy, readonly) NSString *choiceViewControllerTitle;
 
 /**
+ A string which is used as the accessibility identifier of the table view in the next view controller
+ */
+@property(nonatomic, copy, readonly) NSString *choiceTableAccessibilityIdentifier;
+
+/**
  A string which is used as the section header of the options list on next view controller.
  */
 @property(nonatomic, copy, readonly) NSString *choiceSectionHeaderTitle;
@@ -74,6 +79,14 @@
  @param context A context object. `<TBTableDataInitializationContext>` object is required.
  */
 - (void)setChoiceViewControllerTitle:(NSString *)choiceViewControllerTitle withContext:(TBTableDataContext *)context;
+
+/**
+ Sets an accessibility identifier of the table view in the next view controller.
+ 
+ @param choiceTableAccessibilityIdentifier A string which is used as the accessibility identifier.
+ @param context A context object. `<TBTableDataInitializationContext>` object is required.
+ */
+- (void)setChoiceTableAccessibilityIdentifier:(NSString *)choiceTableAccessibilityIdentifier withContext:(TBTableDataContext *)context;
 
 /**
  Sets a section header of the options list on next view controller.

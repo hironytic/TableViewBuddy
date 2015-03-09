@@ -25,6 +25,7 @@
 
 #import "CatalogsViewController.h"
 #import "TableViewBuddy.h"
+#import "TBSystemVersion.h"
 
 @implementation CatalogsViewController
 
@@ -46,34 +47,38 @@
             // Row "Action"
             [builder buildActionRow:^(TBActionRow *row) {
                 [row setTitle:@"Action" withContext:builder.context];
+                [row setAccessibilityIdentifier:@"action" withContext:builder.context];
                 [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:builder.context];
                 row.tapHandler = ^{
-                    NSLog(@"Action is tapped.");
+                    [weakSelf showAlert:@"Action is tapped."];
                 };
             }];
             
             // Row "Button"
             [builder buildButtonRow:^(TBButtonRow *row) {
                 [row setTitle:@"Button" withContext:builder.context];
+                [row setAccessibilityIdentifier:@"button" withContext:builder.context];
                 [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:builder.context];
                 row.tapHandler = ^{
-                    NSLog(@"Button is tapped.");
+                    [weakSelf showAlert:@"Button is tapped."];
                 };
             }];
             
             // Row "Check"
             [builder buildCheckRow:^(TBCheckRow *row) {
                 [row setTitle:@"Check" withContext:builder.context];
+                [row setAccessibilityIdentifier:@"check" withContext:builder.context];
                 [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:builder.context];
                 [row setValue:YES withContext:builder.context];
                 row.valueChangeHandler = ^(BOOL value) {
-                    NSLog(@"Check value becomes %@", (value) ? @"checked" : @"unchecked");
+                    [weakSelf showAlert:[NSString stringWithFormat:@"Check value becomes %@.", (value) ? @"checked" : @"unchecked"]];
                 };
             }];
             
             // Row "Label"
             [builder buildLabelRow:^(TBLabelRow *row) {
                 [row setTitle:@"Label" withContext:builder.context];
+                [row setAccessibilityIdentifier:@"label" withContext:builder.context];
                 [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:builder.context];
                 [row setDetailText:@"text" withContext:builder.context];
             }];
@@ -81,9 +86,11 @@
             // Row "Navigation"
             [builder buildNavigationRow:^(TBNavigationRow *row) {
                 [row setTitle:@"Navigation" withContext:builder.context];
+                [row setAccessibilityIdentifier:@"navigation" withContext:builder.context];
                 [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:builder.context];
                 row.tapHandler = ^{
                     TBTableViewController *nextViewController = [[TBTableViewController alloc] initWithStyle:UITableViewStylePlain];
+                    nextViewController.title = @"Next";
                     [weakSelf.navigationController pushViewController:nextViewController animated:YES];
                 };
             }];
@@ -92,23 +99,27 @@
             [builder buildSingleChoiceNavigationRow:^(TBSingleChoiceNavigationRow *row) {
                 [row setTitle:@"Single Choice" withContext:builder.context];
                 [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:builder.context];
+                [row setAccessibilityIdentifier:@"single_choice" withContext:builder.context];
+                [row setChoiceTableAccessibilityIdentifier:@"choice_table" withContext:builder.context];
                 row.navigationController = weakSelf.navigationController;
                 NSArray *options = @[@"One", @"Two", @"Three"];
                 [row setOptions:options selectedIndex:0 withContext:builder.context];
                 [row setChoiceViewControllerTitle:@"Select" withContext:builder.context];
                 [row setChoiceSectionHeaderTitle:@"Options" withContext:builder.context];
                 row.selectionChangeHandler = ^(NSInteger index) {
-                    NSLog(@"%@ is selected.", options[index]);
+                    [weakSelf showAlert:[NSString stringWithFormat:@"%@ is selected.", options[index]]];
                 };
             }];
             
             // Row "Switch"
             [builder buildSwitchRow:^(TBSwitchRow *row) {
                 [row setTitle:@"Switch" withContext:builder.context];
+                [row setAccessibilityIdentifier:@"switch" withContext:builder.context];
+                [row setSwitchAccessibilityIdentifier:@"the_switch" withContext:builder.context];
                 [row setImage:[UIImage imageNamed:@"SampleIcon.png"] withContext:builder.context];
                 [row setValue:YES withContext:builder.context];
                 row.valueChangeHandler = ^(BOOL value) {
-                    NSLog(@"Switch is %@", (value) ? @"on" : @"off");
+                    [weakSelf showAlert:[NSString stringWithFormat:@"Switch is %@.", (value) ? @"on" : @"off"]];
                 };
             }];
         }];
@@ -119,12 +130,28 @@
             NSArray *options = @[@"Brewed Coffee", @"Caffè Latte", @"Cappuccino", @"Hot Chocolate"];
             [section setOptions:options selectedIndex:1 withContext:builder.context];
             section.selectionChangeHandler = ^(NSInteger index) {
-                NSLog(@"%@ is selected.", options[index]);
+                [weakSelf showAlert:[NSString stringWithFormat:@"%@ is selected.", options[index]]];
             };
             [section setFooterTitle:@"Select Your Favorite Drink." withContext:builder.context];
         }];
     }];
     return tableData;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.accessibilityIdentifier = @"catalogs_table";
+}
+
+- (void)showAlert:(NSString *)message {
+    if (TBSystemVersionAtLeast(@"8.0")) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:message message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+        [self.navigationController presentViewController:alertController animated:YES completion:nil];
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:message message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    }
 }
 
 @end

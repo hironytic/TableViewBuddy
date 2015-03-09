@@ -28,6 +28,9 @@
 		50C5521019DFF0AB00F546AA /* SampleTableViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5520F19DFF0AB00F546AA /* SampleTableViewController2.m */; };
 		50C5521319E0CEA500F546AA /* TBTableDataBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5521219E0CEA500F546AA /* TBTableDataBuilder.m */; };
 		50C9BC841AAAB1C900384A75 /* TableViewBuddyExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E92DD2198E2D5600D6C224 /* TableViewBuddyExampleTests.m */; };
+		50C9BC861AAAB2F200384A75 /* CatalogsTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C9BC851AAAB2F200384A75 /* CatalogsTestCase.m */; };
+		50C9BC881AAAC29300384A75 /* InsertDeleteTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C9BC871AAAC29300384A75 /* InsertDeleteTestCase.m */; };
+		50C9BC8F1AAB2C9D00384A75 /* UIView+TestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C9BC8E1AAB2C9D00384A75 /* UIView+TestHelper.m */; };
 		50CEDECF1AA2E85F00A0D21A /* InsertDeleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50CEDECE1AA2E85F00A0D21A /* InsertDeleteViewController.m */; };
 		50CEDED11AA2E88500A0D21A /* InsertDelete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CEDED01AA2E88500A0D21A /* InsertDelete.storyboard */; };
 		50E09F6419925F3200911E02 /* TBLabelRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E09F6319925F3200911E02 /* TBLabelRow.m */; };
@@ -104,6 +107,10 @@
 		50C5520F19DFF0AB00F546AA /* SampleTableViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTableViewController2.m; sourceTree = "<group>"; };
 		50C5521119E0CEA500F546AA /* TBTableDataBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTableDataBuilder.h; sourceTree = "<group>"; };
 		50C5521219E0CEA500F546AA /* TBTableDataBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTableDataBuilder.m; sourceTree = "<group>"; };
+		50C9BC851AAAB2F200384A75 /* CatalogsTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogsTestCase.m; sourceTree = "<group>"; };
+		50C9BC871AAAC29300384A75 /* InsertDeleteTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsertDeleteTestCase.m; sourceTree = "<group>"; };
+		50C9BC8D1AAB2C9D00384A75 /* UIView+TestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TestHelper.h"; sourceTree = "<group>"; };
+		50C9BC8E1AAB2C9D00384A75 /* UIView+TestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TestHelper.m"; sourceTree = "<group>"; };
 		50CEDECD1AA2E85F00A0D21A /* InsertDeleteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsertDeleteViewController.h; sourceTree = "<group>"; };
 		50CEDECE1AA2E85F00A0D21A /* InsertDeleteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsertDeleteViewController.m; sourceTree = "<group>"; };
 		50CEDED01AA2E88500A0D21A /* InsertDelete.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InsertDelete.storyboard; sourceTree = "<group>"; };
@@ -248,8 +255,12 @@
 		50E92DCC198E2D5600D6C224 /* TableViewBuddyExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				50E92DD2198E2D5600D6C224 /* TableViewBuddyExampleTests.m */,
+				50C9BC851AAAB2F200384A75 /* CatalogsTestCase.m */,
+				50C9BC871AAAC29300384A75 /* InsertDeleteTestCase.m */,
 				50E92DCD198E2D5600D6C224 /* Supporting Files */,
+				50E92DD2198E2D5600D6C224 /* TableViewBuddyExampleTests.m */,
+				50C9BC8D1AAB2C9D00384A75 /* UIView+TestHelper.h */,
+				50C9BC8E1AAB2C9D00384A75 /* UIView+TestHelper.m */,
 			);
 			path = TableViewBuddyExampleTests;
 			sourceTree = "<group>";
@@ -498,7 +509,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50C9BC881AAAC29300384A75 /* InsertDeleteTestCase.m in Sources */,
 				50C9BC841AAAB1C900384A75 /* TableViewBuddyExampleTests.m in Sources */,
+				50C9BC8F1AAB2C9D00384A75 /* UIView+TestHelper.m in Sources */,
+				50C9BC861AAAB2F200384A75 /* CatalogsTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

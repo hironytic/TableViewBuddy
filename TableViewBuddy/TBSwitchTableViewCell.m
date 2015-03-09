@@ -62,6 +62,14 @@
     [self.toggleSwitch setOn:switchValue animated:animated];
 }
 
+- (NSString *)switchAccessibilityIdentifier {
+    return self.toggleSwitch.accessibilityIdentifier;
+}
+
+- (void)setSwitchAccessibilityIdentifier:(NSString *)switchAccessibilityIdentifier {
+    self.toggleSwitch.accessibilityIdentifier = switchAccessibilityIdentifier;
+}
+
 - (void)valueChanged:(id)sender {
     if (self.switchValueChanged != nil) {
         self.switchValueChanged(self.toggleSwitch.on);

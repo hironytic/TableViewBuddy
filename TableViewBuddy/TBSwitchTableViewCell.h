@@ -36,6 +36,11 @@
 @property(nonatomic, assign) BOOL switchValue;
 
 /**
+ A string that identifies the switch
+ */
+@property(nonatomic, copy) NSString *switchAccessibilityIdentifier;
+
+/**
  A block object that is called when state of the switch is changed.
  
  The parameter of the block is a boolean value that indicates the switch is On.

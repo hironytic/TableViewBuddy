@@ -66,6 +66,11 @@
 @property(nonatomic, copy, readonly) NSString *title;
 
 /**
+ A string which identifies the cell.
+ */
+@property(nonatomic, copy, readonly) NSString *accessibilityIdentifier;
+
+/**
  Returns a generator block object, which can be used as a last parameter in `<[TBTableDataSection insertRowAfter:withContext:generator:]>`.
  
  @param configurator A block object to configure the row.
@@ -130,6 +135,14 @@
  @param context A context object.
  */
 - (void)setTitle:(NSString *)title withContext:(TBTableDataContext *)context;
+
+/**
+ Changes the accessibility identifier
+ 
+ @param accessibilityIdentifier A string which identifies the cell.
+ @param context A context object.
+ */
+- (void)setAccessibilityIdentifier:(NSString *)accessibilityIdentifier withContext:(TBTableDataContext *)context;
 
 /**
  Reloads the row in table view.

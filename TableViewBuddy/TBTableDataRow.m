@@ -105,6 +105,7 @@
         [(TBTableViewCell *)cell setAvailable:self.enabled];
     }
     
+    cell.accessibilityIdentifier = _accessibilityIdentifier;
     cell.textLabel.text = (self.title != nil) ? self.title : @"";
     cell.imageView.image = self.image;
     [cell setNeedsLayout];
@@ -174,6 +175,16 @@
         if (cell != nil) {
             cell.textLabel.text = (self.title != nil) ? self.title : @"";
             [cell setNeedsLayout];
+        }
+    }
+}
+
+- (void)setAccessibilityIdentifier:(NSString *)accessibilityIdentifier withContext:(TBTableDataContext *)context {
+    _accessibilityIdentifier = [accessibilityIdentifier copy];
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        UITableViewCell *cell = [self findVisibleCell];
+        if (cell != nil) {
+            cell.accessibilityIdentifier = self.accessibilityIdentifier;
         }
     }
 }

@@ -41,6 +41,7 @@
             // "Catalogs"
             [builder buildActionRow:^(TBActionRow *row) {
                 [row setTitle:@"Catalogs" withContext:builder.context];
+                [row setAccessibilityIdentifier:@"catalogs" withContext:builder.context];
                 row.tapHandler = ^{
                     CatalogsViewController *catalogsViewController = [[CatalogsViewController alloc] init];
                     [weakSelf executeViewController:catalogsViewController];
@@ -50,6 +51,7 @@
             // "Insert and Delete"
             [builder buildActionRow:^(TBActionRow *row) {
                 [row setTitle:@"Insert and Delete" withContext:builder.context];
+                [row setAccessibilityIdentifier:@"insert_and_delete" withContext:builder.context];
                 row.tapHandler = ^{
                     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InsertDelete" bundle:nil];
                     UIViewController *viewController = [storyboard instantiateInitialViewController];

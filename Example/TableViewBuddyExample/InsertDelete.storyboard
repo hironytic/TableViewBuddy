@@ -23,6 +23,7 @@
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oo9-PL-Pzw">
                                         <rect key="frame" x="8" y="8" width="537" height="30"/>
+                                        <accessibility key="accessibilityConfiguration" label="New Item"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="eE9-hg-Vr6"/>
                                         </constraints>

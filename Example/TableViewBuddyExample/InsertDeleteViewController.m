@@ -36,6 +36,7 @@
     self.itemData.tableView = self.itemTableView;
     self.itemTableView.delegate = self.itemData;
     self.itemTableView.dataSource = self.itemData;
+    self.itemTableView.accessibilityIdentifier = @"item_table";
 }
 
 - (IBAction)insertButtonDidTap:(id)sender {

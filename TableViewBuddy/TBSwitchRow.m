@@ -43,6 +43,17 @@
     }
 }
 
+- (void)setSwitchAccessibilityIdentifier:(NSString *)switchAccessibilityIdentifier withContext:(TBTableDataContext *)context {
+    _switchAccessibilityIdentifier = switchAccessibilityIdentifier;
+    
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        TBSwitchTableViewCell *cell = (TBSwitchTableViewCell *)[self findVisibleCell];
+        if (cell != nil) {
+            cell.switchAccessibilityIdentifier = _switchAccessibilityIdentifier;
+        }
+    }
+}
+
 - (UITableViewCell *)createTableViewCell {
     TBSwitchTableViewCell *cell = [[TBSwitchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[self reuseIdentifier]];
     return cell;
@@ -53,6 +64,7 @@
     
     TBSwitchTableViewCell *switchCell = (TBSwitchTableViewCell *)cell;
     switchCell.switchValue = self.value;
+    switchCell.switchAccessibilityIdentifier = _switchAccessibilityIdentifier;
     
     TBSwitchRow * __weak weakSelf = self;
     switchCell.switchValueChanged = ^(BOOL value){
