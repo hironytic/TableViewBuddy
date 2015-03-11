@@ -33,14 +33,23 @@
  This class is a combination of `<TBNavigationRow>` and `<TBSingleChoiceSection>`.
  On the row of this class, the selected option is automatically set to secondary text
  with a disclosure indicator mark.
- When user taps the row, the next view controller with the options list is pushed to its navigation controller.
+ 
+ You must specify your navigation controller by either `<navigationController>` or `<navigationControllerBlock>`.
+ When user taps the row, the next view controller with the options list is pushed to it.
  */
 @interface TBSingleChoiceNavigationRow : TBNavigationRow
 
 /**
  A `UINavigationController` object which is used to push the next view controller.
+ If this property is nil, the navigation controller is retrieved from `<navigationControllerBlock>`.
  */
 @property(nonatomic, weak) UINavigationController *navigationController;
+
+/**
+ A block returns a `UINavigationController` object which is used to push the next view controller.
+ If this property is nil, `<navigationController>` is used for the navigation controller.
+ */
+@property(nonatomic, copy) UINavigationController *(^navigationControllerBlock)();
 
 /**
  A string which is used as the title of the next view controller.

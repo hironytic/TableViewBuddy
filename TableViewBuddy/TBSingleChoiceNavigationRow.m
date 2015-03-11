@@ -110,7 +110,11 @@
 }
 
 - (void)showChoiceViewController {
-    NSAssert(self.navigationController != nil, @"please set your navigation controller.");
+    NSAssert(self.navigationController != nil || self.navigationControllerBlock != nil, @"please set your navigation controller.");
+    UINavigationController *navigationController = self.navigationController;
+    if (navigationController == nil) {
+        navigationController = self.navigationControllerBlock();
+    }
 
     TBSingleChoiceNavigationRow * __weak weakSelf = self;
     TBTableViewController *choiceViewController = [[TBTableViewController alloc] initWithStyle:UITableViewStyleGrouped buildTableDataBlock:^TBTableData *(TBTableViewController *vc) {
@@ -134,7 +138,7 @@
     
     choiceViewController.title = self.choiceViewControllerTitle;
     choiceViewController.tableView.accessibilityIdentifier = self.choiceTableAccessibilityIdentifier;
-    [self.navigationController pushViewController:choiceViewController animated:YES];
+    [navigationController pushViewController:choiceViewController animated:YES];
 }
 
 @end
