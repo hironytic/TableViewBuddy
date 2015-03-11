@@ -35,7 +35,7 @@
  
  When you modify a table data model, `TBTableDataContext` is required.
  Each method that changes the data model takes context parameter.
- Some methods require a object of specific derived class of `TBTableDataContext`,
+ Some methods require an object of specific derived class of `TBTableDataContext`,
  but others require just a `TBTableDataContext` object.
  
  For example, when you want to hide a `<TBTableDataRow>`,
