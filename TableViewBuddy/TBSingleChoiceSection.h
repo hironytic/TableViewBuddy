@@ -27,7 +27,7 @@
 #import "TBTableDataBuilder.h"
 
 /**
- `TBSingleChoiseSection` is a section that have options list in it.
+ `TBSingleChoiceSection` is a section that have options list in it.
  Each option is represented as `<TBChoiceRow>` and user can choose a one option by tapping it.
  */
 @interface TBSingleChoiceSection : TBTableDataSection
