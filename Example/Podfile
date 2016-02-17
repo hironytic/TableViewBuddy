@@ -1,12 +1,13 @@
-# Uncomment this line to define a global platform for your project
-# platform :ios, '6.0'
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
 
-target 'TableViewBuddyExample' do
-
+target 'TableViewBuddy_Example', :exclusive => true do
+  pod 'TableViewBuddy', :path => '../'
 end
 
-target 'TableViewBuddyExampleTests', :exclusive => true do
-  pod 'KIF', '~> 3.0', :configurations => ['Debug']
-  pod 'KIF/IdentifierTests', '~> 3.0', :configurations => ['Debug']
-  pod 'Expecta', '~> 1.0'
+target 'TableViewBuddy_UITests', :exclusive => true do
+  pod 'TableViewBuddy', :path => '../'
+
+  pod 'Specta'
+  pod 'Expecta'
 end

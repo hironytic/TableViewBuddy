@@ -1,6 +1,6 @@
 //
-// TableViewBuddyExampleTests.m
-// TableViewBuddyExampleTests
+// UITests.m
+// TableViewBuddyExample
 //
 // Copyright (c) 2014-2016 Hironori Ichimiya <hiron@hironytic.com>
 //
@@ -23,29 +23,29 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <XCTest/XCTest.h>
+// https://github.com/Specta/Specta
 
-@interface TableViewBuddyExampleTests : XCTestCase
+#import <Specta/Specta.h>
+#import <Expecta/Expecta.h>
 
-@end
+SpecBegin(UITests)
 
-@implementation TableViewBuddyExampleTests
+describe(@"UITests", ^{
 
-- (void)setUp
-{
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-}
+    beforeEach(^{
+        // In UI tests it is usually best to stop immediately when a failure occurs.
+        self.continueAfterFailure = NO;
+        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
+        [[[XCUIApplication alloc] init] launch];
+        
+        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+    });
+    
+    it(@"should work", ^{
+        // Use recording to get started writing UI tests.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    });
+    
+});
 
-- (void)tearDown
-{
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
-//- (void)testExample
-//{
-//    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
-//}
-
-@end
+SpecEnd
