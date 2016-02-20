@@ -2,8 +2,8 @@
 .DS_Store
 
 # Xcode
+build/
 *.xccheckout
 xcuserdata/
 
-Pods/
 Carthage/

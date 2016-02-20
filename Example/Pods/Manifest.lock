@@ -1,0 +1,25 @@
+PODS:
+  - Expecta (1.0.5)
+  - KIF (3.3.2):
+    - KIF/Core (= 3.3.2)
+  - KIF/Core (3.3.2)
+  - KIF/IdentifierTests (3.3.2):
+    - KIF/Core
+  - TableViewBuddy (0.2.0)
+
+DEPENDENCIES:
+  - Expecta
+  - KIF (~> 3.0)
+  - KIF/IdentifierTests (~> 3.0)
+  - TableViewBuddy (from `../`)
+
+EXTERNAL SOURCES:
+  TableViewBuddy:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
+  KIF: 9de83fa627adaf65d28ace31e40f19d830bc255c
+  TableViewBuddy: 34ebc87d2168bfb93339c66b26fe4ba54add3798
+
+COCOAPODS: 0.39.0
