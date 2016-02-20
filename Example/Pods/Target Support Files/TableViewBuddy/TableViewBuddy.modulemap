@@ -1,0 +1,13 @@
+framework module TableViewBuddy {
+  umbrella header "TableViewBuddy-umbrella.h"
+
+  export *
+  module * { export * }
+
+  private header "TBCheckRow_Internal.h"
+  private header "TBTableData_Internal.h"
+  private header "TBTableDataContext_Internal.h"
+  private header "TBTableDataRow_Internal.h"
+  private header "TBTableDataSection_Internal.h"
+  private header "TBUpdateStatus.h"
+}
