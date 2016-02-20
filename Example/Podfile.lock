@@ -5,7 +5,7 @@ PODS:
   - KIF/Core (3.3.2)
   - KIF/IdentifierTests (3.3.2):
     - KIF/Core
-  - TableViewBuddy (0.2.0)
+  - TableViewBuddy (0.3.0)
 
 DEPENDENCIES:
   - Expecta
@@ -20,6 +20,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   KIF: 9de83fa627adaf65d28ace31e40f19d830bc255c
-  TableViewBuddy: 34ebc87d2168bfb93339c66b26fe4ba54add3798
+  TableViewBuddy: 3cd47ad46f4c8cfe304f3749d32d679ebaf3928d
 
 COCOAPODS: 0.39.0
