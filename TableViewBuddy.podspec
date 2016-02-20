@@ -10,7 +10,9 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "6.0"
 
   s.source       = { :git => "https://github.com/hironytic/TableViewBuddy.git", :tag => "v#{s.version}" }
-  s.source_files  = "TableViewBuddy/**/*.{h,m}"
+
+  s.source_files = "Pod/Classes/**/*"
+  s.private_header_files = "Pod/Classes/internal/*.h"
 
   s.requires_arc = true
 end
