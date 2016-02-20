@@ -140,7 +140,7 @@
     [tester tapViewWithAccessibilityIdentifier:@"single_choice"];
     
     [tester waitForViewWithAccessibilityLabel:@"Select"];
-    [tester waitForViewWithAccessibilityLabel:@"Options"];
+    [tester waitForViewWithAccessibilityLabel:@"OPTIONS"];  // capitalized in iOS 7+
 
     // tap "Three"
     [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] inTableViewWithAccessibilityIdentifier:@"choice_table"];

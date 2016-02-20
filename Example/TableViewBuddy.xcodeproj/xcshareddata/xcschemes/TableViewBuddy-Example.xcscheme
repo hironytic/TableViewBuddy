@@ -38,6 +38,16 @@
                ReferencedContainer = "container:TableViewBuddy.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5029319E1C77F6E50080F13C"
+               BuildableName = "TableViewBuddy_Tests.xctest"
+               BlueprintName = "TableViewBuddy_Tests"
+               ReferencedContainer = "container:TableViewBuddy.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
