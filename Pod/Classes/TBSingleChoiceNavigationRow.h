@@ -77,7 +77,7 @@
 @property(nonatomic, copy, readonly) NSArray *options;
 
 /**
- An index of selected option in `<options>` list.
+ An index of selected option in `<options>` list, or `NSNotFound` if there is no selected option.
  */
 @property(nonatomic, assign, readonly) NSInteger selectedIndex;
 
@@ -121,7 +121,7 @@
  Otherwise `description`` is used.
  
  @param options A list of options.
- @param selectedIndex An index of selected option in the list
+ @param selectedIndex An index of selected option in the list, or `NSNotFound` to clear the selection.
  @param context A context object. `<TBTableDataInitializationContext>` object is required.
  */
 - (void)setOptions:(NSArray *)options selectedIndex:(NSInteger)selectedIndex withContext:(TBTableDataContext *)context;
@@ -129,7 +129,7 @@
 /**
  Changes the selected option.
  
- @param selectedIndex An index of selected option in the list.
+ @param selectedIndex An index of selected option in the list, or `NSNotFound` to clear the selection.
  @param context A context object.
  */
 - (void)setSelectedIndex:(NSInteger)selectedIndex withContext:(TBTableDataContext *)context;
