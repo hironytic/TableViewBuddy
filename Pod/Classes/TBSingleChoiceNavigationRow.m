@@ -84,7 +84,7 @@
 
 - (void)setChoiceViewControllerStyle:(UITableViewStyle)choiceViewControllerStyle withContext:(TBTableDataContext *)context {
     if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
-        NSAssert(NO, @"currently, choiceViewControllerTitle can be set only on initialization.");
+        NSAssert(NO, @"currently, choiceViewControllerStyle can be set only on initialization.");
         return;
     }
 
