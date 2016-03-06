@@ -57,7 +57,7 @@
 @property(nonatomic, copy, readonly) NSString *choiceViewControllerTitle;
 
 /**
- A style of the table view of the next view controller.
+ A style of the table view in the next view controller.
  */
 @property(nonatomic, assign, readonly) UITableViewStyle choiceViewControllerStyle;
 
@@ -95,7 +95,7 @@
 - (void)setChoiceViewControllerTitle:(NSString *)choiceViewControllerTitle withContext:(TBTableDataContext *)context;
 
 /**
- Sets a table view style of the next view controller.
+ Sets a style of the table view in the next view controller.
  
  @param choiceViewControllerStyle A style which is used for table view.
  @param context A context object. `<TBTableDataInitializationContext>` object is required.
