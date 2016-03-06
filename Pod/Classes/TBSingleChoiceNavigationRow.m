@@ -50,7 +50,7 @@
     _selectedIndex = selectedIndex;
 
     NSString *optTitle = nil;
-    if (selectedIndex >= 0 && selectedIndex < [self.options count]) {
+    if (selectedIndex != NSNotFound && selectedIndex >= 0 && selectedIndex < [self.options count]) {
         id opt = [self.options objectAtIndex:selectedIndex];
         if ([opt isKindOfClass:[NSString class]]) {
             optTitle = opt;
@@ -59,6 +59,8 @@
         } else {
             optTitle = [opt description];
         }
+    } else {
+        optTitle = @"";
     }
     [self setDetailText:optTitle withContext:context];
 }

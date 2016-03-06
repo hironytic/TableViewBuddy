@@ -35,6 +35,14 @@
 
 @implementation TBSingleChoiceSection
 
+- (instancetype)initWithContext:(TBTableDataInitializationContext *)context {
+    self = [super initWithContext:context];
+    if (self != nil) {
+        _selectedIndex = NSNotFound;
+    }
+    return self;
+}
+
 - (void)setOptions:(NSArray *)options selectedIndex:(NSInteger)selectedIndex withContext:(TBTableDataContext *)context {
     if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
         NSAssert(NO, @"options can be set only on initialization.");
@@ -75,7 +83,7 @@
 }
 
 - (void)optionValueSelected:(NSInteger)index {
-    if (_selectedIndex >= 0) {
+    if (_selectedIndex != NSNotFound && _selectedIndex >= 0) {
         TBChoiceRow *prevSelectedRow = self.choiceRows[_selectedIndex];
         [prevSelectedRow setValue:NO withContext:[TBTableDataContext context]];
     }
@@ -86,11 +94,11 @@
 }
 
 - (void)setSelectedIndex:(NSInteger)selectedIndex withContext:(TBTableDataContext *)context {
-    if (_selectedIndex >= 0) {
+    if (_selectedIndex != NSNotFound && _selectedIndex >= 0) {
         TBChoiceRow *prevSelectedRow = self.choiceRows[_selectedIndex];
         [prevSelectedRow setValue:NO withContext:context];
     }
-    if (selectedIndex >= 0) {
+    if (selectedIndex != NSNotFound && selectedIndex >= 0) {
         TBChoiceRow *nowSelectedRow = self.choiceRows[selectedIndex];
         [nowSelectedRow setValue:YES withContext:context];
     }
