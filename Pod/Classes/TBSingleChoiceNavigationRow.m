@@ -36,6 +36,14 @@
 
 @implementation TBSingleChoiceNavigationRow
 
+- (instancetype)initWithContext:(TBTableDataInitializationContext *)context {
+    self = [super initWithContext:context];
+    if (self != nil) {
+        _choiceViewControllerStyle = UITableViewStyleGrouped;
+    }
+    return self;
+}
+
 - (void)setOptions:(NSArray *)options selectedIndex:(NSInteger)selectedIndex withContext:(TBTableDataContext *)context {
     if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
         NSAssert(NO, @"options can be set only on initialization.");
@@ -72,6 +80,15 @@
     }
 
     _choiceViewControllerTitle = choiceViewControllerTitle;
+}
+
+- (void)setChoiceViewControllerStyle:(UITableViewStyle)choiceViewControllerStyle withContext:(TBTableDataContext *)context {
+    if (![context isKindOfClass:[TBTableDataInitializationContext class]]) {
+        NSAssert(NO, @"currently, choiceViewControllerStyle can be set only on initialization.");
+        return;
+    }
+
+    _choiceViewControllerStyle = choiceViewControllerStyle;
 }
 
 - (void)setChoiceTableAccessibilityIdentifier:(NSString *)choiceTableAccessibilityIdentifier withContext:(TBTableDataContext *)context {
@@ -119,7 +136,7 @@
     }
 
     TBSingleChoiceNavigationRow * __weak weakSelf = self;
-    TBTableViewController *choiceViewController = [[TBTableViewController alloc] initWithStyle:UITableViewStyleGrouped buildTableDataBlock:^TBTableData *(TBTableViewController *vc) {
+    TBTableViewController *choiceViewController = [[TBTableViewController alloc] initWithStyle:self.choiceViewControllerStyle buildTableDataBlock:^TBTableData *(TBTableViewController *vc) {
         return [TBTableData tableDataWithBuildBlock:^(TBTableDataBuilder *builder) {
             [builder buildSingleChoiceSection:^(TBSingleChoiceSection *section) {
                 [section setHeaderTitle:weakSelf.choiceSectionHeaderTitle withContext:builder.context];

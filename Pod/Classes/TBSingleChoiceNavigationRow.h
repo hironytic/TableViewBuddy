@@ -57,6 +57,11 @@
 @property(nonatomic, copy, readonly) NSString *choiceViewControllerTitle;
 
 /**
+ A style of the table view in the next view controller.
+ */
+@property(nonatomic, assign, readonly) UITableViewStyle choiceViewControllerStyle;
+
+/**
  A string which is used as the accessibility identifier of the table view in the next view controller
  */
 @property(nonatomic, copy, readonly) NSString *choiceTableAccessibilityIdentifier;
@@ -88,6 +93,14 @@
  @param context A context object. `<TBTableDataInitializationContext>` object is required.
  */
 - (void)setChoiceViewControllerTitle:(NSString *)choiceViewControllerTitle withContext:(TBTableDataContext *)context;
+
+/**
+ Sets a style of the table view in the next view controller.
+ 
+ @param choiceViewControllerStyle A style which is used for table view.
+ @param context A context object. `<TBTableDataInitializationContext>` object is required.
+ */
+- (void)setChoiceViewControllerStyle:(UITableViewStyle)choiceViewControllerStyle withContext:(TBTableDataContext *)context;
 
 /**
  Sets an accessibility identifier of the table view in the next view controller.
