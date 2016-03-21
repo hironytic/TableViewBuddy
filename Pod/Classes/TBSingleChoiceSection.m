@@ -57,15 +57,24 @@
         [options enumerateObjectsUsingBlock:^(id opt, NSUInteger ix, BOOL *stop) {
             [builder buildChoiceRow:^(TBChoiceRow *row) {
                 NSString *optTitle = nil;
-                if ([opt isKindOfClass:[NSString class]]) {
+                UIImage *optImage = nil;
+                if (optTitle == nil && [opt isKindOfClass:[NSString class]]) {
                     optTitle = opt;
-                } else if ([opt respondsToSelector:@selector(stringValue)]) {
+                }
+                if (optTitle == nil && [opt respondsToSelector:@selector(stringValue)]) {
                     optTitle = [opt stringValue];
-                } else {
+                }
+                if (optTitle == nil && [opt respondsToSelector:@selector(valueForKey:)]) {
+                    optTitle = [opt valueForKey:@"title"];
+                    optImage = [opt valueForKey:@"image"];
+                }
+                if (optTitle == nil) {
                     optTitle = [opt description];
                 }
                 [row setTitle:optTitle withContext:context];
-                
+                if (optImage != nil && [optImage isKindOfClass:[UIImage class]]) {
+                    [row setImage:optImage withContext:context];
+                }
                 if (ix == selectedIndex) {
                     [row setValue:YES withContext:context];
                 } else {
