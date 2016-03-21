@@ -3,9 +3,6 @@ This application makes use of the following third party libraries:
 
 ## TableViewBuddy
 
-TableViewBuddy (The MIT License)
-
-
 Copyright (c) 2014-2016 Hironori Ichimiya <hiron@hironytic.com>
 
 Permission is hereby granted, free of charge, to any person obtaining

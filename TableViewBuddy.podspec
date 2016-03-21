@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "TableViewBuddy"
-  s.version      = "0.4.0"
+  s.version      = "0.5.0"
   s.summary      = "An easy way to configure the user interface with table view."
 
   s.homepage     = "https://github.com/hironytic/TableViewBuddy"

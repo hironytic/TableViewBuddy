@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '10F9AB60F6393D6122F15A47'
+               BlueprintIdentifier = '84EDCCF5699C40094F2C54DC'
                BlueprintName = 'TableViewBuddy'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'TableViewBuddy.framework'>
