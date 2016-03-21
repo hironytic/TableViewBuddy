@@ -46,8 +46,9 @@
  Sets a list of options and specify which one is selected.
  
  If the option is a string, it is used as title of the row.
- If the option is not a string and it has method `stringValue` that returns string, the return value of the method is used as title.
- Otherwise `description`` is used.
+ If the option is not a string but has a method `stringValue` that returns string, the return value of the method is used as title.
+ Otherwise the return value of `[option valueForKey:@"title"]` is used as title and `[option valueForKey:@"image"]` is used as image.
+ If `[option valueForKey:@"title"]` returns nil, `description` is used.
  
  @param options A list of options.
  @param selectedIndex An index of selected option in the list, or `NSNotFound` to clear the selection.
